@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638330558323967103
-    m_Hash: 1197561154
+      ticks: 638330569233118585
+    m_Hash: 4072686707
   m_LockFileStatus:
     m_FilePath: C:/Users/Estoult/Documents/Cours/les-voyageurs/fischl/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638330558584124317
-    m_Hash: 3466310726
+      ticks: 638330569233118585
+    m_Hash: 4186997714
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -34,19 +34,137 @@ m_PackageAssets:
         email: 
         url: 
       category: 2D
-      type: 
+      type: asset
       description: 2D Animation provides all the necessary tooling and runtime components
         for skeletal animation using Sprites.
       status: 4
       errors: []
       versions:
         all:
+        - 1.0.15-preview.1
+        - 1.0.15-preview.2
+        - 1.0.15-preview.3
+        - 1.0.15-preview.4
+        - 1.0.15-preview.5
+        - 1.0.16-preview
+        - 1.0.16-preview.1
+        - 1.0.16-preview.2
+        - 2.0.0-preview.1
+        - 2.0.0-preview.2
+        - 2.0.0-preview.3
+        - 2.1.0-preview.1
+        - 2.1.0-preview.2
+        - 2.1.0-preview.4
+        - 2.1.0-preview.5
+        - 2.1.0-preview.7
+        - 2.2.0-preview.1
+        - 2.2.0-preview.4
+        - 2.2.0-preview.5
+        - 2.2.1-preview.1
+        - 2.2.1-preview.2
+        - 3.0.2
+        - 3.0.3
+        - 3.0.4
+        - 3.0.5
+        - 3.0.6
+        - 3.0.8
+        - 3.1.0
+        - 3.1.1
+        - 3.2.1
+        - 3.2.2
+        - 3.2.3
+        - 3.2.4
+        - 3.2.5
+        - 3.2.6
+        - 3.2.9
+        - 3.2.10
+        - 3.2.11
+        - 3.2.13
+        - 3.2.14
+        - 3.2.15
+        - 3.2.16
+        - 3.2.17
+        - 3.2.18
+        - 4.0.0
+        - 4.0.1
+        - 4.1.0
+        - 4.1.1
+        - 4.2.1
+        - 4.2.2
+        - 4.2.3
+        - 4.2.4
+        - 4.2.5
+        - 4.2.6
+        - 4.2.8
+        - 5.0.0
+        - 5.0.1
+        - 5.0.2
+        - 5.0.3
+        - 5.0.4
+        - 5.0.5
         - 5.0.6
         - 5.0.7
+        - 5.0.8
+        - 5.0.9
+        - 5.0.10
+        - 5.1.0
+        - 5.1.1
+        - 5.2.0
+        - 5.2.1
+        - 5.2.3
+        - 5.2.4
+        - 5.2.6
+        - 5.2.7
+        - 6.0.0-pre.1
+        - 6.0.0-pre.2
+        - 6.0.1
+        - 6.0.3
+        - 6.0.4
+        - 6.0.5
+        - 6.0.7
+        - 7.0.0-pre.2
+        - 7.0.0-pre.3
+        - 7.0.0
+        - 7.0.1
+        - 7.0.2
+        - 7.0.3
+        - 7.0.4
+        - 7.0.5
+        - 7.0.6
+        - 7.0.7
+        - 7.0.8
+        - 7.0.9
+        - 7.0.10
+        - 7.0.11
+        - 7.0.12
+        - 8.0.0-pre.3
+        - 8.0.0-pre.4
+        - 8.0.0
+        - 8.0.1
+        - 8.0.2
+        - 8.0.3
+        - 8.0.4
+        - 8.0.5
+        - 9.0.0-pre.1
+        - 9.0.0-pre.3
+        - 9.0.0
+        - 9.0.1
+        - 9.0.2
+        - 9.0.3
+        - 9.0.4
+        - 10.0.0-pre.1
+        - 10.0.0-pre.2
+        - 10.0.0
+        - 10.0.1
+        - 10.0.2
+        - 10.0.3
         compatible:
         - 5.0.6
         - 5.0.7
-        verified: 5.0.7
+        - 5.0.8
+        - 5.0.9
+        - 5.0.10
+        verified: 5.0.10
       dependencies:
       - name: com.unity.2d.common
         version: 4.0.3
@@ -88,11 +206,11 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637637510960000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -130,7 +248,23 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.0-preview
+        - 1.0.1-preview
+        - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.1.0
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
+        - 4.0.0
         - 4.0.1
+        - 5.0.0-pre.1
+        - 5.0.0-pre.2
+        - 5.0.0
+        - 5.0.1
+        - 5.0.2
+        - 5.0.3
         compatible:
         - 4.0.1
         verified: 4.0.1
@@ -153,7 +287,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637328350910000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -175,7 +309,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 2D
-      type: 
+      type: asset
       description: A ScriptedImporter for importing Adobe Photoshop PSB (Photoshop
         Big) file format. The ScriptedImporter is currently targeted for users who
         wants to create multi Sprite character animation using Unity 2D Animation
@@ -184,10 +318,84 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.0-preview.1
+        - 1.0.0-preview.2
+        - 1.0.0-preview.3
+        - 1.0.0-preview.4
+        - 1.1.0-preview.1
+        - 1.1.0-preview.3
+        - 1.2.0-preview.1
+        - 1.2.0-preview.3
+        - 1.2.0-preview.4
+        - 2.0.2
+        - 2.0.3
+        - 2.0.4
+        - 2.0.5
+        - 2.0.7
+        - 2.1.0
+        - 2.1.3
+        - 2.1.4
+        - 2.1.5
+        - 2.1.6
+        - 2.1.8
+        - 2.1.9
+        - 2.1.10
+        - 2.1.11
+        - 3.0.0
+        - 3.1.1
+        - 3.1.3
+        - 3.1.4
+        - 3.1.5
+        - 3.1.6
+        - 3.1.7
+        - 4.0.0
+        - 4.0.1
+        - 4.0.2
         - 4.1.0
+        - 4.1.1
+        - 4.1.2
+        - 4.1.3
+        - 4.2.0
+        - 4.3.0
+        - 4.3.1
+        - 5.0.0-pre.1
+        - 5.0.0-pre.2
+        - 5.0.1
+        - 5.0.3
+        - 5.0.4
+        - 5.0.6
+        - 6.0.0-pre.2
+        - 6.0.0-pre.3
+        - 6.0.0-pre.4
+        - 6.0.0
+        - 6.0.1
+        - 6.0.2
+        - 6.0.3
+        - 6.0.4
+        - 6.0.5
+        - 6.0.6
+        - 6.0.7
+        - 7.0.0-pre.3
+        - 7.0.0-pre.4
+        - 7.0.0
+        - 7.0.1
+        - 7.0.2
+        - 7.0.3
+        - 8.0.0-pre.1
+        - 8.0.0-pre.3
+        - 8.0.0
+        - 8.0.1
+        - 8.0.2
+        - 9.0.0-pre.1
+        - 9.0.0-pre.2
+        - 9.0.0
+        - 9.0.1
         compatible:
         - 4.1.0
-        verified: 4.1.0
+        - 4.1.1
+        - 4.1.2
+        - 4.1.3
+        verified: 4.1.3
       dependencies:
       - name: com.unity.2d.common
         version: 4.0.3
@@ -228,11 +436,11 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637594727750000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -305,7 +513,7 @@ m_PackageAssets:
         email: 
         url: 
       category: 2D
-      type: 
+      type: asset
       description: SpriteShape Runtime & Editor Package contains the tooling and
         the runtime component that allows you to create very organic looking spline
         based 2D worlds. It comes with intuitive configurator and a highly performant
@@ -314,10 +522,94 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+        - 1.0.10-preview.2
+        - 1.0.11-preview
+        - 1.0.12-preview
+        - 1.0.12-preview.1
+        - 1.0.14-preview.2
+        - 2.0.0-preview.4
+        - 2.0.0-preview.5
+        - 2.0.0-preview.7
+        - 2.0.0-preview.8
+        - 2.0.0-preview.9
+        - 2.1.0-preview.2
+        - 2.1.0-preview.6
+        - 2.1.0-preview.7
+        - 2.1.0-preview.10
+        - 2.1.0-preview.11
+        - 3.0.1
+        - 3.0.2
+        - 3.0.4
+        - 3.0.5
+        - 3.0.6
+        - 3.0.7
+        - 3.0.8
+        - 3.0.9
+        - 3.0.10
+        - 3.0.11
+        - 3.0.12
+        - 3.0.13
+        - 3.0.14
+        - 3.0.15
+        - 3.0.16
+        - 3.0.17
+        - 3.0.18
+        - 4.0.0
+        - 4.0.1
+        - 4.0.2
+        - 4.0.3
+        - 4.1.0
+        - 4.1.1
+        - 4.1.2
+        - 4.1.3
+        - 4.1.4
+        - 4.1.5
+        - 5.0.0
+        - 5.0.1
+        - 5.0.2
+        - 5.1.0
+        - 5.1.1
+        - 5.1.2
+        - 5.1.3
         - 5.1.4
+        - 5.1.5
+        - 5.1.6
+        - 5.1.7
+        - 5.2.0
+        - 5.3.0
+        - 6.0.0-pre.1
+        - 6.0.0-pre.2
+        - 6.0.0
+        - 6.0.1
+        - 6.0.2
+        - 7.0.0-pre.2
+        - 7.0.0-pre.3
+        - 7.0.0
+        - 7.0.2
+        - 7.0.3
+        - 7.0.4
+        - 7.0.5
+        - 7.0.6
+        - 7.0.7
+        - 8.0.0-pre.4
+        - 8.0.0-pre.5
+        - 8.0.0
+        - 8.0.1
+        - 9.0.0-pre.1
+        - 9.0.0
+        - 9.0.1
+        - 9.0.2
+        - 10.0.0-pre.1
+        - 10.0.0-pre.2
+        - 10.0.0
+        - 10.0.1
+        - 10.0.2
         compatible:
         - 5.1.4
-        verified: 5.1.4
+        - 5.1.5
+        - 5.1.6
+        - 5.1.7
+        verified: 5.1.7
       dependencies:
       - name: com.unity.mathematics
         version: 1.1.0
@@ -363,11 +655,11 @@ m_PackageAssets:
         isDefault: 1
         capabilities: 7
       hasRegistry: 1
-      hideInEditor: 1
+      hideInEditor: 0
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637637511330000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -516,6 +808,8 @@ m_PackageAssets:
         - 2.1.0-preview.3
         - 2.1.0-preview.5
         - 2.1.0-preview.6
+        - 2.1.0
+        - 2.2.0
         compatible:
         - 1.11.2
         - 1.12.5
@@ -657,6 +951,8 @@ m_PackageAssets:
         - 3.0.21
         - 3.0.22
         - 3.0.24
+        - 3.0.25
+        - 3.0.26
         compatible:
         - 1.0.2
         - 1.0.6
@@ -696,6 +992,8 @@ m_PackageAssets:
         - 3.0.21
         - 3.0.22
         - 3.0.24
+        - 3.0.25
+        - 3.0.26
         verified: 2.0.7
       dependencies:
       - name: com.unity.test-framework
@@ -774,6 +1072,8 @@ m_PackageAssets:
         - 2.0.17
         - 2.0.18
         - 2.0.20
+        - 2.0.21
+        - 2.0.22
         compatible:
         - 1.0.2
         - 1.0.3
@@ -797,7 +1097,9 @@ m_PackageAssets:
         - 2.0.17
         - 2.0.18
         - 2.0.20
-        verified: 2.0.20
+        - 2.0.21
+        - 2.0.22
+        verified: 2.0.22
       dependencies:
       - name: com.unity.test-framework
         version: 1.1.9
@@ -966,6 +1268,7 @@ m_PackageAssets:
         - 1.3.5
         - 1.3.7
         - 1.3.8
+        - 1.3.9
         - 2.0.1-exp.1
         - 2.0.1-exp.2
         - 2.0.1-pre.12
@@ -983,6 +1286,7 @@ m_PackageAssets:
         - 1.3.5
         - 1.3.7
         - 1.3.8
+        - 1.3.9
         - 2.0.1-exp.1
         - 2.0.1-exp.2
         - 2.0.1-pre.12
@@ -1150,6 +1454,7 @@ m_PackageAssets:
         - 3.2.0-pre.3
         - 3.2.0-pre.4
         - 3.2.0-pre.5
+        - 3.2.0-pre.6
         - 4.0.0-pre.1
         - 4.0.0-pre.2
         compatible:
@@ -1159,6 +1464,7 @@ m_PackageAssets:
         - 3.2.0-pre.3
         - 3.2.0-pre.4
         - 3.2.0-pre.5
+        - 3.2.0-pre.6
         verified: 3.0.6
       dependencies:
       - name: com.unity.ugui
@@ -1294,11 +1600,14 @@ m_PackageAssets:
         - 1.7.3
         - 1.7.4
         - 1.7.5
+        - 1.7.6
         - 1.8.0
         - 1.8.1
         - 1.8.2
         - 1.8.3
         - 1.8.4
+        - 1.8.5
+        - 1.8.6
         compatible:
         - 1.4.8
         - 1.5.0-pre.2
@@ -1332,11 +1641,14 @@ m_PackageAssets:
         - 1.7.3
         - 1.7.4
         - 1.7.5
+        - 1.7.6
         - 1.8.0
         - 1.8.1
         - 1.8.2
         - 1.8.3
         - 1.8.4
+        - 1.8.5
+        - 1.8.6
         verified: 1.4.8
       dependencies:
       - name: com.unity.modules.director
