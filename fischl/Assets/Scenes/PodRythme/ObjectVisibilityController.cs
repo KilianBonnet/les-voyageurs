@@ -8,6 +8,7 @@ public class ObjectVisibilityController : MonoBehaviour
     public BoxCollider2D nonPlayingZone;
     public float respawnTime = 3f;
     public Camera mainCamera;
+    public GameObject tapCircles;
 
     private void Start()
     {
@@ -16,11 +17,12 @@ public class ObjectVisibilityController : MonoBehaviour
     private void RespawnObject()
     {
         Vector3 randomPosition = GetRandomPosition();
-        if (!nonPlayingZone.bounds.Contains(randomPosition))
-        {
-            GameObject newObject = Instantiate(gameObject, randomPosition, Quaternion.identity);
-            newObject.SetActive(true); // Assurez-vous que le nouvel objet est activé
-        }
+        while (nonPlayingZone.bounds.Contains(randomPosition)) { randomPosition = GetRandomPosition(); }
+        GameObject newObject = Instantiate(gameObject, randomPosition, Quaternion.identity, tapCircles.transform);
+        //On active le nouvel objet car celui que l'on a copié était desactivé
+        newObject.SetActive(true);
+        Destroy(gameObject);
+        
     }
 
     private Vector3 GetRandomPosition()
@@ -35,7 +37,7 @@ public class ObjectVisibilityController : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        // Désactive l'objet sur lequel l'utilisateur a cliqué.
+        // Désactive l'objet sur lequel l'utilisateur a cliqué
         gameObject.SetActive(false);
         Invoke("RespawnObject", respawnTime);
     }
