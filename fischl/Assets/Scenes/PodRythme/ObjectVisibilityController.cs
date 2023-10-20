@@ -18,10 +18,11 @@ public class ObjectVisibilityController : MonoBehaviour
     {
         Vector3 randomPosition = GetRandomPosition();
         while (nonPlayingZone.bounds.Contains(randomPosition)) { randomPosition = GetRandomPosition(); }
-        GameObject newObject = Instantiate(gameObject, randomPosition, Quaternion.identity, tapCircles.transform);
+
+        gameObject.transform.position = randomPosition;
+       // GameObject newObject = Instantiate(gameObject, randomPosition, Quaternion.identity, tapCircles.transform);
         //On active le nouvel objet car celui que l'on a copié était desactivé
-        newObject.SetActive(true);
-        Destroy(gameObject);
+        gameObject.SetActive(true);
         
     }
 

@@ -5,6 +5,9 @@ using UnityEngine;
 public class EventManager : MonoBehaviour
 {
     private bool gameIsOver = false;
+    public GameObject gameOverTexts;
+    public GameObject tapCircles;
+
 
 
     void Start()
@@ -20,5 +23,7 @@ public class EventManager : MonoBehaviour
             gameIsOver = true;
             Debug.Log("Game Over!");
         }
+        tapCircles.SetActive(false);
+        gameOverTexts.SetActive(true);
     }
 }
