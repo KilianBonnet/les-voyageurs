@@ -8,6 +8,8 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public GameObject selectedObject;
     public Vector3 originalPosition;
     public GameObject droppingArea;
+    public GameObject correctSpot;
+    public GameObject[] spotTwinnies;
 
     public void Start()
     {
@@ -68,5 +70,45 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
             //update original position
             originalPosition = eventData.position;
         }
+         
+        //retrieve the correctSpot coordinates according to world space
+        Vector3 correctSpotLeftBottom = correctSpot.transform.TransformPoint(correctSpot.GetComponent<RectTransform>().rect.min);
+        Vector3 correctSpotRightTop = correctSpot.transform.TransformPoint(correctSpot.GetComponent<RectTransform>().rect.max);
+
+        //retrieve the correctSpot coordinates according to screen space
+        Vector3 correctSpotLeftBottomScreen = Camera.main.WorldToScreenPoint(correctSpotLeftBottom);
+        Vector3 correctSpotRightTopScreen = Camera.main.WorldToScreenPoint(correctSpotRightTop);
+
+        //retrieve the correctSpot coordinates according to screen space
+        float correctSpotLeft = correctSpotLeftBottomScreen.x;
+        float correctSpotBottom = correctSpotLeftBottomScreen.y;
+        float correctSpotRight = correctSpotRightTopScreen.x;
+        float correctSpotTop = correctSpotRightTopScreen.y;
+
+        //retrieve the correctSpot's middle coordinates
+        Vector3 correctSpotMiddle = correctSpot.transform.TransformPoint(correctSpot.GetComponent<RectTransform>().rect.center);
+        Vector3 correctSpotMiddleScreen = Camera.main.WorldToScreenPoint(correctSpotMiddle);
+
+        float offsetX = 0.5f;
+        float offsetY = 0.5f;
+
+        //if the selectedobject is within the limits of the correctSpot turn th spot green
+        if (eventData.position.x > correctSpotLeft + offsetX && eventData.position.x < correctSpotRight - offsetX && eventData.position.y > correctSpotBottom + offsetY && eventData.position.y < correctSpotTop - offsetY)
+        {
+            correctSpot.GetComponent<SpriteRenderer>().color = Color.green;
+            //replace it correctly in the middle of correctspot
+            selectedObject.transform.position = correctSpotMiddleScreen;
+            //remove the drag events management from the selectedObject
+            selectedObject.GetComponent<PuzzleManager>().enabled = false;
+            foreach (GameObject spotTwinny in spotTwinnies)
+            {
+                //TODO: clone the selectedObject
+                
+                spotTwinny.GetComponent<SpriteRenderer>().color = Color.green;
+            }
+
+        }
+
+
     }
 }
