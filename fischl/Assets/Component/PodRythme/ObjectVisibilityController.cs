@@ -10,18 +10,13 @@ public class ObjectVisibilityController : MonoBehaviour
     public Camera mainCamera;
     public GameObject tapCircles;
 
-    private void Start()
-    {
-    }
-
     private void RespawnObject()
     {
         Vector3 randomPosition = GetRandomPosition();
         while (nonPlayingZone.bounds.Contains(randomPosition)) { randomPosition = GetRandomPosition(); }
 
         gameObject.transform.position = randomPosition;
-       // GameObject newObject = Instantiate(gameObject, randomPosition, Quaternion.identity, tapCircles.transform);
-        //On active le nouvel objet car celui que l'on a copié était desactivé
+        //On active de nouveau l'objet après le temps d'apparition
         gameObject.SetActive(true);
         
     }
@@ -40,6 +35,7 @@ public class ObjectVisibilityController : MonoBehaviour
     {
         // Désactive l'objet sur lequel l'utilisateur a cliqué
         gameObject.SetActive(false);
+        respawnTime = Random.Range(2, 5);
         Invoke("RespawnObject", respawnTime);
     }
 }
