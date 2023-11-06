@@ -1,15 +1,22 @@
 using System;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 
 public class OuterWheel : MonoBehaviour
 {
-    [SerializeField] float rotationSpeed = .2f;
-    [SerializeField] float maxClickTime = .3f;
+    [SerializeField] private float rotationSpeed = .2f;
+    [SerializeField] private float maxClickTime = .3f;
+
+    [SerializeField] AudioSource clickAudio;
+    [SerializeField] AudioSource unClickAudio;
+
+    [SerializeField] AudioSource errorAudio;
+    private bool needReset;
 
     private int selectedElements;
-    [SerializeField] TextMeshProUGUI topText;
-    [SerializeField] TextMeshProUGUI bottomText;
+    [SerializeField] private TextMeshProUGUI topText;
+    [SerializeField] private TextMeshProUGUI bottomText;
 
     private SelectionRenderer clickedCell;
     private bool isClicking;
@@ -18,6 +25,15 @@ public class OuterWheel : MonoBehaviour
 
     void Update()
     {
+        if(errorAudio.isPlaying)
+            return;
+
+        if(needReset) {
+            needReset = false;
+            topText.text = "0 / 3";
+            bottomText.text = "0 / 3";
+        }
+
         if(isClicking)
             Clicking();
         
@@ -35,16 +51,26 @@ public class OuterWheel : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0)){
             if(clickDuration < maxClickTime) {
+                int selection = clickedCell.OnClick();
+                selectedElements += selection;
+
+                if(selection < 0) unClickAudio.Play();
+                else clickAudio.Play();
+
+                string res;
                 if(selectedElements < 3) {
-                    selectedElements += clickedCell.OnClick();
-                    string res = selectedElements + " / " + "3";
-                    topText.text = res;
-                    bottomText.text = res;
+                    res = selectedElements + " / 3";
                 }
                 else {
                     selectedElements = 0;
+                    res = "Incorrect";
+                    errorAudio.Play();
+                    needReset = true;
                     SelectionRenderer.ResetEvent.Invoke();
                 }
+
+                topText.text = res;
+                bottomText.text = res;
             }
                 
             isClicking = false;
