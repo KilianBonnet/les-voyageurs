@@ -23,7 +23,7 @@ public class SceneChanger : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.LeftArrow)) {
             i--;
-            if(i <= 0) i = scenes.Length - 1;
+            if(i < 0) i = scenes.Length - 1;
             Debug.Log("Loading " + scenes[i]);
             SceneManager.LoadScene(scenes[i]);
         }
