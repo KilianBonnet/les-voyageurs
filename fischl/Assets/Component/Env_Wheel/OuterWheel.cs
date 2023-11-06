@@ -70,11 +70,4 @@ public class OuterWheel : MonoBehaviour
         clickedCell = selectionRenderer;
         isClicking = true;
     }
-
-    private void CheckClick() {
-        if(Input.GetMouseButtonUp(0)) {
-            isClicking = false;
-            return;
-        }
-    }
 }
