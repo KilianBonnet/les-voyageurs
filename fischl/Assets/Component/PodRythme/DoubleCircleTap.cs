@@ -45,23 +45,21 @@ public class DoubleCircleTap : MonoBehaviour
     public void OnMouseDown()
     {
         time = Time.time;
-        Debug.Log(time);
-        Debug.Log(otherTapCircle.time);
         if (otherTapCircle.time < 0)
             return;
 
-        // Vérifie si les deux cercles ont été cliqués avec une différence de temps de 2 secondes
+        // Vérifie si les deux cercles ont été cliqués avec une différence de temps de clickDelay secondes
         if (Mathf.Abs(time - otherTapCircle.time) < clickDelay)
         {
             // Réinitialise les indicateurs
             gameObject.SetActive(false);
             otherTapCircle.gameObject.SetActive(false);
 
-            // Déclenche le respawn des deux cercles après un délai de 5 secondes
-            Invoke("RespawnObjects", 5f);
-            Invoke("RespawnObjectsOther", 5f);
+            float respawnTime = Random.Range(2, 5);
+            Invoke("RespawnObjects", respawnTime);
+            Invoke("RespawnObjectsOther", respawnTime);
         }
-        // Si perdu 
+        // Si pas en mm temps
         else
         {
             time = -1;

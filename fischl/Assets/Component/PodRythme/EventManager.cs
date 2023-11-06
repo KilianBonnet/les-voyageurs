@@ -8,10 +8,9 @@ public class EventManager : MonoBehaviour
     public GameObject gameOverTexts;
     public GameObject tapCircles;
 
-
-
-    void Start()
+    public void startGame()
     {
+        tapCircles.SetActive(true);
         // Appel de la méthode GameOver après une minute (60 secondes)
         Invoke("GameOver", 60f);
     }

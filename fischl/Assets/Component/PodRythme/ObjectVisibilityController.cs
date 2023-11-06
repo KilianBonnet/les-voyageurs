@@ -33,15 +33,14 @@ public class ObjectVisibilityController : MonoBehaviour
             x = Random.Range((-width + 1) / 2, (width - 1) / 2);
             y = Random.Range((-height + 1) / 2, (height - 1) / 2);
             randomPosition = new Vector2(x, y);
+            
             Collider[] colliders = Physics.OverlapBox(randomPosition, new Vector2(1, 1), Quaternion.identity);
 
             // Vérifiez si un objet est détecté à la position aléatoire
-            if (colliders.Length == 0)
+            if (colliders.Length == 0 || !colliders[0].isTrigger)
             {
-                // Aucune superposition détectée, donc la position est sûre
                 break;
             }
-            // Sinon, continuez à générer une nouvelle position aléatoire
         } while (true);
         return new Vector2(x, y);
     }

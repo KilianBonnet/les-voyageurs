@@ -937,7 +937,6 @@ MonoBehaviour:
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
   otherTapCircle: {fileID: 1080253819}
-  time: -1
   clickDelay: 2
 --- !u!1 &994099351 stripped
 GameObject:
@@ -958,7 +957,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
-  tapCircles: {fileID: 1163881546}
 --- !u!4 &994099355 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
@@ -1137,11 +1135,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.51
+      value: -4.93
       objectReference: {fileID: 0}
     - target: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.656
+      value: -3.58
       objectReference: {fileID: 0}
     - target: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1373,7 +1371,6 @@ MonoBehaviour:
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
   otherTapCircle: {fileID: 867924399}
-  time: -1
   clickDelay: 2
 --- !u!1 &1106261750
 GameObject:
@@ -1386,6 +1383,7 @@ GameObject:
   - component: {fileID: 1106261752}
   - component: {fileID: 1106261751}
   - component: {fileID: 1106261753}
+  - component: {fileID: 1106261754}
   m_Layer: 0
   m_Name: NonPlayingZone
   m_TagString: Untagged
@@ -1452,8 +1450,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1106261750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 3.661, z: 1}
+  m_LocalPosition: {x: -0.0172, y: 0, z: 0}
+  m_LocalScale: {x: 4.9655, y: 3.661, z: 1}
   m_Children:
   - {fileID: 2003652015}
   m_Father: {fileID: 0}
@@ -1485,6 +1483,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1106261754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106261750}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91116c35636804c4cb782fd47506253e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 2003652014}
 --- !u!1 &1163881546
 GameObject:
   m_ObjectHideFlags: 0
@@ -1500,7 +1511,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1163881547
 Transform:
   m_ObjectHideFlags: 0
@@ -1629,7 +1640,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
-  tapCircles: {fileID: 1163881546}
 --- !u!4 &1223833206 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
@@ -1893,7 +1903,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
-  tapCircles: {fileID: 1163881546}
 --- !u!1001 &1429181555
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2444,6 +2453,7 @@ GameObject:
   - component: {fileID: 2003652015}
   - component: {fileID: 2003652014}
   - component: {fileID: 2003652016}
+  - component: {fileID: 2003652018}
   m_Layer: 0
   m_Name: CenterBeat
   m_TagString: Untagged
@@ -2459,7 +2469,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003652013}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 4022b9a0c9bd75c40ac9da5a656ece64, type: 2}
   m_CullingMode: 0
@@ -2478,7 +2488,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003652013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 0.5, y: 0.6828736, z: 1}
   m_Children:
   - {fileID: 1182525202}
@@ -2494,14 +2504,31 @@ Animation:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2003652013}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 0c55710bc253e804aa07756da01dadb6, type: 2}
-  m_Animations: []
+  m_Animations:
+  - {fileID: 7400000, guid: 0c55710bc253e804aa07756da01dadb6, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 0
+  m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!58 &2003652018
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2003652013}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!4 &2013641658 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
@@ -2526,7 +2553,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nonPlayingZone: {fileID: 1106261753}
   mainCamera: {fileID: 508661164}
-  tapCircles: {fileID: 1163881546}
 --- !u!4 &2095035364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1034370934749174112, guid: 76a2c00f78dfbb4498663f5fe08d9f84, type: 3}
