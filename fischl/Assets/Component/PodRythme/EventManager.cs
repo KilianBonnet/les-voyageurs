@@ -21,7 +21,7 @@ public class EventManager : MonoBehaviour
         if (!gameIsOver)
         {
             gameIsOver = true;
-            Debug.Log("Game Over!");
+            Debug.Log("End Of the game!");
         }
         tapCircles.SetActive(false);
         gameOverTexts.SetActive(true);
