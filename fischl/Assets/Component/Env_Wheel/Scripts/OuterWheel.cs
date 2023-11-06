@@ -1,9 +1,15 @@
+using System;
+using TMPro;
 using UnityEngine;
 
 public class OuterWheel : MonoBehaviour
 {
     [SerializeField] float rotationSpeed = .2f;
     [SerializeField] float maxClickTime = .3f;
+
+    private int selectedElements;
+    [SerializeField] TextMeshProUGUI topText;
+    [SerializeField] TextMeshProUGUI bottomText;
 
     private SelectionRenderer clickedCell;
     private bool isClicking;
@@ -28,9 +34,19 @@ public class OuterWheel : MonoBehaviour
         clickDuration += Time.deltaTime;
 
         if(Input.GetMouseButtonUp(0)){
-            if(clickDuration < maxClickTime)
-                clickedCell.OnClick();
-
+            if(clickDuration < maxClickTime) {
+                if(selectedElements < 3) {
+                    selectedElements += clickedCell.OnClick();
+                    string res = selectedElements + " / " + "3";
+                    topText.text = res;
+                    bottomText.text = res;
+                }
+                else {
+                    selectedElements = 0;
+                    SelectionRenderer.ResetEvent.Invoke();
+                }
+            }
+                
             isClicking = false;
             clickDuration = 0;
             return;
