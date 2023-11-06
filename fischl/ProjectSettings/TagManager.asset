@@ -6,6 +6,7 @@ TagManager:
   tags:
   - OuterWheel
   - InnerWheel
+  - Canva
   layers:
   - Default
   - TransparentFX
