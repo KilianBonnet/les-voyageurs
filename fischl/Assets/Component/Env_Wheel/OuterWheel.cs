@@ -19,7 +19,7 @@ public class OuterWheel : MonoBehaviour
             Idling();
     }
 
-    private Vector2 getMouseWorldPosition() {
+    private Vector2 GetMouseWorldPosition() {
         return new Vector2 ( Camera.main.ScreenToWorldPoint (Input.mousePosition).x,
             Camera.main.ScreenToWorldPoint (Input.mousePosition).y);
     }
@@ -41,15 +41,13 @@ public class OuterWheel : MonoBehaviour
                 transform.position.x,
                 transform.position.y
             );
-            Vector2 mouseWorldPosition = getMouseWorldPosition();
+            Vector2 mouseWorldPosition = GetMouseWorldPosition();
 
             Vector2 centerClickOriginVector = lastMousePosition - wheelPosition;
             Vector2 centerMousePositionVector = mouseWorldPosition - wheelPosition;
 
             float angleInRadians = Mathf.Atan2(centerMousePositionVector.y, centerMousePositionVector.x) - Mathf.Atan2(centerClickOriginVector.y, centerClickOriginVector.x);
             float angleInDegrees = angleInRadians * Mathf.Rad2Deg;
-
-            Debug.Log(angleInDegrees);
 
             transform.Rotate(0, 0, angleInDegrees);
             lastMousePosition = mouseWorldPosition;
@@ -62,19 +60,21 @@ public class OuterWheel : MonoBehaviour
         if(!Input.GetMouseButtonDown(0))
             return;
 
-        lastMousePosition = getMouseWorldPosition();
+        lastMousePosition = GetMouseWorldPosition();
         RaycastHit2D hit = Physics2D.Raycast(lastMousePosition, Vector2.zero, 0);
 
-        if(hit.transform == null)
+        if(hit.transform == null || !hit.transform.CompareTag("OuterWheel"))
             return;
-
-        Debug.Log(hit.transform.position);
 
         SelectionRenderer selectionRenderer = hit.transform.GetComponent<SelectionRenderer>();
-        if(selectionRenderer == null) 
-            return;
-
         clickedCell = selectionRenderer;
         isClicking = true;
+    }
+
+    private void CheckClick() {
+        if(Input.GetMouseButtonUp(0)) {
+            isClicking = false;
+            return;
+        }
     }
 }

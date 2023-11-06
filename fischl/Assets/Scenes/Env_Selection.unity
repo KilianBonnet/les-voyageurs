@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 22558587}
   m_Layer: 0
   m_Name: Area 0
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 29856979}
   m_Layer: 0
   m_Name: Area 4
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -531,7 +531,7 @@ GameObject:
   - component: {fileID: 128609189}
   m_Layer: 0
   m_Name: Area 3
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 393989483}
   m_Layer: 0
   m_Name: Area 7
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1001,7 +1001,7 @@ GameObject:
   - component: {fileID: 514188955}
   m_Layer: 0
   m_Name: Area 2
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1192,9 +1192,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1073976563}
   - component: {fileID: 1073976564}
+  - component: {fileID: 1073976565}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: InnerWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1264,6 +1265,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!58 &1073976565
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1073976562}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 11
 --- !u!1 &1202525747
 GameObject:
   m_ObjectHideFlags: 0
@@ -1310,7 +1327,7 @@ GameObject:
   - component: {fileID: 1275410931}
   m_Layer: 0
   m_Name: Area 6
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1502,7 +1519,7 @@ GameObject:
   - component: {fileID: 1463328322}
   m_Layer: 0
   m_Name: Area 5
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1694,7 +1711,7 @@ GameObject:
   - component: {fileID: 1486312914}
   m_Layer: 0
   m_Name: Area 1
-  m_TagString: Untagged
+  m_TagString: OuterWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1927,6 +1944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 2
+  maxClickTime: 0.3
 --- !u!1 &1726620720
 GameObject:
   m_ObjectHideFlags: 0
@@ -1936,6 +1954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1726620721}
+  - component: {fileID: 1726620722}
   m_Layer: 0
   m_Name: Inner
   m_TagString: Untagged
@@ -1958,3 +1977,16 @@ Transform:
   m_Father: {fileID: 1202525748}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1726620722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726620720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50e64ffb84d16ee469dd1a8689be76ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wheelAnchor: {fileID: 1202525748}
