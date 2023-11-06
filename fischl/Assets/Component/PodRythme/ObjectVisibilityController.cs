@@ -6,13 +6,11 @@ using UnityEngine;
 public class ObjectVisibilityController : MonoBehaviour
 {
     public BoxCollider2D nonPlayingZone;
-    public float respawnTime = 3f;
     public Camera mainCamera;
-    public GameObject tapCircles;
 
     private void RespawnObject()
     {
-        Vector3 randomPosition = GetRandomPosition();
+        Vector2 randomPosition = GetRandomPosition();
         while (nonPlayingZone.bounds.Contains(randomPosition)) { randomPosition = GetRandomPosition(); }
 
         gameObject.transform.position = randomPosition;
@@ -21,21 +19,37 @@ public class ObjectVisibilityController : MonoBehaviour
         
     }
 
-    private Vector3 GetRandomPosition()
+    private Vector2 GetRandomPosition()
     {
         float height = 2f * mainCamera.orthographicSize;
         float width = height * mainCamera.aspect;
 
-        float x = Random.Range(-width / 2, width / 2);
-        float y = Random.Range(-height / 2, height / 2);
+        float x = Random.Range((-width+1) / 2, (width-1) / 2);
+        float y = Random.Range((-height+1) / 2, (height-1) / 2);
+        Vector2 randomPosition;
 
+        do
+        {
+            x = Random.Range((-width + 1) / 2, (width - 1) / 2);
+            y = Random.Range((-height + 1) / 2, (height - 1) / 2);
+            randomPosition = new Vector2(x, y);
+            Collider[] colliders = Physics.OverlapBox(randomPosition, new Vector2(1, 1), Quaternion.identity);
+
+            // Vérifiez si un objet est détecté à la position aléatoire
+            if (colliders.Length == 0)
+            {
+                // Aucune superposition détectée, donc la position est sûre
+                break;
+            }
+            // Sinon, continuez à générer une nouvelle position aléatoire
+        } while (true);
         return new Vector2(x, y);
     }
     private void OnMouseDown()
     {
         // Désactive l'objet sur lequel l'utilisateur a cliqué
         gameObject.SetActive(false);
-        respawnTime = Random.Range(2, 5);
+        float respawnTime = Random.Range(2, 5);
         Invoke("RespawnObject", respawnTime);
     }
 }
