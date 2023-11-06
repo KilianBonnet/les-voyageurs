@@ -6,6 +6,7 @@ public class ColorMixing : MonoBehaviour
 {
     public List<GameObject> colorObjects; // List of colored rectangles
     public GameObject drawArea; // The area where you draw
+    public GameObject drawingCirclePrefab; // Prefab of the drawing circle
     public float fixedBrushSize = 10f; // Define a fixed brush size
 
     private Color currentColor;
@@ -40,34 +41,28 @@ public class ColorMixing : MonoBehaviour
             {
                 if (hit.collider.gameObject == drawArea)
                 {
-                    // Draw on the canvas
-                    Renderer renderer = drawArea.GetComponent<SpriteRenderer>();
-                    Material material = renderer.material;
-                    material.color = currentColor;
-                }
-
-            }
-        }
-    }
-
-    private void ApplyBrush(Texture2D texture, int x, int y)
-    {
-        for (int i = x - (int)fixedBrushSize; i <= x + (int)fixedBrushSize; i++)
-        {
-            for (int j = y - (int)fixedBrushSize; j <= y + (int)fixedBrushSize; j++)
-            {
-                if (i >= 0 && i < texture.width && j >= 0 && j < texture.height)
-                {
-                    texture.SetPixel(i, j, currentColor);
+                    // Create a drawing circle at the click position
+                    CreateDrawingCircle(hit.point);
                 }
             }
         }
-
-        texture.Apply();
     }
 
     public void SetCurrentColor(Color color)
     {
         currentColor = color;
+    }
+
+    private void CreateDrawingCircle(Vector3 position)
+    {
+        // Instantiate a drawing circle at the given position
+        GameObject drawingCircle = Instantiate(drawingCirclePrefab, position, Quaternion.identity);
+
+        // Set the color of the drawing circle
+        SpriteRenderer circleRenderer = drawingCircle.GetComponent<SpriteRenderer>();
+        circleRenderer.color = currentColor;
+
+        // Optionally, you can adjust the scale of the drawing circle if needed.
+        // drawingCircle.transform.localScale = new Vector3(fixedBrushSize, fixedBrushSize, 1.0f);
     }
 }
