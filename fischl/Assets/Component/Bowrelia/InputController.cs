@@ -3,11 +3,7 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    [SerializeField] private GameObject redTouch;
-    [SerializeField] private GameObject blueTouch;
-    [SerializeField] private GameObject greenTouch;
-
-    private Dictionary<int, GameObject> touchObjects = new Dictionary<int, GameObject>();
+    private List<Cursor> cursors;
 
     private void Update() {
         for (int i = 0; i <  Input.touchCount; i++) {
@@ -15,7 +11,7 @@ public class InputController : MonoBehaviour
 
             switch (touch.phase) {
                 case TouchPhase.Began:
-                    CreateCircle(touch);
+                    BeginTouch(touch);
                     break;
 
                 case TouchPhase.Moved:
@@ -29,31 +25,53 @@ public class InputController : MonoBehaviour
         }
     }
 
+    private Zone GetZone(Vector2 worldPosition) {
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
+        if(!hit.transform) return null;
+        return hit.transform.GetComponent<Zone>();
+    }
+
     private Vector2 GetWorldPosition(Vector3 touchPosition) {
         return Camera.main.ScreenToWorldPoint(touchPosition);
     }
 
-    private bool IsTouchingZone(Vector3 touchWorldPosition) {
-        RaycastHit2D hit = Physics2D.Raycast(touchWorldPosition, Vector2.zero, 0);
-        return hit.transform != null && hit.transform.gameObject == this;
-    }
-
-    private void CreateCircle(Touch touch) {
-        GameObject circle = Instantiate(redTouch);
-        circle.name = "Touch " + touch.fingerId;
+    private void CreateCircle(Zone zone, Touch touch) {
+        GameObject circle = Instantiate(zone.circlePrefab);
         circle.transform.position = GetWorldPosition(touch.position);
+        circle.name = "Touch " + touch.fingerId;
 
-        touchObjects.Add(touch.fingerId, circle);
+        Cursor cursor = new Cursor(touch.fingerId, zone, circle);
+        cursors.Add(cursor);
     }
 
     private void MoveCircle(Touch touch) {
-        GameObject circle = touchObjects[touch.fingerId];
-        circle.transform.position = GetWorldPosition(touch.position);
+        Cursor cursor = cursors.Find(cursor => cursor.fingerId == touch.fingerId);
+        Zone zone = GetZone(GetWorldPosition(touch.position));
+        GameObject cursorObject = cursor.cursorObject;
+
+        // Check if the fingers is in the correct zone
+        if(zone == null || zone != cursor.originalZone) {
+            cursorObject.SetActive(false);
+            return;
+        }
+
+        if(!cursorObject.activeSelf) cursorObject.SetActive(true);
+        cursorObject.transform.position = GetWorldPosition(touch.position);
     }
 
     private void RemoveCircle(Touch touch) {
-        GameObject circle = touchObjects[touch.fingerId];
-        Destroy(circle);
-        touchObjects.Remove(touch.fingerId);
+        Cursor cursor = cursors.Find(cursor => cursor.fingerId == touch.fingerId);
+        Destroy(cursor.cursorObject);
+        cursors.Remove(cursor);
+    }
+
+    private void BeginTouch(Touch touch) {
+        Vector2 touchWorldPosition = GetWorldPosition(touch.position);
+        Zone zone = GetZone(touchWorldPosition);
+
+        // If the touch is not on a zone
+        if(zone == null) return;
+
+        CreateCircle(zone, touch);
     }
 }
