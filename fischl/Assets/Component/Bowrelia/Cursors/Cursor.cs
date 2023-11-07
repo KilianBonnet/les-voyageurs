@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Cursor
 {
-    public readonly int fingerId;
+    public int fingerId;
     public readonly Zone originalZone;
     public readonly GameObject cursorObject;
 
@@ -11,4 +11,11 @@ public class Cursor
         this.originalZone = originalZone;
         this.cursorObject = cursorObject;
     }
+
+    public Cursor(Zone originalZone, GameObject cursorObject) {
+        fingerId = -1;
+        this.originalZone = originalZone;
+        this.cursorObject = cursorObject;
+    }
+
 }
