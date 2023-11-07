@@ -41,14 +41,21 @@ public class InputController : MonoBehaviour
     private Zone GetZone(Vector2 worldPosition) {
         RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, 0);
         if(hit.transform == null) return null;
-        return hit.transform.GetComponent<Zone>();
+
+        Zone zone = hit.transform.GetComponent<Zone>();
+        if(zone != null) return zone;
+        
+        WaitingCursor waitingCursor = hit.transform.GetComponent<WaitingCursor>();
+        if(waitingCursor != null) return waitingCursor.originalZone;
+        
+        return null;
     }
 
     private Vector2 GetWorldPosition(Vector3 touchPosition) {
         return Camera.main.ScreenToWorldPoint(touchPosition);
     }
 
-    private Cursor CreateCircle(Zone zone, Touch touch) {
+    private Cursor CreateCursor(Zone zone, Touch touch) {
         GameObject circle = Instantiate(zone.circlePrefab);
         circle.transform.position = GetWorldPosition(touch.position);
         circle.name = "Touch " + touch.fingerId;
@@ -59,27 +66,30 @@ public class InputController : MonoBehaviour
     }
 
     private void CreateBow(Zone zone, Cursor firstCursor, Touch newFinger) {
-        Cursor secondCursor = CreateCircle(zone, newFinger);
+        Cursor secondCursor = CreateCursor(zone, newFinger);
 
         SetActivity(firstCursor, false);
         SetActivity(secondCursor, false);
 
-        CreateWaitingCircle(zone, firstCursor, secondCursor);
+        WaitingCursor waitingCursor = CreateWaitingCircle(zone, firstCursor, secondCursor);
+        zone.bowRenderer.StartRendering(firstCursor.cursorObject.transform,  secondCursor.cursorObject.transform, waitingCursor.transform);
     }
 
-    private void CreateWaitingCircle(Zone zone, Cursor firstCursor, Cursor secondCursor) {
+    private WaitingCursor CreateWaitingCircle(Zone zone, Cursor firstCursor, Cursor secondCursor) {
         GameObject circle = Instantiate(zone.waitingCirclePrefab);
+        circle.name = zone.gameObject.name + " Waiting Cursor";
         WaitingCursor waitingCursor = circle.GetComponent<WaitingCursor>();
         waitingCursor.Init(zone, firstCursor.cursorObject, secondCursor.cursorObject);
         waitingCursors.Add(waitingCursor);
+        return waitingCursor;
     }
 
-    private void DrawBow(Zone zone, Touch newFinger) {
+    private void DrawBow(Zone zone, Cursor firstCursor, Cursor secondCursor, Touch newFinger) {
         RaycastHit2D hit = Physics2D.Raycast(GetWorldPosition(newFinger.position), Vector2.zero, 0);
-        if(hit.transform == null && hit.transform.GetComponent<WaitingCursor>()) return;
-        CreateCircle(zone, newFinger);
+        if(hit.transform == null || hit.transform.GetComponent<WaitingCursor>() == null) return;
+        Cursor thirdCursor = CreateCursor(zone, newFinger);
         DeleteWaitingCursor(zone);
-
+        zone.bowRenderer.StartRendering(firstCursor.cursorObject.transform,  secondCursor.cursorObject.transform, thirdCursor.cursorObject.transform);
     }
 
     private void SetActivity(Cursor cursor, bool activity) {
@@ -96,13 +106,13 @@ public class InputController : MonoBehaviour
         List<Cursor> zoneCursors = GetZoneCursors(zone);
         switch(zoneCursors.Count) {
             case 0 :
-                CreateCircle(zone, touch);
+                CreateCursor(zone, touch);
                 break;
             case 1:
                 CreateBow(zone, zoneCursors[0], touch);
                 break;
             case 2:
-                DrawBow(zone, touch);
+                DrawBow(zone, zoneCursors[0], zoneCursors[1], touch);
                 break;
         }
     }
@@ -136,9 +146,15 @@ public class InputController : MonoBehaviour
             case 1:
                 DeleteWaitingCursor(cursorToRemove.originalZone);
                 SetActivity(GetZoneCursors(cursorToRemove.originalZone)[0], true);
+                cursorToRemove.originalZone.bowRenderer.StopRendering();
                 break;
             case 2:
-                CreateWaitingCircle(cursorToRemove.originalZone, zoneCursors[0], zoneCursors[1]);
+                WaitingCursor waitingCursor = CreateWaitingCircle(cursorToRemove.originalZone, zoneCursors[0], zoneCursors[1]);
+                cursorToRemove.originalZone.bowRenderer.StartRendering(
+                    zoneCursors[0].cursorObject.transform,
+                    zoneCursors[1].cursorObject.transform,
+                    waitingCursor.transform
+                );
                 break;
         }
         
