@@ -41,6 +41,7 @@ public class CubePuzzleElement : MonoBehaviour
         initialPosition = gameObject.transform.position;
     }
 
+    //TODO prevent player from switching blocs between 2 player areas
     void OnMouseUp()
     {
         isDragging = false;
