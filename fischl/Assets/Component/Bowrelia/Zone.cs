@@ -5,4 +5,5 @@ public class Zone : MonoBehaviour
     public GameObject circlePrefab;
     public GameObject waitingCirclePrefab;
     public BowRenderer bowRenderer;
+    public bool canShoot = true;
 }

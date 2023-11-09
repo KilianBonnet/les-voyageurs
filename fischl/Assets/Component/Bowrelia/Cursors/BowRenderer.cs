@@ -13,7 +13,7 @@ public class BowRenderer : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
     }
 
-    public void StartRendering(Transform firstPoint, Transform secondPoint, Transform thirdPoint) {
+    public void StartRendering(Transform firstPoint, Transform secondPoint, Transform thirdPoint = null) {
         isRendering = true;
 
         this.firstPoint = firstPoint;
@@ -28,8 +28,19 @@ public class BowRenderer : MonoBehaviour
 
     private void Update() {
         if(!isRendering) return;
-        lineRenderer.positionCount = 3;
-        Vector3[] newPositions  = { firstPoint.position, thirdPoint.position, secondPoint.position };
+
+        Vector3[] newPositions;
+        if(thirdPoint != null) {
+            lineRenderer.positionCount = 3;
+            Vector3[] cursorPositions = { firstPoint.position, thirdPoint.position, secondPoint.position };
+            newPositions = cursorPositions;
+        }
+        else {
+            lineRenderer.positionCount = 2;
+            Vector3[] cursorPositions = { firstPoint.position, secondPoint.position };
+            newPositions = cursorPositions;
+        }
+
         lineRenderer.SetPositions(newPositions);
     }
 

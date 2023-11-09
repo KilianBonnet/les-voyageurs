@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,11 +27,6 @@ public class InputController : MonoBehaviour
         }
     }
 
-    private void DeleteWaitingCursor(Zone zone) {
-        WaitingCursor waitingCursor = waitingCursors.Find(cursor => cursor.originalZone == zone);
-        waitingCursors.Remove(waitingCursor);
-        Destroy(waitingCursor.gameObject);
-    }
 
     /* TOOLS */
     private List<Cursor> GetZoneCursors(Zone zone) {
@@ -67,15 +62,18 @@ public class InputController : MonoBehaviour
 
     private void CreateBow(Zone zone, Cursor firstCursor, Touch newFinger) {
         Cursor secondCursor = CreateCursor(zone, newFinger);
+        Debug.Log(zone.name);
+        Debug.Log(zone.canShoot);
+        if(!zone.canShoot) 
+            return;
 
         SetActivity(firstCursor, false);
         SetActivity(secondCursor, false);
-
-        WaitingCursor waitingCursor = CreateWaitingCircle(zone, firstCursor, secondCursor);
+        WaitingCursor waitingCursor = CreateWaitingCursor(zone, firstCursor, secondCursor);
         zone.bowRenderer.StartRendering(firstCursor.cursorObject.transform,  secondCursor.cursorObject.transform, waitingCursor.transform);
     }
 
-    private WaitingCursor CreateWaitingCircle(Zone zone, Cursor firstCursor, Cursor secondCursor) {
+    private WaitingCursor CreateWaitingCursor(Zone zone, Cursor firstCursor, Cursor secondCursor) {
         GameObject circle = Instantiate(zone.waitingCirclePrefab);
         circle.name = zone.gameObject.name + " Waiting Cursor";
         WaitingCursor waitingCursor = circle.GetComponent<WaitingCursor>();
@@ -97,6 +95,37 @@ public class InputController : MonoBehaviour
         cursor.cursorObject.GetComponent<CircleCollider2D>().enabled = activity;
     }
 
+    private void DeleteWaitingCursor(Zone zone) {
+        WaitingCursor waitingCursor = waitingCursors.Find(cursor => cursor.originalZone == zone);
+        if(waitingCursor == null) return;
+
+        waitingCursors.Remove(waitingCursor);
+        Destroy(waitingCursor.gameObject);
+    }
+
+    private IEnumerator EnableShoot(Zone zone) {
+        yield return new WaitForSeconds(1);
+
+        zone.canShoot = true;
+        List<Cursor> zoneCursors = GetZoneCursors(zone);
+        if(zoneCursors.Count <= 1) yield break;
+
+        WaitingCursor waitingCursor = waitingCursors.Find(waitingCursor => waitingCursor.originalZone == zone);
+        if(waitingCursor != null) yield break;
+
+
+        Cursor firstCursor = zoneCursors[0];
+        Cursor secondCursor = zoneCursors[1];
+        waitingCursor = CreateWaitingCursor(zone, firstCursor, secondCursor);
+        zone.bowRenderer.StartRendering(
+            firstCursor.cursorObject.transform,
+            secondCursor.cursorObject.transform,
+            waitingCursor.transform
+        );
+
+        SetActivity(firstCursor, false);
+        SetActivity(secondCursor, false);
+    }
 
     /* TOUCH PHASES */
     private void BeginTouch(Touch touch) {
@@ -143,21 +172,36 @@ public class InputController : MonoBehaviour
         List<Cursor> zoneCursors = GetZoneCursors(cursorToRemove.originalZone);
         
         switch(zoneCursors.Count) {
+            case 0:
+                Destroy(cursorToRemove.cursorObject);
+                break;
+
             case 1:
                 DeleteWaitingCursor(cursorToRemove.originalZone);
                 SetActivity(GetZoneCursors(cursorToRemove.originalZone)[0], true);
                 cursorToRemove.originalZone.bowRenderer.StopRendering();
+                Destroy(cursorToRemove.cursorObject);
                 break;
+
             case 2:
-                WaitingCursor waitingCursor = CreateWaitingCircle(cursorToRemove.originalZone, zoneCursors[0], zoneCursors[1]);
-                cursorToRemove.originalZone.bowRenderer.StartRendering(
-                    zoneCursors[0].cursorObject.transform,
-                    zoneCursors[1].cursorObject.transform,
-                    waitingCursor.transform
+                Cursor firstCursor = zoneCursors[0];
+                Cursor secondCursor = zoneCursors[1];
+                cursorToRemove.originalZone.bowRenderer.StopRendering();
+
+                SetActivity(firstCursor, true);
+                SetActivity(secondCursor, true);
+                SetActivity(cursorToRemove, true);
+
+                Bullet bullet = cursorToRemove.cursorObject.AddComponent<Bullet>();
+                bullet.Shoot(
+                    firstCursor.cursorObject.transform.position,
+                    secondCursor.cursorObject.transform.position
                 );
+
+                Zone zone = cursorToRemove.originalZone;
+                zone.canShoot = false;
+                StartCoroutine(EnableShoot(zone));
                 break;
         }
-        
-        Destroy(cursorToRemove.cursorObject);
     }
 }
