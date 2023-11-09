@@ -5,11 +5,6 @@ using UnityEngine.EventSystems;
 
 public class CubePuzzleElement : MonoBehaviour
 {
-   /*private GameObject selectedObject;
-    public Vector3 originalPosition;
-    public GameObject droppingArea;
-    public GameObject correctSpot;
-    public GameObject[] spotTwinnies;*/
 
     private Vector3 offset;
     private bool isDragging = false;
@@ -17,13 +12,29 @@ public class CubePuzzleElement : MonoBehaviour
     private Vector3 initialPosition;
     public GameObject correspondingObject;
 
-    public void Start()
-    { 
-      /*  selectedObject = gameObject;
-        originalPosition = selectedObject.transform.position;*/
-       
-    }
+    float limiteXMin;
+    float limiteYMin;
+    float limiteXMax;
+    float limiteYMax;
 
+    void Start()
+    {
+        // Récupérer le composant Renderer de l'objet parent
+        Renderer parentRenderer = transform.parent.parent.parent.GetComponent<Renderer>();
+
+        if (parentRenderer != null)
+        {
+            // Coordonnées de la limite de l'objet parent
+            limiteXMin = parentRenderer.bounds.min.x;
+            limiteYMin = parentRenderer.bounds.min.y;
+            limiteXMax = parentRenderer.bounds.max.x;
+            limiteYMax = parentRenderer.bounds.max.y;
+        }
+        else
+        {
+            Debug.LogError("Le parent n'a pas de composant Renderer.");
+        }
+    }
     void Update()
     {
         if (isDragging)
@@ -41,7 +52,7 @@ public class CubePuzzleElement : MonoBehaviour
         initialPosition = gameObject.transform.position;
     }
 
-    //TODO prevent player from switching blocs between 2 player areas
+    //TODO problème de correspondance quand on échange des cubes sur d'autres players
     void OnMouseUp()
     {
         isDragging = false;
@@ -49,12 +60,14 @@ public class CubePuzzleElement : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(draggedObject.transform.position, 0.1f);
         foreach (Collider2D collider in colliders)
         {
-            if (collider.gameObject != draggedObject)
+            if (collider.gameObject != draggedObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin )
             {
+
                 Vector3 tempPos = collider.gameObject.transform.position;
                 collider.gameObject.transform.position = initialPosition;
                 draggedObject.transform.position = tempPos;
 
+                //Changer le coordonnees des elements du puzzle de la zone collective
                 GameObject otherCorrespondingObject = collider.gameObject.GetComponent<CubePuzzleElement>().correspondingObject;
                 Vector3 vect1 = otherCorrespondingObject.transform.position;
                 Vector3 vect2 = correspondingObject.transform.position;
