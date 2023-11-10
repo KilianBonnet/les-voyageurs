@@ -1,8 +1,13 @@
+using System.Collections;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
+
+    private void Start() {
+        InvokeRepeating("SpawnEnemy", 1f, 3f);
+    }
 
     private Vector2 GeneratePosition() {
         Vector2 position = new Vector2();
@@ -11,8 +16,8 @@ public class EnemySpawner : MonoBehaviour
         else position.x = Random.Range(0, 2) == 0 ? Random.Range(-8f, -4f) : Random.Range(8, 4);
         return position;
     }
-    
-    private void Update() {
+
+    private void SpawnEnemy() {
         GameObject enemy = Instantiate(enemyPrefab);
         enemy.transform.position = GeneratePosition();
     }

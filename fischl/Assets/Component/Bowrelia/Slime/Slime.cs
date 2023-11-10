@@ -2,11 +2,12 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
-    [SerializeField] private Transform objectiveAnchor;
+    private Transform objectiveAnchor;
     [SerializeField] private float speed = .5f;
     [SerializeField] private int score = 125;
 
     private void Start() {
+        objectiveAnchor = GameObject.Find("VRMap").transform;
         transform.Rotate(0, 0, Random.Range(0, 4) * 90);
         speed *= .01f;
     }

@@ -63,8 +63,6 @@ public class InputController : MonoBehaviour
 
     private void CreateBow(Zone zone, Cursor firstCursor, Touch newFinger) {
         Cursor secondCursor = CreateCursor(zone, newFinger);
-        Debug.Log(zone.name);
-        Debug.Log(zone.canShoot);
         if(!zone.canShoot) 
             return;
 
@@ -87,6 +85,7 @@ public class InputController : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(GetWorldPosition(newFinger.position), Vector2.zero, 0);
         if(hit.transform == null || hit.transform.GetComponent<WaitingCursor>() == null) return;
         Cursor thirdCursor = CreateCursor(zone, newFinger);
+        thirdCursor.cursorType = CursorType.BULLET_CURSOR;
         DeleteWaitingCursor(zone);
         zone.bowRenderer.StartRendering(firstCursor.gameObject.transform,  secondCursor.gameObject.transform, thirdCursor.gameObject.transform);
     }
@@ -165,8 +164,8 @@ public class InputController : MonoBehaviour
         cursorObject.transform.position = GetWorldPosition(touch.position);
     }
 
-    private void RemoveCircle(Touch touch) {
-        Cursor cursorToRemove = cursors.Find(cursor => cursor.fingerId == touch.fingerId);
+    private void RemoveCircle(Touch touchToRemove) {
+        Cursor cursorToRemove = cursors.Find(cursor => cursor.fingerId == touchToRemove.fingerId);
         if(cursorToRemove == null) return;
 
         cursors.Remove(cursorToRemove);
@@ -187,23 +186,32 @@ public class InputController : MonoBehaviour
             case 2:
                 Cursor firstCursor = zoneCursors[0];
                 Cursor secondCursor = zoneCursors[1];
-                cursorToRemove.originalZone.bowRenderer.StopRendering();
-
-                SetActivity(firstCursor, true);
-                SetActivity(secondCursor, true);
-                SetActivity(cursorToRemove, true);
-
-                cursorToRemove.cursorType = CursorType.BULLET;
-                Bullet bullet = cursorToRemove.gameObject.AddComponent<Bullet>();
-                bullet.Shoot(
-                    firstCursor.gameObject.transform.position,
-                    secondCursor.gameObject.transform.position
-                );
-
                 Zone zone = cursorToRemove.originalZone;
-                zone.canShoot = false;
-                StartCoroutine(EnableShoot(zone));
-                break;
+                
+                if(cursorToRemove.cursorType == CursorType.BULLET_CURSOR) {
+                    zone.bowRenderer.StopRendering();
+                    SetActivity(firstCursor, true);
+                    SetActivity(secondCursor, true);
+                    SetActivity(cursorToRemove, true);
+
+                    cursorToRemove.cursorType = CursorType.BULLET;
+                    Bullet bullet = cursorToRemove.gameObject.AddComponent<Bullet>();
+                    bullet.Shoot(
+                        firstCursor.gameObject.transform.position,
+                        secondCursor.gameObject.transform.position
+                    );
+
+                    zone.canShoot = false;
+                    StartCoroutine(EnableShoot(zone));
+                }
+
+                else {
+                    cursors.Remove(secondCursor);
+                    CreateBow(zone, firstCursor, Input.GetTouch(secondCursor.fingerId));
+                    Destroy(secondCursor.gameObject);
+                }
+
+                break;              
         }
     }
 }

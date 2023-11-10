@@ -2,6 +2,7 @@ using UnityEngine;
 
 public enum CursorType {
     CURSOR,
+    BULLET_CURSOR,
     BULLET
 }
 
