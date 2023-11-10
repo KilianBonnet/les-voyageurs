@@ -15,7 +15,7 @@ public class Bullet : MonoBehaviour
         Vector2 vectorSum = bulletToFirstCursor + bulletToSecondCursor;
 
         movement = vectorSum.normalized;
-        speed = vectorSum.magnitude * .01f;
+        speed = vectorSum.magnitude * .1f;
         isInit = true;
     }
 

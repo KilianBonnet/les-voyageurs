@@ -1,21 +1,24 @@
 using UnityEngine;
 
-public class Cursor
+public enum CursorType {
+    CURSOR,
+    BULLET
+}
+
+public class Cursor : MonoBehaviour
 {
     public int fingerId;
-    public readonly Zone originalZone;
-    public readonly GameObject cursorObject;
+    public Zone originalZone;
+    public CursorType cursorType = CursorType.CURSOR;
 
-    public Cursor(int fingerId, Zone originalZone, GameObject cursorObject) {
+    public void InitCursor(int fingerId, Zone originalZone) {
         this.fingerId = fingerId;
         this.originalZone = originalZone;
-        this.cursorObject = cursorObject;
     }
 
-    public Cursor(Zone originalZone, GameObject cursorObject) {
+    public void InitCursor(Zone originalZone) {
         fingerId = -1;
         this.originalZone = originalZone;
-        this.cursorObject = cursorObject;
     }
 
 }

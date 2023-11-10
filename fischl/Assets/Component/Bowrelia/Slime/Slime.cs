@@ -15,15 +15,14 @@ public class Slime : MonoBehaviour
         if(!other.CompareTag("Player"))
             return;
 
-        Zone zone = other.gameObject.GetComponent<Zone>();
-        zone.IncreaseScore(score);
-
-        Destroy(other.gameObject);
+        Cursor cursor = other.gameObject.GetComponent<Cursor>();
+        cursor.originalZone.IncreaseScore(score);
+        if(cursor.cursorType == CursorType.BULLET) Destroy(other.gameObject);
         Destroy(gameObject);
     }
 
     private void FixedUpdate() {
         Vector2 direction = objectiveAnchor.position - transform.position;
-        transform.Translate(direction.normalized * speed);
+        transform.Translate(direction.normalized * speed, Space.World);
     }
 }

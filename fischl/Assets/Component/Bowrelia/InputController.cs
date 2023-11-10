@@ -55,7 +55,8 @@ public class InputController : MonoBehaviour
         circle.transform.position = GetWorldPosition(touch.position);
         circle.name = "Touch " + touch.fingerId;
 
-        Cursor cursor = new Cursor(touch.fingerId, zone, circle);
+        Cursor cursor = circle.AddComponent<Cursor>();
+        cursor.InitCursor(touch.fingerId, zone);
         cursors.Add(cursor);
         return cursor;
     }
@@ -70,14 +71,14 @@ public class InputController : MonoBehaviour
         SetActivity(firstCursor, false);
         SetActivity(secondCursor, false);
         WaitingCursor waitingCursor = CreateWaitingCursor(zone, firstCursor, secondCursor);
-        zone.bowRenderer.StartRendering(firstCursor.cursorObject.transform,  secondCursor.cursorObject.transform, waitingCursor.transform);
+        zone.bowRenderer.StartRendering(firstCursor.gameObject.transform,  secondCursor.gameObject.transform, waitingCursor.transform);
     }
 
     private WaitingCursor CreateWaitingCursor(Zone zone, Cursor firstCursor, Cursor secondCursor) {
         GameObject circle = Instantiate(zone.waitingCirclePrefab);
         circle.name = zone.gameObject.name + " Waiting Cursor";
         WaitingCursor waitingCursor = circle.GetComponent<WaitingCursor>();
-        waitingCursor.Init(zone, firstCursor.cursorObject, secondCursor.cursorObject);
+        waitingCursor.Init(zone, firstCursor.gameObject, secondCursor.gameObject);
         waitingCursors.Add(waitingCursor);
         return waitingCursor;
     }
@@ -87,12 +88,12 @@ public class InputController : MonoBehaviour
         if(hit.transform == null || hit.transform.GetComponent<WaitingCursor>() == null) return;
         Cursor thirdCursor = CreateCursor(zone, newFinger);
         DeleteWaitingCursor(zone);
-        zone.bowRenderer.StartRendering(firstCursor.cursorObject.transform,  secondCursor.cursorObject.transform, thirdCursor.cursorObject.transform);
+        zone.bowRenderer.StartRendering(firstCursor.gameObject.transform,  secondCursor.gameObject.transform, thirdCursor.gameObject.transform);
     }
 
     private void SetActivity(Cursor cursor, bool activity) {
-        cursor.cursorObject.GetComponent<CircleCollider2D>().enabled = activity;
-        cursor.cursorObject.GetComponent<CircleCollider2D>().enabled = activity;
+        cursor.gameObject.GetComponent<CircleCollider2D>().enabled = activity;
+        cursor.gameObject.GetComponent<CircleCollider2D>().enabled = activity;
     }
 
     private void DeleteWaitingCursor(Zone zone) {
@@ -118,8 +119,8 @@ public class InputController : MonoBehaviour
         Cursor secondCursor = zoneCursors[1];
         waitingCursor = CreateWaitingCursor(zone, firstCursor, secondCursor);
         zone.bowRenderer.StartRendering(
-            firstCursor.cursorObject.transform,
-            secondCursor.cursorObject.transform,
+            firstCursor.gameObject.transform,
+            secondCursor.gameObject.transform,
             waitingCursor.transform
         );
 
@@ -152,7 +153,7 @@ public class InputController : MonoBehaviour
 
         Zone zone = GetZone(GetWorldPosition(touch.position));
 
-        GameObject cursorObject = cursor.cursorObject;
+        GameObject cursorObject = cursor.gameObject;
 
         // Check if the fingers is in the correct zone
         if(zone == null || zone != cursor.originalZone) {
@@ -173,14 +174,14 @@ public class InputController : MonoBehaviour
         
         switch(zoneCursors.Count) {
             case 0:
-                Destroy(cursorToRemove.cursorObject);
+                Destroy(cursorToRemove.gameObject);
                 break;
 
             case 1:
                 DeleteWaitingCursor(cursorToRemove.originalZone);
                 SetActivity(GetZoneCursors(cursorToRemove.originalZone)[0], true);
                 cursorToRemove.originalZone.bowRenderer.StopRendering();
-                Destroy(cursorToRemove.cursorObject);
+                Destroy(cursorToRemove.gameObject);
                 break;
 
             case 2:
@@ -192,10 +193,11 @@ public class InputController : MonoBehaviour
                 SetActivity(secondCursor, true);
                 SetActivity(cursorToRemove, true);
 
-                Bullet bullet = cursorToRemove.cursorObject.AddComponent<Bullet>();
+                cursorToRemove.cursorType = CursorType.BULLET;
+                Bullet bullet = cursorToRemove.gameObject.AddComponent<Bullet>();
                 bullet.Shoot(
-                    firstCursor.cursorObject.transform.position,
-                    secondCursor.cursorObject.transform.position
+                    firstCursor.gameObject.transform.position,
+                    secondCursor.gameObject.transform.position
                 );
 
                 Zone zone = cursorToRemove.originalZone;
