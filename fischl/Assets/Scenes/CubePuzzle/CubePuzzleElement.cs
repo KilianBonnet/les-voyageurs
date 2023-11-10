@@ -66,12 +66,6 @@ public class CubePuzzleElement : MonoBehaviour
 
                 OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
 
-                //Changer le coordonnees des elements du puzzle de la zone collective
-                //Sur 4 matrices -> mm comportement donc recevoir un event OnChange() et on met le bloc qui a changé 
-                //Donner le mm nom à tous les cubes du meme placement,
-                //l'objet Squares contient le script qui va recevoir l'event
-                // onChange va envoyer les noms des cubes qui s'echangent et chaque Squares va appliquer la modif
-
                 /*GameObject otherCorrespondingObject = collider.gameObject.GetComponent<CubePuzzleElement>().correspondingObject;
                 Vector3 vect1 = otherCorrespondingObject.transform.position;
                 Vector3 vect2 = correspondingObject.transform.position;
