@@ -209,6 +209,7 @@ public class InputController : MonoBehaviour
                     cursors.Remove(secondCursor);
                     CreateBow(zone, firstCursor, Input.GetTouch(secondCursor.fingerId));
                     Destroy(secondCursor.gameObject);
+                    Destroy(cursorToRemove.gameObject);
                 }
 
                 break;              
