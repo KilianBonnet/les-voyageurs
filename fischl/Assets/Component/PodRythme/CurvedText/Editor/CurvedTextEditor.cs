@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEditor;
 using System.Collections;
 
-[CustomEditor(typeof(CurvedText))] 
+[CustomEditor(typeof(CurvedText))]
 public class CurvedTextEditor : Editor
 {
 	public override void OnInspectorGUI()
 	{
-		DrawDefaultInspector ();
+		DrawDefaultInspector();
 	}
 }

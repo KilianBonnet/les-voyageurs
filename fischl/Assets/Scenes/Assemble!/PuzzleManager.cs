@@ -9,7 +9,7 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public Vector3 originalPosition;
     public GameObject droppingArea;
     public GameObject correctSpot;
-    public GameObject[] spotTwinnies;
+    public GameObject[] answersSpot;
 
     public void Start()
     {
@@ -95,20 +95,17 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         //if the selectedobject is within the limits of the correctSpot turn th spot green
         if (eventData.position.x > correctSpotLeft + offsetX && eventData.position.x < correctSpotRight - offsetX && eventData.position.y > correctSpotBottom + offsetY && eventData.position.y < correctSpotTop - offsetY)
         {
-            correctSpot.GetComponent<SpriteRenderer>().color = Color.green;
             //replace it correctly in the middle of correctspot
             selectedObject.transform.position = correctSpotMiddleScreen;
             //remove the drag events management from the selectedObject
             selectedObject.GetComponent<PuzzleManager>().enabled = false;
-            foreach (GameObject spotTwinny in spotTwinnies)
+            int answerSpotIndex = int.Parse(correctSpot.name);
+            foreach (GameObject answerSpot in answersSpot)
             {
-                //TODO: clone the selectedObject
-                
-                spotTwinny.GetComponent<SpriteRenderer>().color = Color.green;
+                string[] allSpots = answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text.Split('_');
+                allSpots[answerSpotIndex] = selectedObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
+                answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = string.Join("_", allSpots);
             }
-
         }
-
-
     }
 }

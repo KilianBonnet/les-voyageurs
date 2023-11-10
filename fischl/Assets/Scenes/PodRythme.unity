@@ -265,7 +265,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &153457666
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1817,8 +1817,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.513}
-  m_AnchoredPosition: {x: 0, y: 143.639}
-  m_SizeDelta: {x: 1256.6371, y: 176.0922}
+  m_AnchoredPosition: {x: 0, y: 58.1}
+  m_SizeDelta: {x: 628.31854, y: 176.0922}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1364276975
 MonoBehaviour:
@@ -1842,10 +1842,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 0
     m_MaxSize: 90
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1854,9 +1854,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Game Over
-  radius: 2
+  radius: 10
   wrapAngle: 360
-  scaleFactor: 100
+  scaleFactor: 10
 --- !u!222 &1364276976
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2221,8 +2221,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.513}
-  m_AnchoredPosition: {x: 0.5, y: -134.361}
-  m_SizeDelta: {x: 1256.6371, y: 501.15082}
+  m_AnchoredPosition: {x: 0, y: -71.1}
+  m_SizeDelta: {x: 628.31854, y: 501.15082}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1790008846
 MonoBehaviour:
@@ -2260,10 +2260,10 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 70
+    m_FontSize: 35
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
+    m_MinSize: 3
     m_MaxSize: 90
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -2272,9 +2272,9 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Game Over
-  radius: 2
+  radius: 10
   wrapAngle: 360
-  scaleFactor: 100
+  scaleFactor: 10
 --- !u!222 &1790008849
 CanvasRenderer:
   m_ObjectHideFlags: 0
