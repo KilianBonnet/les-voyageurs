@@ -20,7 +20,7 @@ public class multipleTouch : MonoBehaviour
                 CubePuzzleElement cubePuzzleElement = hit.transform.GetComponent<CubePuzzleElement>();
                 if (cubePuzzleElement == null) return;
 
-                cubePuzzleElement.onTouchStart();
+                cubePuzzleElement.OnTouchStart();
 
                 touchTileDict.Add(t.fingerId, cubePuzzleElement);
             }

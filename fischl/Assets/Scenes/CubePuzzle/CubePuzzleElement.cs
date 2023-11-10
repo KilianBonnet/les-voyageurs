@@ -11,11 +11,14 @@ public class CubePuzzleElement : MonoBehaviour
     float limiteXMax;
     float limiteYMax;
 
-    public static event Action<(string, string)> OnMouseUpEvent; // Déclaration de l'événement
+    // Evenement de fin de drag donc changement de position
+    public static event Action<(string, string)> OnMouseUpEvent;
+    //Indicateur de couleur du joueur qui bouge un objet -> methode radar
+    public static event Action<(string,string)> OnSelectElementColorChange;
+
 
     void Start()
     {
-
         // Récupérer le composant Renderer de l'objet parent
         Renderer parentRenderer = transform.parent.parent.parent.GetComponent<Renderer>();
 
@@ -33,30 +36,25 @@ public class CubePuzzleElement : MonoBehaviour
         }
     }
 
-    public void onTouchStart()
+    public void OnTouchStart()
     {
         initialPosition = transform.position;
+        //On cherche a savoir dans quelle zone de joueur nous sommes
+        OnSelectElementColorChange.Invoke((gameObject.name, transform.parent.parent.parent.name));
+
     }
 
     public void OnTouchEnd()
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
-        Debug.Log(colliders.Length);
         gameObject.transform.position = initialPosition;
         foreach (Collider2D collider in colliders)
         {
-
-            Debug.Log(collider);
             if (collider.gameObject != gameObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin)
             {
                 OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
                 return;
             }
         }
-    }
-
-    private Vector2 GetWorldPosition(Vector3 touchPosition)
-    {
-        return Camera.main.ScreenToWorldPoint(touchPosition);
     }
 }

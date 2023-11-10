@@ -1,18 +1,19 @@
 using UnityEngine;
-using System;
 
 public class MatrixCoordinator : MonoBehaviour
 {
     private void OnEnable()
     {
         CubePuzzleElement.OnMouseUpEvent += HandleMouseUpEvent; // Abonnement à l'événement
+        CubePuzzleElement.OnSelectElementColorChange += HandleOnSelectElementColorChange;
     }
 
     private void OnDisable()
     {
         CubePuzzleElement.OnMouseUpEvent -= HandleMouseUpEvent; // Désabonnement de l'événement
-    }
+        CubePuzzleElement.OnSelectElementColorChange -= HandleOnSelectElementColorChange;
 
+    }
 
     private void HandleMouseUpEvent((string, string) objectNames)
     {
@@ -26,6 +27,9 @@ public class MatrixCoordinator : MonoBehaviour
         Vector2 tmp = vect2;
         elems[1].transform.position = vect1;
         elems[0].transform.position = tmp;
+
+        changeColor(elems[0].GetComponent<Renderer>(), "initial");
+        changeColor(elems[1].GetComponent<Renderer>(), "initial");
     }
 
 
@@ -43,12 +47,55 @@ public class MatrixCoordinator : MonoBehaviour
             {
                 if (elem.name == gameObjectName1 || elem.name == gameObjectName2)
                 {
-                    elems[count] = elem.gameObject; // Renvoyer l'objet s'il correspond
+                    elems[count] = elem.gameObject;
                     count++;
+                    if (count == 1 && (gameObjectName1 == null || gameObjectName2 == null))
+                        return elems;
                     if (count == 2) return elems;
                 }
             }
         }
-        return null; // Renvoyer null si aucun élément correspondant n'est trouvé
+        return null;
+    }
+
+    private void HandleOnSelectElementColorChange((string,string) elemToChangeColor)
+    {
+        string square = elemToChangeColor.Item1;
+        string playerArea = elemToChangeColor.Item2;
+        Renderer squareRendererToChange = RechercherElements(square, null)[0].GetComponent<Renderer>();
+
+        changeColor(squareRendererToChange, playerArea);
+    }
+
+    private void changeColor(Renderer squareRendererToChange, string playerArea)
+    {
+        if (transform.parent.name.Equals("PuzzlePieces"))
+        {
+            return;
+        }
+        else if (playerArea.Equals("Area1"))
+        {
+            squareRendererToChange.material.color = Color.red;
+        }
+        else if (playerArea.Equals("Area2"))
+        {
+            squareRendererToChange.material.color = Color.green;
+        }
+        else if (playerArea.Equals("Area3"))
+        {
+            squareRendererToChange.material.color = Color.blue;
+        }
+        else
+        {
+            squareRendererToChange.material.color = HexToColor("62CFB6");
+        }
+    }
+
+    Color HexToColor(string hex)
+    {
+        // Conversion de la chaîne hexadécimale en couleur
+        Color color = new Color();
+        ColorUtility.TryParseHtmlString("#" + hex, out color);
+        return color;
     }
 }
