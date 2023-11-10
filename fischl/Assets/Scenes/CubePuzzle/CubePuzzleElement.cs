@@ -3,12 +3,8 @@ using System;
 
 public class CubePuzzleElement : MonoBehaviour
 {
-
-    private Vector3 offset;
-    private bool isDragging = false;
     private GameObject draggedObject;
     private Vector3 initialPosition;
-    public GameObject correspondingObject;
 
     float limiteXMin;
     float limiteYMin;
@@ -19,6 +15,7 @@ public class CubePuzzleElement : MonoBehaviour
 
     void Start()
     {
+
         // Récupérer le composant Renderer de l'objet parent
         Renderer parentRenderer = transform.parent.parent.parent.GetComponent<Renderer>();
 
@@ -35,38 +32,31 @@ public class CubePuzzleElement : MonoBehaviour
             Debug.LogError("Le parent n'a pas de composant Renderer.");
         }
     }
-    void Update()
+
+    public void onTouchStart()
     {
-        if (isDragging)
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            draggedObject.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
-        }
+        initialPosition = transform.position;
     }
 
-    void OnMouseDown()
+    public void OnTouchEnd()
     {
-        isDragging = true;
-        draggedObject = gameObject;
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        initialPosition = gameObject.transform.position;
-    }
-
-    void OnMouseUp()
-    {
-        isDragging = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(draggedObject.transform.position, 0.1f);
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
         Debug.Log(colliders.Length);
-        draggedObject.transform.position = initialPosition;
+        gameObject.transform.position = initialPosition;
         foreach (Collider2D collider in colliders)
         {
+
             Debug.Log(collider);
-            if (collider.gameObject != draggedObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin )
+            if (collider.gameObject != gameObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin)
             {
                 OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
                 return;
             }
         }
+    }
+
+    private Vector2 GetWorldPosition(Vector3 touchPosition)
+    {
+        return Camera.main.ScreenToWorldPoint(touchPosition);
     }
 }
