@@ -52,31 +52,20 @@ public class CubePuzzleElement : MonoBehaviour
         initialPosition = gameObject.transform.position;
     }
 
-    //TODO problème de correspondance quand on échange des cubes sur d'autres players
-    //echanger aussi les cubes des autres joueurs ? Pas intuitif
     void OnMouseUp()
     {
         isDragging = false;
 
         Collider2D[] colliders = Physics2D.OverlapCircleAll(draggedObject.transform.position, 0.1f);
+        Debug.Log(colliders.Length);
+        draggedObject.transform.position = initialPosition;
         foreach (Collider2D collider in colliders)
         {
+            Debug.Log(collider);
             if (collider.gameObject != draggedObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin )
             {
-
                 OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
-
-                /*GameObject otherCorrespondingObject = collider.gameObject.GetComponent<CubePuzzleElement>().correspondingObject;
-                Vector3 vect1 = otherCorrespondingObject.transform.position;
-                Vector3 vect2 = correspondingObject.transform.position;
-                Vector3 tmp = vect2;
-                correspondingObject.transform.position = vect1;
-                otherCorrespondingObject.transform.position = tmp;*/
-                break;
-            }
-            else
-            {
-                draggedObject.transform.position = initialPosition;
+                return;
             }
         }
     }

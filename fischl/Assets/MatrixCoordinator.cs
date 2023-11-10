@@ -19,13 +19,11 @@ public class MatrixCoordinator : MonoBehaviour
         string gameObject1 = objectNames.Item1;
         string gameObject2 = objectNames.Item2;
 
-        Debug.Log("Event recu de  " + gameObject1);
         GameObject[] elems = RechercherElements(gameObject1, gameObject2);
-        Debug.Log("Trouvé : " +elems[0] + " - " + elems[1]);
 
-        Vector3 vect1 = elems[0].transform.position;
-        Vector3 vect2 = elems[1].transform.position;
-        Vector3 tmp = vect2;
+        Vector2 vect1 = elems[0].transform.position;
+        Vector2 vect2 = elems[1].transform.position;
+        Vector2 tmp = vect2;
         elems[1].transform.position = vect1;
         elems[0].transform.position = tmp;
     }
