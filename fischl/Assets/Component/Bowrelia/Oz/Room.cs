@@ -11,6 +11,7 @@ enum RoomEvent {
 public class Room : MonoBehaviour
 {
     private GameObject vrPlayer;
+    private ScoreManager scoreManager;
 
     [Space]
     [SerializeField] private GameObject eventIcon;
@@ -25,6 +26,7 @@ public class Room : MonoBehaviour
     [SerializeField] private bool canListen = false;
 
     private void Start() {
+        scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
         vrPlayer = GameObject.Find("VrPlayer");
     }
 
@@ -33,8 +35,12 @@ public class Room : MonoBehaviour
         this.vrPlayer = vrPlayer;
         vrPlayer.transform.position = transform.position;
 
-        if(eventType == RoomEvent.NONE) 
+        if(eventType == RoomEvent.NONE) {
+            scoreManager.IncreaseScore(100);
             return;
+        }
+
+        if(eventType == RoomEvent.BOSS) scoreManager.IncreaseScore(500);
         
         eventIcon.SetActive(false);
     }

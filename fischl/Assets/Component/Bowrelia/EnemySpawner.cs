@@ -21,5 +21,4 @@ public class EnemySpawner : MonoBehaviour
         GameObject enemy = Instantiate(enemyPrefab);
         enemy.transform.position = GeneratePosition();
     }
-
 }
