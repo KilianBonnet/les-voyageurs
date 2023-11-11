@@ -4,12 +4,13 @@ enum RoomEvent {
     NONE,
     BOSS,
     SWORD,
-    HEART
+    HEART,
+    DOOR
 }
 
 public class Room : MonoBehaviour
 {
-    [SerializeField] private GameObject vrPlayer;
+    private GameObject vrPlayer;
 
     [Space]
     [SerializeField] private GameObject eventIcon;
@@ -21,7 +22,14 @@ public class Room : MonoBehaviour
     [SerializeField] private Room leftRoom;
     [SerializeField] private Room rightRoom;
 
+    [SerializeField] private bool canListen = false;
+
+    private void Start() {
+        vrPlayer = GameObject.Find("VrPlayer");
+    }
+
     public void SetRoomActive(GameObject vrPlayer) {
+        Invoke("StartListening", .1f);
         this.vrPlayer = vrPlayer;
         vrPlayer.transform.position = transform.position;
 
@@ -31,30 +39,34 @@ public class Room : MonoBehaviour
         eventIcon.SetActive(false);
     }
 
+    public void StartListening() {
+        canListen = true;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        if(vrPlayer == null) return;
+        if(!canListen) return;
 
         if(Input.GetKeyDown(KeyCode.Z) && topRoom != null) {
             topRoom.SetRoomActive(vrPlayer);
-            vrPlayer = null;
+            canListen = false;
         }
 
         if(Input.GetKeyDown(KeyCode.S) && bottomRoom != null) {
             bottomRoom.SetRoomActive(vrPlayer);
-            vrPlayer = null;
+            canListen = false;
         }
 
         if(Input.GetKeyDown(KeyCode.Q) && leftRoom != null) {
             leftRoom.SetRoomActive(vrPlayer);
-            vrPlayer = null;
+            canListen = false;
         }
 
         if(Input.GetKeyDown(KeyCode.D) && rightRoom != null) {
             rightRoom.SetRoomActive(vrPlayer);
-            vrPlayer = null;
+            canListen = false;
         }
     }
 }
