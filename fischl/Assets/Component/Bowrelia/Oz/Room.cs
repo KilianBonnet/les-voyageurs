@@ -43,6 +43,7 @@ public class Room : MonoBehaviour
         }
 
         if(eventType == RoomEvent.BOSS) scoreManager.IncreaseScore(500);
+        if(eventType == RoomEvent.SWORD) GameObject.Find("Bomb Element").GetComponent<ElementContainer>().IncreaseCount(1);
         
         eventIcon.SetActive(false);
     }

@@ -17,10 +17,6 @@ public class SelectionWheel : MonoBehaviour
 
     private void Update()
     {
-        TouchHandler();
-    }
-
-    private void TouchHandler() {
         for (int i = 0; i <  Input.touchCount; i++) {
             Touch touch = Input.GetTouch(i);
 
@@ -66,7 +62,7 @@ public class SelectionWheel : MonoBehaviour
         if(touch.fingerId == activeTouchIDs[0])
             transform.position = GetWorldPosition(touch.position);
 
-        if(activeTouchIDs.Count == 2) {
+        if(activeTouchIDs.Count == 2 && touch.fingerId == activeTouchIDs[1]) {
             Vector2 wheelPosition = transform.position;
             Vector2 touchWorldPosition = GetWorldPosition(touch.position);
 

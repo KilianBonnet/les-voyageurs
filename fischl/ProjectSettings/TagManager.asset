@@ -8,6 +8,7 @@ TagManager:
   - InnerWheel
   - Canva
   - Enemy
+  - Wheel
   layers:
   - Default
   - TransparentFX
