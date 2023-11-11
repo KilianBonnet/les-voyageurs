@@ -3,19 +3,19 @@ using System;
 
 public class CubePuzzleElement : MonoBehaviour
 {
-
-    private Vector3 offset;
-    private bool isDragging = false;
     private GameObject draggedObject;
     private Vector3 initialPosition;
-    public GameObject correspondingObject;
 
     float limiteXMin;
     float limiteYMin;
     float limiteXMax;
     float limiteYMax;
 
-    public static event Action<(string, string)> OnMouseUpEvent; // Déclaration de l'événement
+    // Evenement de fin de drag donc changement de position
+    public static event Action<(string, string)> OnMouseUpEvent;
+    //Indicateur de couleur du joueur qui bouge un objet -> methode radar
+    public static event Action<(string,string)> OnSelectElementColorChange;
+
 
     void Start()
     {
@@ -35,34 +35,22 @@ public class CubePuzzleElement : MonoBehaviour
             Debug.LogError("Le parent n'a pas de composant Renderer.");
         }
     }
-    void Update()
+
+    public void OnTouchStart()
     {
-        if (isDragging)
-        {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition) + offset;
-            draggedObject.transform.position = new Vector3(mousePos.x, mousePos.y, 0);
-        }
+        initialPosition = transform.position;
+        //On cherche a savoir dans quelle zone de joueur nous sommes
+        OnSelectElementColorChange.Invoke((gameObject.name, transform.parent.parent.parent.name));
+
     }
 
-    void OnMouseDown()
+    public void OnTouchEnd()
     {
-        isDragging = true;
-        draggedObject = gameObject;
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        initialPosition = gameObject.transform.position;
-    }
-
-    void OnMouseUp()
-    {
-        isDragging = false;
-
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(draggedObject.transform.position, 0.1f);
-        Debug.Log(colliders.Length);
-        draggedObject.transform.position = initialPosition;
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 0.1f);
+        gameObject.transform.position = initialPosition;
         foreach (Collider2D collider in colliders)
         {
-            Debug.Log(collider);
-            if (collider.gameObject != draggedObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin )
+            if (collider.gameObject != gameObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin)
             {
                 OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
                 return;
