@@ -23,9 +23,11 @@ public class Room : MonoBehaviour
     [SerializeField] private Room leftRoom;
     [SerializeField] private Room rightRoom;
 
-    [SerializeField] private bool canListen = false;
+    [SerializeField] private bool isStartingPoint = false;
+    private bool canListen = false;
 
     private void Start() {
+        if(isStartingPoint) canListen = true;
         scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
         vrPlayer = GameObject.Find("VrPlayer");
     }
@@ -54,7 +56,7 @@ public class Room : MonoBehaviour
     void Update()
     {
         if(!canListen) return;
-
+        
         if(Input.GetKeyDown(KeyCode.Z) && topRoom != null) {
             topRoom.SetRoomActive(vrPlayer);
             canListen = false;
@@ -71,6 +73,7 @@ public class Room : MonoBehaviour
         }
 
         if(Input.GetKeyDown(KeyCode.D) && rightRoom != null) {
+            Debug.Log(gameObject.name + " is listening");
             rightRoom.SetRoomActive(vrPlayer);
             canListen = false;
         }
