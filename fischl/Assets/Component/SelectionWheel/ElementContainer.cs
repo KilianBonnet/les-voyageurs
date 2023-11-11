@@ -5,7 +5,7 @@ public class ElementContainer : MonoBehaviour
 {
     [SerializeField] private GameObject elementPrefab;
     [SerializeField] private TextMeshProUGUI countUi;
-    private int count = 1;
+    private int count = 0;
 
     private Element draggedElement;
 
