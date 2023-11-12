@@ -5,15 +5,17 @@ public class MatrixCoordinator : MonoBehaviour
     private void OnEnable()
     {
         CubePuzzleElement.OnMouseUpEvent += HandleMouseUpEvent; // Abonnement à l'événement
-        CubePuzzleElement.OnSelectElementColorChange += HandleOnSelectElementColorChange;
+        CubePuzzleElement.OnMouseDownEvent += HandleOnSelectElementColorChange;
+        CubePuzzleElement.OnMouseDownEventNoPositionChange += HandleNoPositionChanged;
     }
 
     private void OnDisable()
     {
         CubePuzzleElement.OnMouseUpEvent -= HandleMouseUpEvent; // Désabonnement de l'événement
-        CubePuzzleElement.OnSelectElementColorChange -= HandleOnSelectElementColorChange;
-
+        CubePuzzleElement.OnMouseDownEvent -= HandleOnSelectElementColorChange;
+        CubePuzzleElement.OnMouseDownEventNoPositionChange -= HandleNoPositionChanged;
     }
+
 
     private void HandleMouseUpEvent((string, string) objectNames)
     {
@@ -22,6 +24,16 @@ public class MatrixCoordinator : MonoBehaviour
 
         GameObject[] elems = RechercherElements(gameObject1, gameObject2);
 
+        changeCoords(elems);
+        if(transform.parent.name != "PuzzlePieces")
+        {
+            changeIsTouchOfSquare(false, elems[0]);
+            changeIsTouchOfSquare(false, elems[1]);
+        }
+    }
+
+    private void changeCoords(GameObject[] elems)
+    {
         Vector2 vect1 = elems[0].transform.position;
         Vector2 vect2 = elems[1].transform.position;
         Vector2 tmp = vect2;
@@ -32,6 +44,11 @@ public class MatrixCoordinator : MonoBehaviour
         changeColor(elems[1].GetComponent<Renderer>(), "initial");
     }
 
+    //Change bool IsTouch of the square to make them able to be moved again or not
+    private void changeIsTouchOfSquare(bool value, GameObject square)
+    {
+        square.GetComponent<CubePuzzleElement>().setCurrentlyTouch(value);
+    }
 
     private GameObject[] RechercherElements(string gameObjectName1, string gameObjectName2)
     {
@@ -62,9 +79,14 @@ public class MatrixCoordinator : MonoBehaviour
     {
         string square = elemToChangeColor.Item1;
         string playerArea = elemToChangeColor.Item2;
-        Renderer squareRendererToChange = RechercherElements(square, null)[0].GetComponent<Renderer>();
+        GameObject squareInThisArea = RechercherElements(square, null)[0];
+        Renderer squareRendererToChange = squareInThisArea.GetComponent<Renderer>();
 
         changeColor(squareRendererToChange, playerArea);
+        if (transform.parent.name != "PuzzlePieces")
+        {
+            changeIsTouchOfSquare(true, squareInThisArea);
+        }
     }
 
     private void changeColor(Renderer squareRendererToChange, string playerArea)
@@ -87,15 +109,20 @@ public class MatrixCoordinator : MonoBehaviour
         }
         else
         {
-            squareRendererToChange.material.color = HexToColor("62CFB6");
+            squareRendererToChange.material.color = new Color(1,1,1);
         }
     }
 
-    Color HexToColor(string hex)
+    private void HandleNoPositionChanged(string square)
     {
-        // Conversion de la chaîne hexadécimale en couleur
-        Color color = new Color();
-        ColorUtility.TryParseHtmlString("#" + hex, out color);
-        return color;
+        GameObject squareInThisArea = RechercherElements(square, null)[0];
+        Renderer squareRendererToChange = squareInThisArea.GetComponent<Renderer>();
+
+        changeColor(squareRendererToChange, "initial");
+
+        if (transform.parent.name != "PuzzlePieces")
+        {
+            changeIsTouchOfSquare(false, squareInThisArea);
+        }
     }
 }

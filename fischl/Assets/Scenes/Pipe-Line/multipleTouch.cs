@@ -19,6 +19,7 @@ public class multipleTouch : MonoBehaviour
                
                 CubePuzzleElement cubePuzzleElement = hit.transform.GetComponent<CubePuzzleElement>();
                 if (cubePuzzleElement == null) return;
+                if (cubePuzzleElement.getCurrentlyTouch()) return;
 
                 cubePuzzleElement.OnTouchStart();
 

@@ -11,11 +11,14 @@ public class CubePuzzleElement : MonoBehaviour
     float limiteXMax;
     float limiteYMax;
 
+    private bool currentlyTouch = false;
+
     // Evenement de fin de drag donc changement de position
     public static event Action<(string, string)> OnMouseUpEvent;
     //Indicateur de couleur du joueur qui bouge un objet -> methode radar
-    public static event Action<(string,string)> OnSelectElementColorChange;
+    public static event Action<(string, string)> OnMouseDownEvent;
 
+    public static event Action<string> OnMouseDownEventNoPositionChange;
 
     void Start()
     {
@@ -40,7 +43,7 @@ public class CubePuzzleElement : MonoBehaviour
     {
         initialPosition = transform.position;
         //On cherche a savoir dans quelle zone de joueur nous sommes
-        OnSelectElementColorChange.Invoke((gameObject.name, transform.parent.parent.parent.name));
+        OnMouseDownEvent.Invoke((gameObject.name, transform.parent.parent.parent.name));
 
     }
 
@@ -56,5 +59,16 @@ public class CubePuzzleElement : MonoBehaviour
                 return;
             }
         }
+        OnMouseDownEventNoPositionChange.Invoke(gameObject.name);
+    }
+
+    public void setCurrentlyTouch(bool isTouched)
+    {
+        currentlyTouch = isTouched;
+    }
+
+    public bool getCurrentlyTouch()
+    {
+        return currentlyTouch;
     }
 }
