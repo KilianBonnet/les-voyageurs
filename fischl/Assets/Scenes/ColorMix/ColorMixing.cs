@@ -50,6 +50,11 @@ public class ColorMixing : MonoBehaviour
         }
     }
 
+    public Color getSelectedColor()
+    {
+        return currentColor;
+    }
+
     public void SetCurrentColor(Color color)
     {
         currentColor = color;
