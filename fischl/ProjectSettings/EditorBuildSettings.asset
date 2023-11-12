@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Env_Selection.unity
     guid: 02cd277a5e147794297d45f019ad48af
   - enabled: 1
-    path: Assets/Scenes/CubePuzzle.unity
+    path: Assets/Scenes/Pipe-Line.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/Assemble!.unity

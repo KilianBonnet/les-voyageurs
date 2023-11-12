@@ -735,7 +735,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97edb289318206f4f9eef27ecc3ff55b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementPrefab: {fileID: 6224714545520377159, guid: ad8ea6344d8e9ab4b962aee71d8ad100, type: 3}
+  elementPrefab: {fileID: 2536593106110258470, guid: 6efd634c6f34d104da1e99e2ac249642, type: 3}
   countUi: {fileID: 906384323}
 --- !u!1 &714363575 stripped
 GameObject:

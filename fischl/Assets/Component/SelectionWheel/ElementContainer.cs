@@ -5,7 +5,7 @@ public class ElementContainer : MonoBehaviour
 {
     [SerializeField] private GameObject elementPrefab;
     [SerializeField] private TextMeshProUGUI countUi;
-    private int count = 0;
+    private int count = 1;
 
     private Element draggedElement;
 
@@ -15,7 +15,7 @@ public class ElementContainer : MonoBehaviour
     void Start()
     {
         touchId = -1;
-        countUi.text = "0";
+        countUi.text = count.ToString();
     }
 
     public void IncreaseCount(int amount) {
@@ -53,6 +53,9 @@ public class ElementContainer : MonoBehaviour
         if(touchId != -1 || count <= 0) 
             return;
 
+        count--;
+        countUi.text = count.ToString();
+
         touchId = touch.fingerId;
         draggedElement = Instantiate(elementPrefab).GetComponent<Element>();
         draggedElement.transform.position = touchPosition;
@@ -66,8 +69,11 @@ public class ElementContainer : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero, 0);
 
         if(hit.transform == null || !hit.transform.CompareTag("Wheel")) draggedElement.OnDropped();
-        else Destroy(draggedElement.gameObject);
-            
+        else {
+            count++;
+            countUi.text = count.ToString();
+            Destroy(draggedElement.gameObject);
+        }
     }
     
     private Vector2 GetWorldPosition(Vector3 touchPosition) {
