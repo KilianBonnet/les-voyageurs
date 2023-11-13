@@ -23,7 +23,7 @@ public class SceneChanger : MonoBehaviour
             Debug.Log("Loading " + scenes[i]);
             SceneManager.LoadScene(scenes[i]);
             canChange = false;
-            Invoke("EnableChange", 5f);
+            Invoke("EnableChange", 1f);
         }
 
         if(Input.GetKeyDown(KeyCode.LeftArrow)) {
@@ -32,7 +32,7 @@ public class SceneChanger : MonoBehaviour
             Debug.Log("Loading " + scenes[i]);
             SceneManager.LoadScene(scenes[i]);
             canChange = false;
-            Invoke("EnableChange", 5f);
+            Invoke("EnableChange", 1f);
         }
     }
 
