@@ -699,7 +699,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -5
   m_Sprite: {fileID: 21300000, guid: 0d8cbd275e0d8bc4b89f54b8a6a82479, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.54901963}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.3529412}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -853,7 +853,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
       propertyPath: scenes.Array.size
-      value: 6
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
+      propertyPath: scenes.Array.data[1]
+      value: PodRythme
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
+      propertyPath: scenes.Array.data[2]
+      value: ColorMix
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
+      propertyPath: scenes.Array.data[3]
+      value: Bowrelia
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
+      propertyPath: scenes.Array.data[4]
+      value: ElectricalPuzzle
       objectReference: {fileID: 0}
     - target: {fileID: 1610720502243041615, guid: 32e28079d065fcb41bf3b37a4001bc07, type: 3}
       propertyPath: scenes.Array.data[5]
