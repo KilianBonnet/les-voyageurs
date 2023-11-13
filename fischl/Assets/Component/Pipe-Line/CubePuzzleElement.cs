@@ -71,4 +71,8 @@ public class CubePuzzleElement : MonoBehaviour
     {
         return currentlyTouch;
     }
+
+    public void mixGame(string square1Name, string square2Name) {
+        OnMouseUpEvent.Invoke((square1Name, square2Name));
+    }
 }
