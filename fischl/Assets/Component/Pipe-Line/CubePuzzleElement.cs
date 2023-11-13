@@ -55,7 +55,10 @@ public class CubePuzzleElement : MonoBehaviour
         {
             if (collider.gameObject != gameObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin)
             {
-                OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
+                if (!collider.gameObject.GetComponent<CubePuzzleElement>().getCurrentlyTouch())
+                {
+                    OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
+                }
                 return;
             }
         }
