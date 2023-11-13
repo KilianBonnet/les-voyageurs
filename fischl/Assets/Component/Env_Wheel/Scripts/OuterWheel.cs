@@ -1,7 +1,9 @@
 using System;
 using System.Runtime.CompilerServices;
 using TMPro;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class OuterWheel : MonoBehaviour
 {
@@ -62,6 +64,9 @@ public class OuterWheel : MonoBehaviour
                     res = selectedElements + " / 3";
                 }
                 else {
+                    if(GameObject.Find("Area 0").GetComponent<SpriteRenderer>().sprite.name == "Desert_S")
+                        SceneManager.LoadScene("Assemble!");
+
                     selectedElements = 0;
                     res = "Incorrect";
                     errorAudio.Play();
