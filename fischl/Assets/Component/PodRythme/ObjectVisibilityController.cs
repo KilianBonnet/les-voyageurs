@@ -44,7 +44,7 @@ public class ObjectVisibilityController : MonoBehaviour
         } while (true);
         return new Vector2(x, y);
     }
-    private void OnMouseDown()
+    public void OnTouchStart()
     {
         // Désactive l'objet sur lequel l'utilisateur a cliqué
         gameObject.SetActive(false);

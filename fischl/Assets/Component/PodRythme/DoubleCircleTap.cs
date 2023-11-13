@@ -42,7 +42,7 @@ public class DoubleCircleTap : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    public void OnMouseDown()
+    public void OnTouchStart()
     {
         time = Time.time;
         if (otherTapCircle.time < 0)
