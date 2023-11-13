@@ -12,7 +12,6 @@ public class SelectionWheel : MonoBehaviour
 
     private void Start() {
         initialPosition = transform.position;
-        SetChildrenActive(false);
     }
 
     private void Update()
@@ -98,7 +97,7 @@ private void SetChildrenActive(bool state) {
 
     for (int i = 0; i < nbSections; i++) {
         Transform section = transform.GetChild(i);
-        section.gameObject.SetActive(state);
+        section.GetComponent<ElementContainer>().SerVisibility(state);
 
         // Calculer l'angle en radians
         float angle = i * deltaAngle * Mathf.Deg2Rad;

@@ -271,6 +271,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &296716444 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8949973782258690661, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+  m_PrefabInstance: {fileID: 8949973782274870917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &318997297
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +488,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &364877905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 364877901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97edb289318206f4f9eef27ecc3ff55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 0}
+  countUi: {fileID: 1578359220}
 --- !u!1 &427452280
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +573,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &467594156
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 467594152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97edb289318206f4f9eef27ecc3ff55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 0}
+  countUi: {fileID: 541720017}
 --- !u!1 &497893934
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,6 +720,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &541720017 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8949973781963280249, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+  m_PrefabInstance: {fileID: 8949973782274870917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &551969941 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8949973781735795216, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
@@ -702,6 +752,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &551969945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 551969941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97edb289318206f4f9eef27ecc3ff55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 0}
+  countUi: {fileID: 1600910571}
 --- !u!1 &660362425 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8949973781826361916, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
@@ -758,6 +822,20 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &714363579
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714363575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97edb289318206f4f9eef27ecc3ff55b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementPrefab: {fileID: 0}
+  countUi: {fileID: 296716444}
 --- !u!1 &800351908
 GameObject:
   m_ObjectHideFlags: 0
@@ -3196,6 +3274,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1578359220 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8949973781387176140, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+  m_PrefabInstance: {fileID: 8949973782274870917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1580563860
 GameObject:
   m_ObjectHideFlags: 0
@@ -3297,6 +3386,17 @@ MonoBehaviour:
   leftRoom: {fileID: 0}
   rightRoom: {fileID: 427452282}
   isStartingPoint: 0
+--- !u!114 &1600910571 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8949973781530119715, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+  m_PrefabInstance: {fileID: 8949973782274870917}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1601012494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4484,6 +4584,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1467617172}
+    - target: {fileID: 8949973781826361916, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8949973781826361918, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4491,6 +4595,14 @@ PrefabInstance:
     - target: {fileID: 8949973781826361918, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949973781826361919, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949973782162996605, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8949973782435462136, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_Camera

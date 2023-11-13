@@ -5,17 +5,24 @@ public class ElementContainer : MonoBehaviour
 {
     [SerializeField] private GameObject elementPrefab;
     [SerializeField] private TextMeshProUGUI countUi;
-    private int count = 1;
+    private int count = 0;
 
     private Element draggedElement;
-
     private int touchId;
+
+    private SpriteRenderer spriteRenderer;
+    private CircleCollider2D circleCollider2D;
     
 
     void Start()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        circleCollider2D = GetComponent<CircleCollider2D>();
+        
         touchId = -1;
         countUi.text = count.ToString();
+
+        SerVisibility(false);
     }
 
     public void IncreaseCount(int amount) {
@@ -80,5 +87,14 @@ public class ElementContainer : MonoBehaviour
         return Camera.main.ScreenToWorldPoint(touchPosition);
     }
 
+    public void SerVisibility(bool visibility) {
+        spriteRenderer.enabled = visibility;
+        circleCollider2D.enabled = visibility;
 
+        foreach(Transform child in transform) 
+            child.gameObject.SetActive(visibility);
+        
+        if(visibility) countUi.text = count.ToString();
+            
+    }
 }
