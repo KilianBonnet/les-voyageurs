@@ -59,7 +59,6 @@ public class CubePuzzleElement : MonoBehaviour
                 {
                     OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
                 }
-                return;
             }
         }
         OnMouseDownEventNoPositionChange.Invoke(gameObject.name);
