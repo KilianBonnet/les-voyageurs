@@ -8,7 +8,6 @@ export function onConnection(ws) {
 export function onMessage(ws, data) {
     // Convert buffer in string
     const jsonString = data.toString('utf-8');
-    console.log(`Data received`);
 
     // Parsing JSON
     const jsonObject = JSON.parse(jsonString);

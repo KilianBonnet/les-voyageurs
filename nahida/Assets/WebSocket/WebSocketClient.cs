@@ -1,18 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using WebSocketSharp;
 
-public class WebSocketClient : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+public class WebSocketClient : MonoBehaviour {
+    [SerializeField] private string address;
+    WebSocket ws;
+
+    private void Start(){
+        ws = new WebSocket(address);
+        ws.Connect();
+
+        ws.OnMessage += (sender, e) =>
+        {
+            Debug.Log("Message Received from "+((WebSocket)sender).Url+", Data : "+e.Data);
+        };
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void Update() {
+        if(ws == null) return;
+        if(Input.GetKeyDown(KeyCode.P)) ws.Send("{\"input\": \"space\"}");
     }
 }
