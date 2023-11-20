@@ -1,4 +1,3 @@
-using System.Collections;
 using TMPro;
 using UnityEngine;
 
@@ -13,16 +12,12 @@ public class WebTest : MonoBehaviour
         webSocketClient.OnSocketMessage += DisplayText;
     }
 
-    private void DisplayText(string data) {
+    private void DisplayText(string text) {
+        messageUi.text = text;
     }
 
     private void Update() {
         if(!Input.GetKeyDown(eventKey)) return;
         webSocketClient.SendEvent("test", "keyInput", "p");
-    }
-
-    private IEnumerator UpdateMessageUi(string text) {
-        yield return null;
-        messageUi.text = text;
     }
 }
