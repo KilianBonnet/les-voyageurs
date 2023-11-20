@@ -410,7 +410,7 @@ GameObject:
   - component: {fileID: 116464321}
   - component: {fileID: 116464320}
   m_Layer: 0
-  m_Name: 82728-894-sable
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -825,13 +825,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 262577606}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 883928921}
   correctSpot: {fileID: 1641901454}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &301194640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1302,8 +1297,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -51.204, y: 178}
-  m_SizeDelta: {x: 109.1685, y: 25}
+  m_AnchoredPosition: {x: -57.252, y: 179.38}
+  m_SizeDelta: {x: 97.072, y: 22.231}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &794663323
 MonoBehaviour:
@@ -1415,13 +1410,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 794663321}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 883928921}
   correctSpot: {fileID: 747030962}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &823491486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1435,7 +1425,7 @@ GameObject:
   - component: {fileID: 823491488}
   m_Layer: 0
   m_Name: Placeholder (1)
-  m_TagString: Untagged
+  m_TagString: Placeholder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1785,8 +1775,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.300003, y: 86.599976}
-  m_SizeDelta: {x: 109.1685, y: 25}
+  m_AnchoredPosition: {x: 32.664097, y: 124.77109}
+  m_SizeDelta: {x: 32.8263, y: 21.7281}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &948709788
 MonoBehaviour:
@@ -1898,13 +1888,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 948709786}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 1435051865}
   correctSpot: {fileID: 301194640}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &975945020
 GameObject:
   m_ObjectHideFlags: 0
@@ -3086,8 +3071,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 160.3, y: 113.599976}
-  m_SizeDelta: {x: 109.1685, y: 25}
+  m_AnchoredPosition: {x: 158.11874, y: 83.60837}
+  m_SizeDelta: {x: 49.1853, y: 20.6376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1734344332
 MonoBehaviour:
@@ -3172,7 +3157,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -21.753685, w: 0}
+  m_margin: {x: 0, y: 0, z: 2.2395766, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3199,13 +3184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 1734344330}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 19748770}
   correctSpot: {fileID: 1091928613}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &1887682553
 GameObject:
   m_ObjectHideFlags: 0
@@ -3219,7 +3199,7 @@ GameObject:
   - component: {fileID: 1887682555}
   m_Layer: 0
   m_Name: Placeholder (2)
-  m_TagString: Untagged
+  m_TagString: Placeholder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3375,8 +3355,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -134.7, y: 111.599976}
-  m_SizeDelta: {x: 109.1685, y: 25}
+  m_AnchoredPosition: {x: -134.7, y: 155.7694}
+  m_SizeDelta: {x: 20.8297, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1903512642
 MonoBehaviour:
@@ -3488,13 +3468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 1903512640}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 1435051865}
   correctSpot: {fileID: 1036525499}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &2037941591
 GameObject:
   m_ObjectHideFlags: 0
@@ -3530,8 +3505,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -63.3, y: 86.4}
-  m_SizeDelta: {x: 109.1685, y: 25}
+  m_AnchoredPosition: {x: -63.845314, y: 60.770805}
+  m_SizeDelta: {x: 57.9102, y: 23.9094}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2037941593
 MonoBehaviour:
@@ -3616,7 +3591,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: -21.753685, w: 0}
+  m_margin: {x: 0, y: 0, z: 2.2395918, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -3643,13 +3618,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedObject: {fileID: 2037941591}
-  originalPosition: {x: 0, y: 0, z: 0}
   droppingArea: {fileID: 19748770}
   correctSpot: {fileID: 429727640}
-  answersSpot:
-  - {fileID: 2115181773}
-  - {fileID: 823491486}
-  - {fileID: 1887682553}
 --- !u!1 &2115181773
 GameObject:
   m_ObjectHideFlags: 0
@@ -3663,7 +3633,7 @@ GameObject:
   - component: {fileID: 2115181775}
   m_Layer: 0
   m_Name: Placeholder
-  m_TagString: Untagged
+  m_TagString: Placeholder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

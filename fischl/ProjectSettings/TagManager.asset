@@ -9,6 +9,7 @@ TagManager:
   - Canva
   - Enemy
   - Wheel
+  - Placeholder
   layers:
   - Default
   - TransparentFX
