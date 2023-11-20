@@ -1,8 +1,12 @@
 using UnityEngine;
 using WebSocketSharp;
+using Newtonsoft.Json;
+using System;
 
 public class WebSocketClient : MonoBehaviour {
     [SerializeField] private string address;
+    public event Action<string> OnSocketMessage;
+
     WebSocket ws;
 
     private void Start(){
@@ -11,13 +15,27 @@ public class WebSocketClient : MonoBehaviour {
 
         ws.OnMessage += (sender, e) =>
         {
-            Debug.Log("Message Received from "+((WebSocket)sender).Url+", Data : "+e.Data);
+            OnSocketMessage.Invoke(e.Data);
         };
-
     }
 
-    private void Update() {
-        if(ws == null) return;
-        if(Input.GetKeyDown(KeyCode.P)) ws.Send("{\"input\": \"space\"}");
+    public void SendEvent(string sceneName, string eventName, object eventData) {
+        var payload = new
+        {
+            scene = sceneName,
+            eventName,
+            data = eventData
+        };
+
+        try {
+            ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
+        }
+        catch (Exception e){
+            Debug.LogError(e.Message);
+        }
+    }
+
+    public void SendToMainThread() {
+        
     }
 }
