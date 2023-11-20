@@ -1,4 +1,13 @@
 {
+  "name": "akasha",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "Kilian Bonnet",
   "dependencies": {
     "ws": "^8.14.2"
   }
