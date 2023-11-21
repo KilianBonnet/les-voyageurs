@@ -1,12 +1,16 @@
 # Groupe Les Voyageurs
-<br>
-Membres du groupe<br><br>
+### Membres du groupe
 BONNET Kilian <br>
 BOUZIDI Héba<br>
 CHABANIER Aurélia<br>
 DEVICTOR Pauline<br>
-<br>
-Projet sur table tactile avec casque VR
+
+## File structure
+| File name | Description |
+| --------- | ----------- |
+| fishl | The Unity app for the tactile table. |
+| akasha | The server allowing the table and the VR Headset to communicate. |
+| nahida | The Unity app for the VR Headset. |
 
 
 

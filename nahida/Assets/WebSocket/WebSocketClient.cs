@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 
 public class WebSocketClient : MonoBehaviour {
-    public event Action<string> OnSocketMessage;
+    public static event Action<string> OnSocketMessage;
 
     private WebSocket ws;
     [SerializeField] private string address = "ws://localhost:8080";
@@ -22,21 +22,6 @@ public class WebSocketClient : MonoBehaviour {
         ws = new WebSocket(address);
         ws.ConnectAsync();
         ws.OnMessage += OnMessage;
-    }
-
-    public void SendEvent(string sceneName, string eventName, object eventData) {
-        var payload = new {
-            scene = sceneName,
-            eventName,
-            d = eventData
-        };
-
-        try {
-            ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
-        }
-        catch (Exception e){
-            Debug.LogError(e.Message);
-        }
     }
 
     private void Update() {
@@ -84,6 +69,5 @@ public class WebSocketClient : MonoBehaviour {
             Debug.Log("Client is ready!");
             isReady = true;
         }
-            
     }
 }
