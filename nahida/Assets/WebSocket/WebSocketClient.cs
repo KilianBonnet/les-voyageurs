@@ -5,7 +5,8 @@ using System;
 using System.Collections.Generic;
 
 public class WebSocketClient : MonoBehaviour {
-    public static event Action<string> OnSocketMessage;
+    public static WebSocketClient Instance;
+    public static event Action<SocketMessage> OnSocketMessage;
 
     private WebSocket ws;
     [SerializeField] private string address = "ws://localhost:8080";
@@ -14,11 +15,12 @@ public class WebSocketClient : MonoBehaviour {
     [SerializeField] private int retryInterval = 1;
     private bool canRetry = true;
 
-    private Queue<string> messageQueue;
+    private Queue<SocketMessage> messageQueue;
     private bool isReady;
 
     private void Start(){
-        messageQueue = new Queue<string>();
+        Instance = this;
+        messageQueue = new Queue<SocketMessage>();
         ws = new WebSocket(address);
         ws.ConnectAsync();
         ws.OnMessage += OnMessage;
@@ -48,26 +50,38 @@ public class WebSocketClient : MonoBehaviour {
     }
 
     private void OnMessage(object sender, MessageEventArgs e) {
+        SocketMessage message = JsonConvert.DeserializeObject<SocketMessage>(e.Data);
+
         if(isReady) {
-            messageQueue.Enqueue(e.Data);
+            messageQueue.Enqueue(message);
             return;
         }
  
-        SocketMessage message = JsonConvert.DeserializeObject<SocketMessage>(e.Data);
-
-        if(message.op == 1) {
-            var payload = new {
-                op = 2,
-                d = new {
-                    device = deviceType
-                }
-            };
-            ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
+        if(message.op == SocketOP.HELLO_EVENT) {
+            SendMessage(
+                SocketOP.IDENTIFY_EVENT,
+                new { device = deviceType }
+            );
         }
 
-        if(message.op == 3) {
+        if(message.op == SocketOP.READY_EVENT) {
             Debug.Log("Client is ready!");
             isReady = true;
         }
+    }
+
+    public void SendMessage(int op, object data = null) {
+        if(data != null) {
+            var payload = new { 
+                op,
+                d = data
+            };
+            ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
+        }
+        else {
+            var payload = new { op };
+            ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
+        }
+            
     }
 }

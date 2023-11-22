@@ -62,3 +62,16 @@ Once the device identified, you'll receive an `Ready Event`.
   "op": 3
 }
 ```
+
+### 4 - Scene Change Event
+Event sent when the client need to change the scene to the given scene.
+
+#### Example of Scene Change Event
+```
+{
+  "op": 10,
+  "d": {
+    "scene": "Bowrelia"
+  }
+}
+```

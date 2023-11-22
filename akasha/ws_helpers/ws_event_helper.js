@@ -1,3 +1,6 @@
+import { identificationEvent } from "./event_handler/intentification_event_handler.js";
+import { sceneChangeEvent } from "./event_handler/scene_change_event_handler.js";
+
 let clients = [];
 
 export function onConnection(ws) {
@@ -15,24 +18,35 @@ export function onMessage(ws, data) {
 
     try {
         const dataString = data.toString('utf-8'); // Convert buffer in string
-        const dataObject = JSON.parse(dataString); // Parsing JSON
-        const clientDevice = dataObject.d.device;
+        const socketMessage = JSON.parse(dataString); // Parsing JSON
 
-        if(dataObject.op === 2 && (clientDevice === "table" || clientDevice === "VR_Headset")) {
-            const client = clients.find(client => client.ws = ws);
-            client.device = clientDevice;
-            ws.send(JSON.stringify({ "op": 3 }))
+        switch (socketMessage.op) {
+            case 2:
+                identificationEvent(clients, ws, socketMessage);
+                break;
+            
+            case 10:
+                sceneChangeEvent(clients, ws, socketMessage);
+                break;
+
+            default:
+                sendError(ws, "Unknown op.")
+                break;
         }
 
     } catch (e) {
-        const res = {
-            "op": 0,
-            "d": {
-                "message": e.toString()
-            }
-        }
-        ws.send(JSON.stringify(res));
+        sendError(ws, e.toString());
     }
+}
+
+export function sendError(ws, message) {
+    const res = {
+        "op": 0,
+        "d": {
+            "message": message
+        }
+    }
+    ws.send(JSON.stringify(res));
 }
 
 export function onClose(ws) {
