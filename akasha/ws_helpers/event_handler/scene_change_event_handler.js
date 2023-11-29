@@ -24,6 +24,6 @@ export function sceneChangeEvent(clients, ws, socketMessage) {
             "scene": scene
         }
     }
-
-    clients.forEach(c => c.ws.send(JSON.stringify(msg)));
+    const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
+    clients.find(c => c.device === sendToDevice).ws.send(JSON.stringify(msg));
 }
