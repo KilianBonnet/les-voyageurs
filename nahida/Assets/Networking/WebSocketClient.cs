@@ -29,6 +29,7 @@ public class WebSocketClient : MonoBehaviour {
     private void Update() {
         // Check if the connecting is alive
         if(!ws.IsAlive && canRetry) {
+            isReady = false;
             // Try to reconnect.
             Debug.LogWarning("Connection lost, retrying...");
             ws.ConnectAsync();

@@ -63,7 +63,7 @@ Once the device identified, you'll receive an `Ready Event`.
 }
 ```
 
-### 4 - Scene Change Event
+### Scene Change Event
 Event sent when the client need to change the scene to the given scene.
 
 #### Example of Scene Change Event
@@ -72,6 +72,19 @@ Event sent when the client need to change the scene to the given scene.
   "op": 10,
   "d": {
     "scene": "Bowrelia"
+  }
+}
+```
+
+### Invoke Event
+Event sent when the client want to Invoke a function through the network.
+
+#### Example of Invoke Event
+```
+{
+  "op": 11,
+  "d": {
+    "networkObjectId": 121123
   }
 }
 ```
