@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class WebTest : MonoBehaviour
 {
-    public void DestroySelf() {
-        Destroy(gameObject);
+    public void PrintHello() {
+        Debug.Log("Hello world!");
     }
 }

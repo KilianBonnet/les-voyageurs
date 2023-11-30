@@ -62,8 +62,10 @@ public class OuterWheel : MonoBehaviour
                     res = selectedElements + " / 3";
                 }
                 else {
-                    if(GameObject.Find("Area 0").GetComponent<SpriteRenderer>().sprite.name == "Desert_S")
-                        SceneManager.LoadScene("Assemble!");
+                    if(GameObject.Find("Area 0").GetComponent<SpriteRenderer>().sprite.name == "Desert_S") {
+                        OnGoodSelection();
+                        return;
+                    }
 
                     selectedElements = 0;
                     res = "Incorrect";
@@ -114,5 +116,10 @@ public class OuterWheel : MonoBehaviour
         SelectionRenderer selectionRenderer = hit.transform.GetComponent<SelectionRenderer>();
         clickedCell = selectionRenderer;
         isClicking = true;
+    }
+
+    private void OnGoodSelection() {
+        SceneManager.LoadScene("Assemble!");
+        NetworkingInvoke.SendInvokeEvent(188);
     }
 }
