@@ -47,7 +47,7 @@ public class MatrixCoordinator : MonoBehaviour
     //Change bool IsTouch of the square to make them able to be moved again or not
     private void changeIsTouchOfSquare(bool value, GameObject square)
     {
-        square.GetComponent<CubePuzzleElement>().setCurrentlyTouch(value);
+        square.GetComponent<CubePuzzleElement>().SetCurrentlyTouch(value);
     }
 
     private GameObject[] RechercherElements(string gameObjectName1, string gameObjectName2)

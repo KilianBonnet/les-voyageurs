@@ -3,13 +3,13 @@ using System;
 
 public class CubePuzzleElement : MonoBehaviour
 {
-    private GameObject draggedObject;
     private Vector3 initialPosition;
+    private Vector3 correctPosition;
 
-    float limiteXMin;
-    float limiteYMin;
-    float limiteXMax;
-    float limiteYMax;
+    private float limiteXMin;
+    private float limiteYMin;
+    private float limiteXMax;
+    private float limiteYMax;
 
     private bool currentlyTouch = false;
 
@@ -55,7 +55,7 @@ public class CubePuzzleElement : MonoBehaviour
         {
             if (collider.gameObject != gameObject && collider.gameObject.transform.position.x < limiteXMax && collider.gameObject.transform.position.x > limiteXMin && collider.gameObject.transform.position.y < limiteYMax && collider.gameObject.transform.position.y > limiteYMin)
             {
-                if (!collider.gameObject.GetComponent<CubePuzzleElement>().getCurrentlyTouch())
+                if (!collider.gameObject.GetComponent<CubePuzzleElement>().GetCurrentlyTouch())
                 {
                     OnMouseUpEvent.Invoke((gameObject.name, collider.gameObject.name));
                 }
@@ -64,17 +64,27 @@ public class CubePuzzleElement : MonoBehaviour
         OnMouseDownEventNoPositionChange.Invoke(gameObject.name);
     }
 
-    public void setCurrentlyTouch(bool isTouched)
+    public void SetCurrentlyTouch(bool isTouched)
     {
         currentlyTouch = isTouched;
     }
 
-    public bool getCurrentlyTouch()
+    public bool GetCurrentlyTouch()
     {
         return currentlyTouch;
     }
 
-    public void mixGame(string square1Name, string square2Name) {
+    public void MixGame(string square1Name, string square2Name) {
         OnMouseUpEvent.Invoke((square1Name, square2Name));
+    }
+
+    public bool IsWellPlaced()
+    {
+        return (transform.position.x == correctPosition.x) && (transform.position.y == correctPosition.y);
+    }
+    
+    public void SetCorrectPosition(Vector3 position)
+    {
+        correctPosition = position;
     }
 }
