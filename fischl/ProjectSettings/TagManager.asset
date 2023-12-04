@@ -12,6 +12,7 @@ TagManager:
   - Placeholder
   - Area
   - Spot
+  - Token
   layers:
   - Default
   - TransparentFX

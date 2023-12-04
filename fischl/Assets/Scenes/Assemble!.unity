@@ -580,7 +580,7 @@ MonoBehaviour:
   numberOfTries: 1
   sentence: THE RIGHT WAY IS ON THE LEFT PATH
   squareTemplate: {fileID: 1317910246}
-  textTemplate: {fileID: 579179313}
+  textCanvas: {fileID: 579179313}
 --- !u!1 &181744574
 GameObject:
   m_ObjectHideFlags: 0
