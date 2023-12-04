@@ -106,3 +106,16 @@ Event sent when the client want to update the score.
 | --------- | ----------- |
 | increase | The amount to increase the score by. |
 | info | The current score. |
+
+### Room Event
+Event sent when the VR_Client changed room.
+
+#### Example of Invoke Event
+```
+{
+  "op": 13,
+  "d": {
+    "room": 4
+  }
+}
+```
