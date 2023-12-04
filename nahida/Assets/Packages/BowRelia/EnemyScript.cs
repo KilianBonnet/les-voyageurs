@@ -14,6 +14,10 @@ public class EnemyScript : MonoBehaviour
     public float minDistance = 1.735f;
     private Animator animator;
 
+    //Battle Stats
+    [SerializeField] int damage = 2;
+    [SerializeField] int hp = 10;
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
