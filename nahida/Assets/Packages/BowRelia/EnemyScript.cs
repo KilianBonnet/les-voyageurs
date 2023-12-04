@@ -17,6 +17,7 @@ public class EnemyScript : MonoBehaviour
     //Battle Stats
     [SerializeField] int damage = 2;
     [SerializeField] int hp = 10;
+    private bool dead = false;
 
     void Start()
     {
@@ -26,12 +27,17 @@ public class EnemyScript : MonoBehaviour
 
     void Update()
     {
+        if(hp <= 0 && !dead)
+        {
+            dead = true;
+            OnDeath();
+        }
+
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position,detectionRange);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("Player"))
-            {
-                
+            {       
                 float distance = Vector3.Distance(transform.position, player.position);
                 if (distance > minDistance)
                     MoveToPlayer();
@@ -64,11 +70,31 @@ public class EnemyScript : MonoBehaviour
     void AttackPlayer()
     {
         int randomValue = Random.Range(0, 2);
-
         animator.SetBool("attacking1", (randomValue == 0));
         animator.SetBool("attacking2", (randomValue == 1));
-
     }
 
+    //Pour modifier le score
+    void addScore()
+    {
+      //NetworkingScore.SendScoreEvent(200);
+    }
+
+    void OnDeath()
+    {
+        addScore();
+        int randomValue = Random.Range(0, 2);
+        if (randomValue == 0)
+            animator.Play("Dead_1");
+        else
+            animator.Play("Dead_2");
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
+        Destroy(gameObject);
+    }
 
 }
