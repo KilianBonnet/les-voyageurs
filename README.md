@@ -88,3 +88,21 @@ Event sent when the client want to Invoke a function through the network.
   }
 }
 ```
+### Score Event
+Event sent when the client want to update the score.
+
+#### Example of Invoke Event
+```
+{
+  "op": 12,
+  "d": {
+    "type": "increase"
+    "score": 123
+  }
+}
+```
+
+| Type | Description |
+| --------- | ----------- |
+| increase | The amount to increase the score by. |
+| info | The current score. |

@@ -1,8 +1,8 @@
 import { identificationEvent } from "./event_handler/intentification_event_handler.js";
 import { invokeEvent } from "./event_handler/invoke_event_handler.js";
 import { sceneChangeEvent } from "./event_handler/scene_change_event_handler.js";
-
-let clients = [];
+import { scoreEvent } from "./event_handler/score_event_handler.js";
+import { clients } from "./state.js";
 
 export function onConnection(ws) {
     // Pushing client on the list
@@ -23,15 +23,19 @@ export function onMessage(ws, data) {
 
         switch (socketMessage.op) {
             case 2:
-                identificationEvent(clients, ws, socketMessage);
+                identificationEvent(ws, socketMessage);
                 break;
             
             case 10:
-                sceneChangeEvent(clients, ws, socketMessage);
+                sceneChangeEvent(ws, socketMessage);
                 break;
             
             case 11:
-                invokeEvent(clients, ws, socketMessage);
+                invokeEvent(ws, socketMessage);
+                break;
+            
+            case 12:
+                scoreEvent(ws, socketMessage);
                 break;
 
             default:

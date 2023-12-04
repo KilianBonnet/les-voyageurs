@@ -1,6 +1,7 @@
 import { sendError } from "../ws_event_helper.js";
+import { clients } from "../state.js";
 
-export function identificationEvent(clients, ws, socketMessage) {
+export function identificationEvent(ws, socketMessage) {
     const clientDevice = socketMessage.d.device;
     if(clientDevice == null) {
         sendError(ws, "Missing device parameter.");
