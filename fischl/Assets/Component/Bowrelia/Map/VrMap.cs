@@ -2,18 +2,13 @@ using UnityEngine;
 
 public class VrMap : MonoBehaviour
 {
-    ScoreManager scoreManager;
-
-    private void Start() {
-        scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
-    }
-
+    [SerializeField] private ScoreManager scoreManager;
 
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.transform.CompareTag("Enemy")) {
-            scoreManager.IncreaseScore(-200);
             Destroy(other.gameObject);
+            scoreManager.IncreaseScore(-200);
         }
     }
 }

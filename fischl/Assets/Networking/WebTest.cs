@@ -2,7 +2,12 @@ using UnityEngine;
 
 public class WebTest : MonoBehaviour
 {
-    public void PrintHello() {
-        Debug.Log("Hello world!");
+    public void DestroySelf() {
+        Destroy(gameObject);
+    }
+
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.S))
+            NetworkingScore.SendScoreEvent(1);
     }
 }
