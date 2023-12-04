@@ -96,7 +96,7 @@ Event sent when the client want to update the score.
 {
   "op": 12,
   "d": {
-    "type": "increase"
+    "type": "increase",
     "score": 123
   }
 }
