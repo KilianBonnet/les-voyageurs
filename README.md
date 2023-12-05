@@ -119,3 +119,21 @@ Event sent when the VR_Client changed room.
   }
 }
 ```
+
+### Bonus Event
+Event sent when the VR_Client send a bonus to the Table.
+
+#### Example of Invoke Event
+```
+{
+  "op": 14,
+  "d": {
+    "bonus": 0
+  }
+}
+```
+| bonus | Description |
+| --------- | ----------- |
+| 0 | The bomb. |
+
+Todo : Other bonus will come later.
