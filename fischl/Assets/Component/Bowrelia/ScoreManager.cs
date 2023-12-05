@@ -12,7 +12,6 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void UpdateScore(int score) {
-        Debug.Log("Score is: " + score);
         scoreUi.text = $"Score: {score}";
         slider.value = score;
         

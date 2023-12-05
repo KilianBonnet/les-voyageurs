@@ -23,7 +23,7 @@ export function roomChangeEvent(ws, socketMessage) {
     const msg = {
         "op": 13,
         "d": {
-            "scene": room
+            "room": room
         }
     }
 

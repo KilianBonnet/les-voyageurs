@@ -271,6 +271,49 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &217116970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 217116972}
+  - component: {fileID: 217116971}
+  m_Layer: 0
+  m_Name: Networking Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &217116971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217116970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f995d969ef885824494f4087c1a61065, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &217116972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 217116970}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.3310451, y: 1.1662523, z: -0.48157838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &296716444 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8949973782258690661, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
@@ -326,13 +369,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 2132087056}
-  eventType: 2
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 1800148940}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &322476698
 GameObject:
   m_ObjectHideFlags: 0
@@ -378,13 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 1268629193}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &354752197
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,13 +574,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 1437114483}
-  bottomRoom: {fileID: 1042007454}
-  leftRoom: {fileID: 1608267966}
-  rightRoom: {fileID: 1800148940}
-  isStartingPoint: 0
 --- !u!1 &445102130
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,13 +699,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 1327024796}
-  eventType: 2
-  topRoom: {fileID: 1727539817}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &514583659
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,13 +2139,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 427452282}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &1051734549
 GameObject:
   m_ObjectHideFlags: 0
@@ -2585,13 +2593,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 1857081076}
-  eventType: 1
-  topRoom: {fileID: 322476700}
-  bottomRoom: {fileID: 1608267966}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &1286654134
 GameObject:
   m_ObjectHideFlags: 0
@@ -2654,13 +2655,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 1727539817}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 2042757224}
-  isStartingPoint: 0
 --- !u!4 &1299383904
 Transform:
   m_ObjectHideFlags: 0
@@ -3197,13 +3191,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 1727539817}
-  rightRoom: {fileID: 1580563862}
-  isStartingPoint: 0
 --- !u!1 &1437114481
 GameObject:
   m_ObjectHideFlags: 0
@@ -3248,13 +3235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 31706}
-  eventType: 3
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 427452282}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 1800148940}
-  isStartingPoint: 0
 --- !u!1 &1467617170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,13 +3445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 1268629193}
-  bottomRoom: {fileID: 1584162628}
-  leftRoom: {fileID: 1421580407}
-  rightRoom: {fileID: 1608267966}
-  isStartingPoint: 0
 --- !u!1 &1584162626
 GameObject:
   m_ObjectHideFlags: 0
@@ -3516,13 +3489,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 354752197}
-  eventType: 3
-  topRoom: {fileID: 1580563862}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 427452282}
-  isStartingPoint: 0
 --- !u!114 &1600910571 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8949973781530119715, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
@@ -3660,13 +3626,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 1852854380}
-  eventType: 2
-  topRoom: {fileID: 1268629193}
-  bottomRoom: {fileID: 1584162628}
-  leftRoom: {fileID: 1580563862}
-  rightRoom: {fileID: 427452282}
-  isStartingPoint: 0
 --- !u!1 &1717540543
 GameObject:
   m_ObjectHideFlags: 0
@@ -3778,13 +3737,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 998501231}
-  eventType: 1
-  topRoom: {fileID: 1299383903}
-  bottomRoom: {fileID: 497893936}
-  leftRoom: {fileID: 1815194538}
-  rightRoom: {fileID: 1421580407}
-  isStartingPoint: 0
 --- !u!4 &1727539818
 Transform:
   m_ObjectHideFlags: 0
@@ -3919,13 +3871,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 1601012494}
-  eventType: 1
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 427452282}
-  rightRoom: {fileID: 318997299}
-  isStartingPoint: 0
 --- !u!1 &1815194537
 GameObject:
   m_ObjectHideFlags: 0
@@ -3955,13 +3900,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 0}
-  eventType: 0
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 0}
-  rightRoom: {fileID: 1727539817}
-  isStartingPoint: 1
 --- !u!4 &1815194539
 Transform:
   m_ObjectHideFlags: 0
@@ -4411,13 +4349,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 135ea8babf73a624090cc908e0efb508, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventIcon: {fileID: 514583659}
-  eventType: 3
-  topRoom: {fileID: 0}
-  bottomRoom: {fileID: 0}
-  leftRoom: {fileID: 1299383903}
-  rightRoom: {fileID: 0}
-  isStartingPoint: 0
 --- !u!1 &2060919819
 GameObject:
   m_ObjectHideFlags: 0
