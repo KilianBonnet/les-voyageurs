@@ -18,6 +18,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int damage = 2;
     [SerializeField] int hp = 10;
     private bool dead = false;
+    private bool blockMovement = false;
 
     void Start()
     {
@@ -43,7 +44,9 @@ public class EnemyScript : MonoBehaviour
                     MoveToPlayer();
                 else
                 {
-                    rb.velocity = Vector3.zero;
+                    blockMovement = true;
+                    rb.constraints = RigidbodyConstraints.FreezeAll;
+
                     animator.SetBool("walking", false);
                     
                     AttackPlayer();
@@ -59,12 +62,21 @@ public class EnemyScript : MonoBehaviour
         transform.LookAt(targetPosition);
     }
     
+    void FreeBody()
+    {
+        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezePositionY;
+    }
+
     void MoveToPlayer()
     {
+        if(blockMovement)
+            FreeBody();
         Vector3 pos = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         rb.MovePosition(pos);
         animator.SetBool("walking", true);
         LookAt();
+
     }
 
     void AttackPlayer()
