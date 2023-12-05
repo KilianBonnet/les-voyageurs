@@ -8,22 +8,22 @@ export function roomChangeEvent(ws, socketMessage) {
         sendError(ws, "Client is not authenticated.");
         return;
     }
-    const room = socketMessage.d.room;
+    const bonus = socketMessage.d.bonus;
 
-    if(room == null) {
-        sendError(ws, "Missing room parameter.");
+    if(bonus == null) {
+        sendError(ws, "Missing bonus parameter.");
         return;
     }
 
-    if(typeof(room) != "number") {
-        sendError(ws, "room parameter should be a string.");
+    if(typeof(bonus) != "number") {
+        sendError(ws, "bonus parameter should be a string.");
         return;
     }
 
     const msg = {
-        "op": 13,
+        "op": 14,
         "d": {
-            "room": room
+            "bonus": bonus
         }
     }
 
