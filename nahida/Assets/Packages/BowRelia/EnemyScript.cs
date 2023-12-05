@@ -103,11 +103,9 @@ public class EnemyScript : MonoBehaviour
     }
 
     //If skeleton get hit by the player's sword then it takes damages
-    private void OnTriggerEnter(Collider other)
+    public void TakeDamage(int playerDamage)
     {
-        if (other.CompareTag("PlayerSword"))
-        {
-            hp -= other.GetComponent<SwordInteractions>().GetAttackDamage();
-        }
+        hp -= playerDamage;
     }
+    
 }
