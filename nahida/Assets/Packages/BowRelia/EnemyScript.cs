@@ -97,4 +97,8 @@ public class EnemyScript : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public int GetDamage()
+    {
+        return damage;
+    }
 }
