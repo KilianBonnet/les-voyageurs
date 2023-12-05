@@ -2,7 +2,7 @@ import { sendError } from "../ws_event_helper.js";
 import { clients } from "../state.js";
 
 export function sceneChangeEvent(ws, socketMessage) {
-    const client = clients.find(client => client.ws = ws);
+    const client = clients.find(client => client.ws === ws);
 
     if(client.device == null) {
         sendError(ws, "Client is not authenticated.");

@@ -2,7 +2,7 @@ import { sendError } from "../ws_event_helper.js";
 import { clients } from "../state.js";
 
 export function roomChangeEvent(ws, socketMessage) {
-    const client = clients.find(client => client.ws = ws);
+    const client = clients.find(client => client.ws === ws);
 
     if(client.device == null) {
         sendError(ws, "Client is not authenticated.");
@@ -28,5 +28,6 @@ export function roomChangeEvent(ws, socketMessage) {
     }
 
     const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
+    console.log(client.device + " will send to " + sendToDevice);
     clients.find(c => c.device === sendToDevice).ws.send(JSON.stringify(msg));
 }

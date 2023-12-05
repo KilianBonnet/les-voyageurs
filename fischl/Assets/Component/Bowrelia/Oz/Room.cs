@@ -16,5 +16,4 @@ public class Room : MonoBehaviour
             return;
         vrPlayer.position = transform.position;
     }
-
 }
