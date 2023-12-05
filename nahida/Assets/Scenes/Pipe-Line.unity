@@ -2076,7 +2076,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094408146989814315, guid: da92719ce12157c4e8414d98ee2dcb6a, type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: PlayerSword
       objectReference: {fileID: 0}
     - target: {fileID: 7094408147631598606, guid: da92719ce12157c4e8414d98ee2dcb6a, type: 3}
       propertyPath: m_Convex
@@ -2096,7 +2096,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7094408147824453986, guid: da92719ce12157c4e8414d98ee2dcb6a, type: 3}
       propertyPath: m_TagString
-      value: PlayerSword
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: da92719ce12157c4e8414d98ee2dcb6a, type: 3}

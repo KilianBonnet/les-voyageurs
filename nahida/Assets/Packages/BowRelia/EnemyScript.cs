@@ -107,7 +107,7 @@ public class EnemyScript : MonoBehaviour
     {
         if (other.CompareTag("PlayerSword"))
         {
-            hp -= other.GetComponent<PlayerFightingScript>().GetAttackDamage();
+            hp -= other.GetComponent<SwordInteractions>().GetAttackDamage();
         }
     }
 }

@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerFightingScript : MonoBehaviour
 {
     [SerializeField] int hp = 10;
-    [SerializeField] int attackDamage = 5;
 
     private void Update()
     {
@@ -29,10 +28,7 @@ public class PlayerFightingScript : MonoBehaviour
     private void AttackEnnemy()
     {
         Debug.Log("Player try to attack");
-    }
-
-    public int GetAttackDamage()
-    {
-        return attackDamage;
+        //If attack with a button then move sword
+        //if the player move then nothing more to do
     }
 }
