@@ -82,11 +82,11 @@ public class AssembleSetup : MonoBehaviour
         //TODO: add rotation option to the tokens for the users to use
         
         createResultPlaceholders(tokens, canvas);        
-        createSpots(GameObject.Find("Area 1"));
-        createSpots(GameObject.Find("Area 2"));
+        createSpots(GameObject.Find("Area 1"), tokens);
+        createSpots(GameObject.Find("Area 2"), tokens);
         if (numberOfPlayers == MAX_NUMBER_OF_PLAYERS)
         {
-            createSpots(GameObject.Find("Area 3"));
+            createSpots(GameObject.Find("Area 3"), tokens);
         }
         
         // distribute the tokens so that one has one valid spot and one valid area
@@ -148,10 +148,22 @@ public class AssembleSetup : MonoBehaviour
     }
     
     /*
-        Create as many spots as there are tokens, in the area
+        Cut the area in many spots, depending on the number of tokens
     */
-    void createSpots(GameObject area)
+    void createSpots(GameObject area, string[] tokens)
     {
-        //TODO !!!!!!!!!!!!!!!!!!!!!!!!
+        int numberOfTokens = tokens.Length;
+        float areaWidth = area.transform.localScale.x;
+        float areaHeight = area.transform.localScale.y;
+        float spotWidth = areaWidth / numberOfTokens;
+        float spotHeight = areaHeight / numberOfTokens;
+        float x = area.transform.position.x - areaWidth / 2 + spotWidth / 2;
+        float y = area.transform.position.y - areaHeight / 2 + spotHeight / 2;
+        for (int i = 0; i < numberOfTokens; i++)
+        {
+            createSpot(area, new Vector3(x, y, 0), new Vector3(spotWidth, spotHeight, 1), i);
+            /*x += spotWidth;
+            y += spotHeight;*/
+        }
     }
 }
