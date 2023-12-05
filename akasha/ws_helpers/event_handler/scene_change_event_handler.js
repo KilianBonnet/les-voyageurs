@@ -1,6 +1,7 @@
 import { sendError } from "../ws_event_helper.js";
+import { clients } from "../state.js";
 
-export function sceneChangeEvent(clients, ws, socketMessage) {
+export function sceneChangeEvent(ws, socketMessage) {
     const client = clients.find(client => client.ws = ws);
 
     if(client.device == null) {
@@ -15,7 +16,8 @@ export function sceneChangeEvent(clients, ws, socketMessage) {
     }
 
     if(typeof(scene) != "string") {
-        sendError(ws, "scene parameter should be a string.")
+        sendError(ws, "scene parameter should be a string.");
+        return;
     }
 
     const msg = {

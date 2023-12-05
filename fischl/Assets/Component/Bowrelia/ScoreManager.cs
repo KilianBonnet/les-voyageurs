@@ -1,24 +1,22 @@
-using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int totalScore;
-    private Slider slider;
-
-    private void Start() {
-        slider = GetComponent<Slider>();
-    }
+    [SerializeField] private Slider slider;
+    [SerializeField] private TextMeshProUGUI scoreUi;
 
     public void IncreaseScore(int value) {
-        totalScore += value;
-        if(totalScore < 0) totalScore = 0;
-        if(totalScore > slider.maxValue) totalScore = (int) slider.maxValue;
+        NetworkingScore.SendScoreEvent(value);
+    }
 
-        slider.value = totalScore;
-
-        if(totalScore >= slider.maxValue) {
+    public void UpdateScore(int score) {
+        Debug.Log("Score is: " + score);
+        scoreUi.text = $"Score: {score}";
+        slider.value = score;
+        
+        if(score >= slider.maxValue) {
             GameObject.Find("door_close").GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("door_open").GetComponent<SpriteRenderer>().enabled = true;
         }

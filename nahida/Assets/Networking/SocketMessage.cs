@@ -8,6 +8,7 @@ public class SocketOP {
 
     public const int SCENE_CHANGE_EVENT = 10;
     public const int INVOKE_EVENT = 11;
+    public const int SCORE_EVENT = 12;
 }
 
 public class SocketMessage {
@@ -22,4 +23,9 @@ public class SceneChangeData {
 
 public class InvokeData {
     public int networkObjectId;
+}
+
+public class ScoreData {
+    public string type;
+    public int score;
 }
