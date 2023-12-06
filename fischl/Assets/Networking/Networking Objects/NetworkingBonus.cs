@@ -1,17 +1,14 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public enum BonusType {
     BOMB
 }
 
-[System.Serializable]
-public class BombEvent : UnityEvent<BonusType> {}
-
 public class NetworkingBonus : MonoBehaviour
 {
-    [SerializeField] private BombEvent onBonus;
+    public static event Action<BonusType> BonusEvent;
 
     private static Dictionary<int, BonusType> intToBonusDic;
     private static Dictionary<BonusType, int> bonusToIntDic;
@@ -41,7 +38,7 @@ public class NetworkingBonus : MonoBehaviour
         BonusData d = socketMessage.d.ToObject<BonusData>();
 
         if(intToBonusDic.ContainsKey(d.bonus))
-            onBonus.Invoke(intToBonusDic[d.bonus]);
+            BonusEvent.Invoke(intToBonusDic[d.bonus]);
         else 
             Debug.LogWarning("Unknown bonus code " + d.bonus);
     }

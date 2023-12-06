@@ -5,7 +5,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private GameObject enemyPrefab;
 
-    private void Start() {
+    public void StartGame() {
         InvokeRepeating("SpawnEnemy", 1f, 3f);
     }
 
