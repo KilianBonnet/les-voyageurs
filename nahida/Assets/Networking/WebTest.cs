@@ -6,8 +6,7 @@ public class WebTest : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.S))
-            NetworkingScore.SendScoreEvent(1);
+    public void OnBonus(BonusType bonusType) {
+        Debug.Log("Receive bonus " + bonusType);
     }
 }

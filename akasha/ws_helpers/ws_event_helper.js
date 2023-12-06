@@ -1,3 +1,4 @@
+import { bonusEvent } from "./event_handler/bonus_event_handler.js";
 import { identificationEvent } from "./event_handler/intentification_event_handler.js";
 import { invokeEvent } from "./event_handler/invoke_event_handler.js";
 import { roomChangeEvent } from "./event_handler/room_event_handler.js";
@@ -38,6 +39,10 @@ export function onMessage(ws, data) {
             case 13:
                 roomChangeEvent(ws, socketMessage);
                 break;
+
+            case 14:
+                bonusEvent(ws, socketMessage);
+                break;      
 
             default:
                 sendError(ws, "Unknown op.")
