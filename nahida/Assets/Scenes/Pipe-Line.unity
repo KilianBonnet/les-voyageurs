@@ -565,6 +565,7 @@ MonoBehaviour:
   minDistance: 1.8
   damage: 2
   hp: 10
+  nbHit: 0
 --- !u!54 &440092639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -984,6 +985,7 @@ MonoBehaviour:
   minDistance: 1.8
   damage: 2
   hp: 10
+  nbHit: 0
 --- !u!54 &699406618
 Rigidbody:
   m_ObjectHideFlags: 0

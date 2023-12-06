@@ -19,6 +19,7 @@ public class EnemyScript : MonoBehaviour
     [SerializeField] int hp = 10;
     private bool dead = false;
     private bool blockMovement = false;
+    public int nbHit = 0;
 
     void Start()
     {
@@ -32,6 +33,11 @@ public class EnemyScript : MonoBehaviour
         {
             dead = true;
             OnDeath();
+        }
+
+        if(nbHit > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Strike_1"))
+        {
+            return;
         }
 
         Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position,detectionRange);
@@ -81,6 +87,7 @@ public class EnemyScript : MonoBehaviour
 
     void AttackPlayer()
     {
+        nbHit = 0;
         int randomValue = Random.Range(0, 2);
         animator.SetBool("attacking1", (randomValue == 0));
         animator.SetBool("attacking2", (randomValue == 1));
@@ -111,7 +118,17 @@ public class EnemyScript : MonoBehaviour
 
     public int GetDamage()
     {
-        return damage;
+        if(nbHit == 0)
+        {
+            nbHit++;
+            return damage;
+        }
+        return 0;
+    }
+
+    public void OnAttackAnimationComplete()
+    {
+        nbHit = 0;
     }
 
     //If skeleton get hit by the player's sword then it takes damages
