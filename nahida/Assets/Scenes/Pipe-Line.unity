@@ -174,9 +174,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3454091965327899044, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 3454091965327899048, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
       propertyPath: m_Name
       value: OVRPlayerController
+      objectReference: {fileID: 0}
+    - target: {fileID: 3454091965327899048, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
@@ -552,11 +560,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1247082351}
-  speed: 5
+  speed: 1
   detectionRange: 20
-  minDistance: 1
+  minDistance: 1.8
   damage: 2
   hp: 10
+  nbHit: 0
 --- !u!54 &440092639
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -571,7 +580,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &440092640 stripped
 GameObject:
@@ -973,9 +982,10 @@ MonoBehaviour:
   player: {fileID: 1247082351}
   speed: 5
   detectionRange: 5
-  minDistance: 1.735
+  minDistance: 1.8
   damage: 2
   hp: 10
+  nbHit: 0
 --- !u!54 &699406618
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1960,6 +1970,38 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 110316f0afd06df48ac55aee949522bc, type: 3}
   m_PrefabInstance: {fileID: 2015667902}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2040075674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3454091965327899048, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
+  m_PrefabInstance: {fileID: 57349934}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2040075679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040075674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8165f9ad95871e543afd932c629bc82c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 10
+--- !u!136 &2040075680
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040075674}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 1.7483402
+  m_Direction: 1
+  m_Center: {x: 0, y: -0.37417012, z: 0}
 --- !u!1001 &2081850739
 PrefabInstance:
   m_ObjectHideFlags: 0

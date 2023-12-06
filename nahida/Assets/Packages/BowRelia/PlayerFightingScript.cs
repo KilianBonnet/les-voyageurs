@@ -22,6 +22,7 @@ public class PlayerFightingScript : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             hp -= other.GetComponent<EnemyAttackScript>().GetThisEnemyDamages();
+//            Debug.Log(hp);
         }
     }
 
