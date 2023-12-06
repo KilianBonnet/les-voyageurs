@@ -271,6 +271,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &122982541 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8949973781161922648, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+  m_PrefabInstance: {fileID: 8949973782274870917}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &122982542
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122982541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 14f2741284d54b141beb5852e9385b8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &217116970
 GameObject:
   m_ObjectHideFlags: 0
@@ -3699,6 +3723,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bombContainer: {fileID: 660362428}
+  wheelAnimator: {fileID: 122982542}
 --- !u!82 &1635983938
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4753,6 +4778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Selection Wheel
       objectReference: {fileID: 0}
+    - target: {fileID: 8949973781161922648, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8949973781161922650, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -4808,6 +4837,10 @@ PrefabInstance:
     - target: {fileID: 8949973781161922650, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8949973781161922651, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8949973781161922660, guid: 07ca5257380fcbe46828639396e6f73a, type: 3}
       propertyPath: m_Radius

@@ -3,6 +3,8 @@ using UnityEngine;
 public class BonusEventHandler : MonoBehaviour
 {
     [SerializeField] private ElementContainer bombContainer;
+    [SerializeField] private Animator wheelAnimator;
+
     private AudioSource bonusAudio;
 
     private void Start() {
@@ -11,6 +13,7 @@ public class BonusEventHandler : MonoBehaviour
 
     public void OnBonus(BonusType bonus) {
         bonusAudio.Play();
+        wheelAnimator.SetTrigger("Notification");
 
         switch(bonus) {
             case BonusType.BOMB:
