@@ -320,7 +320,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc4bba1aec15b6744b3c255a42a9a13e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bonus: {fileID: 1606527580673145512}
 --- !u!1001 &2589974069033888623
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -397,9 +396,11 @@ Animation:
   m_GameObject: {fileID: 2589974069034023213}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 3b1c1d7deca226645bebf0ad4c0a9208, type: 2}
+  m_Animation: {fileID: 0}
   m_Animations:
   - {fileID: 7400000, guid: 4cc1e5e7faff61e41b9643d445a2ebd7, type: 2}
+  - {fileID: 7400000, guid: 3b1c1d7deca226645bebf0ad4c0a9208, type: 2}
+  - {fileID: 7400000, guid: edb1125f17380434fb09191085e7e736, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
