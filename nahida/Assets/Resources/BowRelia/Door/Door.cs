@@ -15,6 +15,7 @@ public class Door : MonoBehaviour
 
     public void CloseDoor()
     {
+        Debug.Log("Closing " + name);
         animator.SetBool("opening", false);
     }
 

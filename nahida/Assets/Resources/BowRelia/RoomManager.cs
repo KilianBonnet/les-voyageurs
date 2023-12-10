@@ -16,6 +16,8 @@ public class RoomManager : MonoBehaviour
     private void HandleEntryEvent(int roomId)
     {
         hasPlayer = this.roomId == roomId;
+        if(!hasPlayer) return;
+        
         NetworkingRoom.SendRoomEvent(roomId);
         if(!isRoomClear) CloseDoors();
         OnPlayerEnterRoom();

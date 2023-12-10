@@ -798,7 +798,7 @@ GameObject:
   - component: {fileID: 445102132}
   - component: {fileID: 445102131}
   m_Layer: 0
-  m_Name: WebSocketClient
+  m_Name: WebSocket Client
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4643,7 +4643,6 @@ MonoBehaviour:
   bonusHandlerList:
   - bonusName: bomb
     bonusContainer: {fileID: 660362428}
-    notificationImageIndex: 0
   wheelAnimator: {fileID: 122982542}
 --- !u!82 &1635983938
 AudioSource:

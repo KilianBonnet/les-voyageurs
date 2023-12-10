@@ -13,41 +13,26 @@ export function onConnection(ws) {
     ws.send(JSON.stringify({ "op": 1 }))
 }
 
+const eventMapper = [
+    { op: 2, handler: identificationEvent },
+    { op: 10, handler: sceneChangeEvent },
+    { op: 11, handler: invokeEvent },
+    { op: 12, handler: scoreEvent },
+    { op: 13, handler: roomChangeEvent },
+    { op: 14, handler: bonusEvent },
+]
 export function onMessage(ws, data) {
 
     try {
         const dataString = data.toString('utf-8'); // Convert buffer in string
         const socketMessage = JSON.parse(dataString); // Parsing JSON
 
-        switch (socketMessage.op) {
-            case 2:
-                identificationEvent(ws, socketMessage);
-                break;
-            
-            case 10:
-                sceneChangeEvent(ws, socketMessage);
-                break;
-            
-            case 11:
-                invokeEvent(ws, socketMessage);
-                break;
-            
-            case 12:
-                scoreEvent(ws, socketMessage);
-                break;
-            
-            case 13:
-                roomChangeEvent(ws, socketMessage);
-                break;
-
-            case 14:
-                bonusEvent(ws, socketMessage);
-                break;      
-
-            default:
-                sendError(ws, "Unknown op.")
-                break;
+        const event = eventMapper.find(event => event.op === socketMessage.op);
+        if(event === undefined) {
+            sendError(ws, "Unknown op.");
+            return;
         }
+        event.handler(ws, socketMessage);
 
     } catch (e) {
         sendError(ws, e.toString());

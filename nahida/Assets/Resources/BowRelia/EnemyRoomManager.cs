@@ -22,6 +22,9 @@ public class EnemyRoomManager : RoomManager
     }
 
     private void OnEnemyKilled() {
+        if(isRoomClear || !hasPlayer)
+            return;
+
         enemyCounter--;
         if(enemyCounter <= 0) OpenDoors();
     }

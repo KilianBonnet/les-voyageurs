@@ -15315,8 +15315,6 @@ MonoBehaviour:
   - {fileID: 1155944891}
   enemies:
   - {fileID: 1756169615}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1001 &1767119742
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17812,7 +17810,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   doors:
   - {fileID: 1331207989}
-  - {fileID: 0}
   enemies:
   - {fileID: 1862799522}
   - {fileID: 51929948}
