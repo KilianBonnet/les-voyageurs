@@ -1067,7 +1067,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8172442304542317006, guid: 6e4019dcbde26c8408f888128d0a9a67, type: 3}
       propertyPath: m_Name
-      value: LowPolySkeleton
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e4019dcbde26c8408f888128d0a9a67, type: 3}
@@ -1567,17 +1567,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1414190707 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4957640965744338320, guid: f5e678cdd2f880d41904090ea34b8892, type: 3}
-  m_PrefabInstance: {fileID: 4957640967023195107}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: daa3559d22a2bc242b97c78b4eb1e8ef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1419483767 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4957640965755824532, guid: f5e678cdd2f880d41904090ea34b8892, type: 3}
@@ -1635,8 +1624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b78802bbffe389429118b71f8b438b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entryRoomDetector: {fileID: 539280133}
-  exitdoor: {fileID: 1414190707}
+  doors: []
   enemies:
   - {fileID: 440092638}
 --- !u!1001 &1533250533

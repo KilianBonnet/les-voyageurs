@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyAttackScript : MonoBehaviour
 {
 
-    [SerializeField] EnemyScript thisEnemyDetails;
+    [SerializeField] Enemy thisEnemyDetails;
 
     public int GetThisEnemyDamages()
     {

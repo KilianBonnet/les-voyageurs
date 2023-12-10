@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnnemyBodyScript : MonoBehaviour
 {
-    [SerializeField] EnemyScript parent;
+    [SerializeField] Enemy parent;
 
     private void OnTriggerEnter(Collider other)
     {

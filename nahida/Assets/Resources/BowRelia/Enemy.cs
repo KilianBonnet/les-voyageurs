@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class EnemyScript : MonoBehaviour
+public class Enemy : MonoBehaviour
 {
-
+    public static event Action EnemyKilledEvent;
+    
     [SerializeField] Transform player;
 
     //speed 5 for walking ennemy and 7 for running ones
@@ -101,6 +103,8 @@ public class EnemyScript : MonoBehaviour
 
     void OnDeath()
     {
+        EnemyKilledEvent.Invoke();
+
         addScore();
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
