@@ -18,6 +18,7 @@ public class ScoreManager : MonoBehaviour
         if(score >= slider.maxValue) {
             GameObject.Find("door_close").GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("door_open").GetComponent<SpriteRenderer>().enabled = true;
+            NetworkingInvoke.SendInvokeEvent(2);
         }
     }
 }
