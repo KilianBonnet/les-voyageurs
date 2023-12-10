@@ -16,6 +16,8 @@ public class RoomManager : MonoBehaviour
 
         EntryRoomTrigger.PlayerRoomEnterEvent += HandleEntryEvent;
         Enemy.EnemyKilledEvent += OnEnemyKilled;
+
+        foreach (Enemy enemy in enemies) enemy.gameObject.SetActive(false);
     }
 
 

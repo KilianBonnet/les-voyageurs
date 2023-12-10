@@ -9,7 +9,7 @@ public class Door : MonoBehaviour
 
     public void CloseDoor()
     {
-        gameObject.GetComponent<Animator>().SetBool("opening", true);
+        gameObject.GetComponent<Animator>().SetBool("opening", false);
     }
 
 }
