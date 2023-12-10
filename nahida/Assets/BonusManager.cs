@@ -31,6 +31,7 @@ public class BonusManager : MonoBehaviour
             {
                 Destroy(bomb);
                 roomManager.OpenDoors();
+                NetworkingBonus.SendBonusEvent(BonusType.BOMB);
             }
         }
     }

@@ -19,6 +19,7 @@ public class SwordInteractions : MonoBehaviour
         if(!hasBeenGrabbedOnce && Vector3.Distance(initialPosition, transform.position) > .1) {
             hasBeenGrabbedOnce = true;
             firstDoor.OpenDoor();
+            NetworkingInvoke.SendInvokeEvent(1);
         }
     }
 
