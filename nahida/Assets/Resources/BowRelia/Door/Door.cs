@@ -2,14 +2,20 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    private Animator animator;
+
+    private void Start() {
+        animator = GetComponentInChildren<Animator>();
+    }
+
     public void OpenDoor()
     {
-        gameObject.GetComponent<Animator>().SetBool("opening", true);
+        animator.SetBool("opening", true);
     }
 
     public void CloseDoor()
     {
-        gameObject.GetComponent<Animator>().SetBool("opening", false);
+        animator.SetBool("opening", false);
     }
 
 }

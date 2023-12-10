@@ -6,8 +6,7 @@ using Random = UnityEngine.Random;
 public class Enemy : MonoBehaviour
 {
     public static event Action EnemyKilledEvent;
-    
-    [SerializeField] Transform player;
+    private Transform player;
 
     //speed 5 for walking ennemy and 7 for running ones
     [SerializeField] float speed = 5f;
@@ -25,6 +24,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player").transform;
         rb = gameObject.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
     }
@@ -95,10 +95,9 @@ public class Enemy : MonoBehaviour
         animator.SetBool("attacking2", (randomValue == 1));
     }
 
-    //Pour modifier le score
     void addScore()
     {
-      //NetworkingScore.SendScoreEvent(200);
+        NetworkingScore.SendScoreEvent(200);
     }
 
     void OnDeath()
