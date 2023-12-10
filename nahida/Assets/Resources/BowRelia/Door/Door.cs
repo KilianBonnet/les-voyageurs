@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorManager : MonoBehaviour
+public class Door : MonoBehaviour
 {
     public void OpenDoor()
     {

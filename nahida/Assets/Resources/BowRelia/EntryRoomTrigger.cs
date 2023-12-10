@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class EntryRoomTrigger : MonoBehaviour
 {
-    public static event Action PlayerEnter;
+    public static event Action<int> PlayerRoomEnterEvent;
+    private int roomId;
 
     private void Start() {
-        PlayerEnter += ok;
+        roomId = int.Parse(name.Split(" ")[1]);
     }
 
 
@@ -14,14 +15,8 @@ public class EntryRoomTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PlayerEnter.Invoke();
-
-            int roomId = int.Parse(name.Split(" ")[1]);
+            PlayerRoomEnterEvent.Invoke(roomId);
             NetworkingRoom.SendRoomEvent(roomId);
         }
-    }
-
-    public void ok(){
-
     }
 }
