@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BonusManager : MonoBehaviour
 {
+    [SerializeField] RoomManager roomManager;
     private GameObject bomb;
 
     public void Start()
@@ -29,6 +30,7 @@ public class BonusManager : MonoBehaviour
             if (bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeOut") && bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 Destroy(bomb);
+                roomManager.OpenDoors();
             }
         }
     }

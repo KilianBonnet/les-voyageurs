@@ -3,45 +3,32 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    [SerializeField] private List<Door> doors; //Modifier pour le script de la porte quand il sera fait
-    [SerializeField] private List<Enemy> enemies;
-    private int roomId;
-    private bool hasPlayer;
-    private bool isRoomClear;
-    private int enemyCounter;
-
-    private void Start() {
+    [SerializeField] private List<Door> doors;
+    [HideInInspector] public bool hasPlayer {get; private set; }
+    [HideInInspector] public bool isRoomClear {get; protected set; }
+    [HideInInspector] public int roomId {get; private set; }
+    
+    protected void Start() {
         roomId = int.Parse(name.Split(" ")[1]);
-        enemyCounter = enemies.Count;
-
         EntryRoomTrigger.PlayerRoomEnterEvent += HandleEntryEvent;
-        Enemy.EnemyKilledEvent += OnEnemyKilled;
-
-        foreach (Enemy enemy in enemies) enemy.gameObject.SetActive(false);
     }
 
-
-    void HandleEntryEvent(int roomId)
+    private void HandleEntryEvent(int roomId)
     {
         hasPlayer = this.roomId == roomId;
+        NetworkingRoom.SendRoomEvent(roomId);
+        if(!isRoomClear) CloseDoors();
+        OnPlayerEnterRoom();
+    }
 
-        if(!hasPlayer || isRoomClear)
-            return;
+    protected virtual void OnPlayerEnterRoom() { }
 
-        foreach (Enemy enemy in enemies) enemy.gameObject.SetActive(true);
+    public void CloseDoors() {
         foreach (Door door in doors) door.CloseDoor();
     }
 
-    private void OnEnemyKilled()
-    {
-        if(!hasPlayer)
-            return;
-
-        enemyCounter--;
-        if(enemyCounter <= 0) OnRoomClear();
-    }
-
-    private void OnRoomClear() {
+    public void OpenDoors() {
+        isRoomClear = true;
         foreach (Door door in doors) door.OpenDoor();
     }
 }
