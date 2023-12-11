@@ -875,7 +875,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -40, y: -40}
+  m_SizeDelta: {x: -30, y: -30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403048941
 MonoBehaviour:
@@ -898,7 +898,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: -2413806693520163455, guid: b9f3fa1e2ab307b41a95d35d66136cde, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -1127,7 +1127,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 1
+  m_FillAmount: 0.2697
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1910,7 +1910,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &834206753
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4043,7 +4043,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1312714911
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5544,7 +5544,7 @@ GameObject:
   - component: {fileID: 1761390039}
   - component: {fileID: 1761390040}
   m_Layer: 5
-  m_Name: CircularProgress
+  m_Name: Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5559,7 +5559,7 @@ RectTransform:
   m_GameObject: {fileID: 1761390038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 1210954400}
   - {fileID: 2102857724}
@@ -5619,7 +5619,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10000
   m_WholeNumbers: 0
-  m_Value: 10000
+  m_Value: 2697
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
