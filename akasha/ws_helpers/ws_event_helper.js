@@ -4,6 +4,7 @@ import { invokeEvent } from "./event_handler/invoke_event_handler.js";
 import { roomChangeEvent } from "./event_handler/room_event_handler.js";
 import { sceneChangeEvent } from "./event_handler/scene_change_event_handler.js";
 import { scoreEvent } from "./event_handler/score_event_handler.js";
+import { transformEventHandler } from "./event_handler/transform_event_handler.js";
 import { addClient, clients, removeClient } from "./state.js";
 
 export function onConnection(ws) {
@@ -20,6 +21,7 @@ const eventMapper = [
     { op: 12, handler: scoreEvent },
     { op: 13, handler: roomChangeEvent },
     { op: 14, handler: bonusEvent },
+    { op: 15, handler: transformEventHandler }
 ]
 export function onMessage(ws, data) {
 
