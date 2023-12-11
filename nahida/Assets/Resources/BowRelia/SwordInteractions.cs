@@ -13,6 +13,7 @@ public class SwordInteractions : MonoBehaviour
     private FixedJoint joint;
     private bool isAttached = false;
 
+
     private void Start() {
         initialPosition = transform.position;
     }
