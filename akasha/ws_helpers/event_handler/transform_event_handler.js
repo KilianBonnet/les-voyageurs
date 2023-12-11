@@ -39,8 +39,8 @@ function checkParameters(ws, paramName, param){
     }
 
     return checkCoordinate(ws, `${paramName}.x`, param.x) &&
-        checkCoordinate(ws, `${paramName}.y`, param.z) &&
-        checkCoordinate(ws, `${paramName}.z`, param.y);
+        checkCoordinate(ws, `${paramName}.y`, param.y) &&
+        checkCoordinate(ws, `${paramName}.z`, param.z);
 }
 
 function checkCoordinate(ws, coordinateName, param) {
