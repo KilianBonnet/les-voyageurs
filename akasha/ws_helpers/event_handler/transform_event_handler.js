@@ -12,10 +12,19 @@ export function transformEventHandler(ws, socketMessage) {
     const position = socketMessage.d.position;
     const rotation = socketMessage.d.rotation;
 
-    if(!checkParameters(ws, "position", position) || !checkParameters(ws, "position", position))
+    if(!checkParameters(ws, "position", position) || !checkParameters(ws, "rotation", rotation))
         return;
 
+    const msg = {
+        "op": 15,
+        "d": {
+            position,
+            rotation
+        }
+    }
 
+    const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
+    clients.find(c => c.device === sendToDevice).ws.send(JSON.stringify(msg))
 }
 
 function checkParameters(ws, paramName, param){
@@ -40,5 +49,5 @@ function checkCoordinate(ws, coordinateName, param) {
         return false;
     }
 
-    
+    return typeof(param) === 'number';
 }
