@@ -32,27 +32,6 @@ public class SwordInteractions : MonoBehaviour
   
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.name.Equals("Scabbard"))
-        {
-            // Créer le joint fixe
-            joint = gameObject.AddComponent<FixedJoint>();
-            joint.connectedBody = other.GetComponent<Rigidbody>();
-            isAttached = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Scabbard") && isAttached)
-        {
-            // Détruire le joint fixe
-            Destroy(joint);
-            isAttached = false;
-        }
-    }
-
     public int GetAttackDamage()
     {
         return attackDamage;
