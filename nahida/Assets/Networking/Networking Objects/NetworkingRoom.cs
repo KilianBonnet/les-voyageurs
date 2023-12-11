@@ -18,9 +18,9 @@ public class NetworkingRoom : MonoBehaviour
     }
 
     static public void SendRoomEvent(int room) {
-        WebSocketClient.Instance.SendMessage(
+        /*WebSocketClient.Instance.SendMessage(
             SocketOP.ROOM_EVENT, 
-            new { room });
+            new { room });*/
     }
 
 }

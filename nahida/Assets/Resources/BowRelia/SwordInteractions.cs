@@ -10,6 +10,8 @@ public class SwordInteractions : MonoBehaviour
     [SerializeField] Door firstDoor;
     [SerializeField] int attackDamage = 5;
 
+    private FixedJoint joint;
+    private bool isAttached = false;
 
     private void Start() {
         initialPosition = transform.position;
@@ -21,11 +23,40 @@ public class SwordInteractions : MonoBehaviour
             firstDoor.OpenDoor();
             NetworkingInvoke.SendInvokeEvent(1);
         }
+
+        if(!(Vector3.Distance(initialPosition, transform.position) > .1) && hasBeenGrabbedOnce)
+        {
+
+        }
+  
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name.Equals("Scabbard"))
+        {
+            // Créer le joint fixe
+            joint = gameObject.AddComponent<FixedJoint>();
+            joint.connectedBody = other.GetComponent<Rigidbody>();
+            isAttached = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Scabbard") && isAttached)
+        {
+            // Détruire le joint fixe
+            Destroy(joint);
+            isAttached = false;
+        }
     }
 
     public int GetAttackDamage()
     {
         return attackDamage;
     }
+    
+    
 }
 
