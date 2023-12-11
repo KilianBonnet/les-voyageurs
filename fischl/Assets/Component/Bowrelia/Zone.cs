@@ -15,7 +15,7 @@ public class Zone : MonoBehaviour
     private int score;
     
     private void Start() {
-        scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
+        scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
     }
 
     public void IncreaseScore(int value) {

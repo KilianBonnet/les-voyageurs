@@ -9,7 +9,7 @@ public class Slime : MonoBehaviour
     [SerializeField] private int score = 125;
 
     private void Start() {
-        scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
+        scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
         objectiveAnchor = GameObject.Find("VRMap").transform;
         transform.Rotate(0, 0, Random.Range(0, 4) * 90);
         speed *= .01f;
