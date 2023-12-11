@@ -8,6 +8,7 @@ public class VrMap : MonoBehaviour
 
     private void Start() {
         touched = GameObject.Find("Touched");
+        touched.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
@@ -15,19 +16,19 @@ public class VrMap : MonoBehaviour
         if(other.transform.CompareTag("Enemy")) {
             Destroy(other.gameObject);
             scoreManager.IncreaseScore(-200);
-            ShowAndHideObject(touched, 3.0f);
+            StartCoroutine(ShowAndHideObject(touched, 3f));
         }
     }
 
     private IEnumerator ShowAndHideObject(GameObject obj, float duration)
     {
         float timePassed = 0f;
-        while (timePassed < duration)
+        while (timePassed <= duration)
         {
             obj.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.125f);
             obj.SetActive(false);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.125f);
             timePassed += 1.0f;
         }
         obj.SetActive(false);
