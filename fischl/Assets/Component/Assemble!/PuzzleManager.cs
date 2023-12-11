@@ -10,11 +10,13 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private GameObject selectedObject;
     private Vector3 originalPosition;
     private GameObject droppingArea;
-    private GameObject[] answersSpot;
+    private GameObject[] answersSpots;
+    private string[] answerSpotStrings;
 
     public void Start()
     {
-        answersSpot = GameObject.FindGameObjectsWithTag("Placeholder");
+        answersSpots = GameObject.FindGameObjectsWithTag("Placeholder");
+        answerSpotStrings = answersSpots[0].GetComponentInChildren<TMPro.TextMeshProUGUI>().text.Split(' ');
         droppingArea = correctSpot.transform.parent.gameObject;
     }
 
@@ -99,14 +101,19 @@ public class PuzzleManager : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         {
             //replace it correctly in the middle of correctspot
             selectedObject.transform.position = correctSpotMiddleScreen;
-            //remove the drag events management from the selectedObject
             selectedObject.GetComponent<PuzzleManager>().enabled = false;
             int answerSpotIndex = int.Parse(correctSpot.name);
-            foreach (GameObject answerSpot in answersSpot)
+            foreach (GameObject answerSpot in answersSpots)
             {
-                string[] allSpots = answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text.Split('_');
+                //replace the corresponding [answer] with the selectedObject's text
+                string[] allSpots = answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text.Split(']');
+                Debug.Log(allSpots[answerSpotIndex]);
+
+
+
+                /*string[] allSpots = answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text.Split(']');
                 allSpots[answerSpotIndex] = selectedObject.GetComponentInChildren<TMPro.TextMeshProUGUI>().text;
-                answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = string.Join("_", allSpots);
+                answerSpot.GetComponentInChildren<TMPro.TextMeshProUGUI>().text = string.Join("] [", allSpots);*/
             }
         }
     }

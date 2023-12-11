@@ -5,19 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Env_Selection.unity
     guid: 02cd277a5e147794297d45f019ad48af
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Assemble!.unity
     guid: 9dc409b85ad666343b17da4ac349cb73
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ColorMix/ColorMix.unity
     guid: 952c21311ba09c64faa74b2fa96b654d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/PodRythme.unity
     guid: 903e8b109bd1505479e2a07e63adb20d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pipe-Line.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
