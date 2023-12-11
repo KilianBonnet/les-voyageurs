@@ -12,13 +12,13 @@ public class ScoreManager : MonoBehaviour
     }
 
     public void UpdateScore(int score) {
-        Debug.Log("Score is: " + score);
         scoreUi.text = $"Score: {score}";
         slider.value = score;
         
         if(score >= slider.maxValue) {
             GameObject.Find("door_close").GetComponent<SpriteRenderer>().enabled = false;
             GameObject.Find("door_open").GetComponent<SpriteRenderer>().enabled = true;
+            NetworkingInvoke.SendInvokeEvent(2);
         }
     }
 }

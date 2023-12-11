@@ -9,6 +9,8 @@ public class SocketOP {
     public const int SCENE_CHANGE_EVENT = 10;
     public const int INVOKE_EVENT = 11;
     public const int SCORE_EVENT = 12;
+    public const int ROOM_EVENT = 13;
+    public const int BONUS_EVENT = 14;
 }
 
 public class SocketMessage {
@@ -28,4 +30,12 @@ public class InvokeData {
 public class ScoreData {
     public string type;
     public int score;
+}
+
+public class RoomData {
+    public int room;
+}
+
+public class BonusData {
+    public int bonus;
 }

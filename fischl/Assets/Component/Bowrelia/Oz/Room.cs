@@ -1,82 +1,33 @@
 using UnityEngine;
 
-enum RoomEvent {
-    NONE,
-    BOSS,
-    SWORD,
-    HEART,
-    DOOR
-}
-
 public class Room : MonoBehaviour
 {
-    private GameObject vrPlayer;
-    private ScoreManager scoreManager;
-
-    [Space]
-    [SerializeField] private GameObject eventIcon;
-    [SerializeField] private RoomEvent eventType;
-
-    [Space]
-    [SerializeField] private Room topRoom;
-    [SerializeField] private Room bottomRoom;
-    [SerializeField] private Room leftRoom;
-    [SerializeField] private Room rightRoom;
-
-    [SerializeField] private bool isStartingPoint = false;
-    private bool canListen = false;
+    private int roomId;
+    private Transform vrPlayer;
+    private bool hasPlayer;
 
     private void Start() {
-        if(isStartingPoint) canListen = true;
-        scoreManager = GameObject.Find("Progress Bar").GetComponent<ScoreManager>();
-        vrPlayer = GameObject.Find("VrPlayer");
+        vrPlayer = GameObject.Find("VrPlayer").transform;
+        roomId = int.Parse(name.Split(' ')[1]);
+        hasPlayer = roomId == 0;
+
+        NetworkingRoom.RoomChangeEvent += OnPlayerChangeRoom;
+        NetworkingBonus.BonusEvent += OnBonusEvent;
     }
+    
+    private void OnPlayerChangeRoom(int roomId) {
+        hasPlayer = this.roomId == roomId;
 
-    public void SetRoomActive(GameObject vrPlayer) {
-        Invoke("StartListening", .1f);
-        this.vrPlayer = vrPlayer;
-        vrPlayer.transform.position = transform.position;
-
-        if(eventType == RoomEvent.NONE) {
-            scoreManager.IncreaseScore(100);
+        if(!hasPlayer)
             return;
-        }
-       
-        if(eventType == RoomEvent.BOSS) scoreManager.IncreaseScore(500);
-        if(eventType == RoomEvent.SWORD) GameObject.Find("Bomb Element").GetComponent<ElementContainer>().IncreaseCount(1);
-        eventType  = RoomEvent.NONE;
-        eventIcon.SetActive(false);
+            
+        vrPlayer.position = transform.position;
     }
 
-    public void StartListening() {
-        canListen = true;
-    }
+    public void OnBonusEvent(BonusType bonusType) {
+        if(!hasPlayer) return;
 
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(!canListen) return;
-        
-        if(Input.GetKeyDown(KeyCode.Z) && topRoom != null) {
-            topRoom.SetRoomActive(vrPlayer);
-            canListen = false;
-        }
-
-        if(Input.GetKeyDown(KeyCode.S) && bottomRoom != null) {
-            bottomRoom.SetRoomActive(vrPlayer);
-            canListen = false;
-        }
-
-        if(Input.GetKeyDown(KeyCode.Q) && leftRoom != null) {
-            leftRoom.SetRoomActive(vrPlayer);
-            canListen = false;
-        }
-
-        if(Input.GetKeyDown(KeyCode.D) && rightRoom != null) {
-            Debug.Log(gameObject.name + " is listening");
-            rightRoom.SetRoomActive(vrPlayer);
-            canListen = false;
-        }
+        foreach(Transform child in transform)
+            Destroy(child.gameObject);
     }
 }

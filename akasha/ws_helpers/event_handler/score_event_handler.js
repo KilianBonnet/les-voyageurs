@@ -35,6 +35,5 @@ export function scoreEvent(ws, socketMessage) {
         }
     }
 
-    console.log(`Score is now ${score}`);
     clients.forEach(c => c.ws.send(JSON.stringify(msg)));
 }
