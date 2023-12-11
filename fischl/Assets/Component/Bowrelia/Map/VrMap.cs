@@ -4,8 +4,11 @@ using UnityEngine;
 public class VrMap : MonoBehaviour
 {
     [SerializeField] private ScoreManager scoreManager;
-    private GameObject touched = GameObject.Find("Touched");
+    private GameObject touched;
 
+    private void Start() {
+        touched = GameObject.Find("Touched");
+    }
 
     private void OnTriggerEnter2D(Collider2D other) {
 
