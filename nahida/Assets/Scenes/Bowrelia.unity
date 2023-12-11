@@ -7143,7 +7143,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8679021915608349305, guid: f20e338a588ae27418305a62bf968356, type: 3}
       propertyPath: m_Name
-      value: JusticeSword
+      value: Scabbard
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f20e338a588ae27418305a62bf968356, type: 3}
