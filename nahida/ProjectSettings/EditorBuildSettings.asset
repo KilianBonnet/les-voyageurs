@@ -4,7 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Bowrelia.unity
+    guid: e70ad88b3d43787469bbe3f872d67ee1
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: e6d2d410300c0ce41afb53a90f008054, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a3cff436c34613647ba3979cd77f88e5, type: 2}
