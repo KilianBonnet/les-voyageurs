@@ -18491,6 +18491,22 @@ PrefabInstance:
       propertyPath: roomManager
       value: 
       objectReference: {fileID: 708168850}
+    - target: {fileID: 5974090480032534952, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974090480032534952, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8541867
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974090480032534952, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5199664
+      objectReference: {fileID: 0}
+    - target: {fileID: 5974090480032534952, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 62.66
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
 --- !u!4 &1948879424 stripped
