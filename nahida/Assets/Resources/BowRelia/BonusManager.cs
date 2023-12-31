@@ -3,17 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
+using TMPro;
 
 public class BonusManager : MonoBehaviour
 {
     [SerializeField] RoomManager roomManager;
     private GameObject bomb;
     private GameObject portal;
+    private Transform text;
 
     public void Start()
     {
         bomb = transform.parent.Find("Bomb").gameObject;
         portal = transform.parent.Find("Portal blue").gameObject;
+        text = transform.parent.Find("Canvas").Find("Text");
     }
 
     public void Update()
@@ -26,11 +29,21 @@ public class BonusManager : MonoBehaviour
                 bomb.GetComponent<HandGrabInteractable>().enabled = true;
                 portal.SetActive(true);
                 portal.GetComponent<Animator>().SetBool("isLidOpen", true);
+                text.gameObject.SetActive(true);
             }
 
             if (bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
             {
                 Destroy(bomb);
+            }
+        }
+        if(portal && bomb == null)
+        {
+            portal.gameObject.GetComponent<Animator>().SetBool("isSentToTable", true);
+            text.gameObject.SetActive(false);
+            if(portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            {
+                Destroy(portal);
                 roomManager.OpenDoors();
                 NetworkingBonus.SendBonusEvent(BonusType.BOMB);
             }
@@ -54,12 +67,6 @@ public class BonusManager : MonoBehaviour
         if(collision.gameObject.name == "Portal blue")
         {
             bomb.GetComponent<Animator>().SetBool("isSentToTable", true);
-            GameObject portal = collision.gameObject;
-            portal.gameObject.GetComponent<Animator>().SetBool("isSentToTable", true);
-            if(portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                Destroy(portal);
-            }
         }
     }
 }
