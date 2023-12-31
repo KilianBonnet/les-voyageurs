@@ -20,15 +20,12 @@ public class BonusManager : MonoBehaviour
     {
         if(bomb)
         {
-            if (bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("LiftUp") && bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-            {
-                bomb.GetComponent<Animator>().SetBool("isPositioned", true);
-            }
-
-            if (bomb.GetComponent<Animator>().GetBool("isPositioned"))
+            if (bomb.GetComponent<Animator>().GetBool("isLidOpen"))
             {
                 bomb.GetComponent<Grabbable>().enabled = true;
                 bomb.GetComponent<HandGrabInteractable>().enabled = true;
+                portal.SetActive(true);
+                portal.GetComponent<Animator>().SetBool("isLidOpen", true);
             }
 
             if (bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
@@ -57,7 +54,6 @@ public class BonusManager : MonoBehaviour
         if(collision.gameObject.name == "Portal blue")
         {
             bomb.GetComponent<Animator>().SetBool("isSentToTable", true);
-            //once this animation is done, add FadeIntoPortal animation to the portal
             GameObject portal = collision.gameObject;
             portal.gameObject.GetComponent<Animator>().SetBool("isSentToTable", true);
             if(portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
