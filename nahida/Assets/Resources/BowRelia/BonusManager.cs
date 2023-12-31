@@ -63,12 +63,5 @@ public class BonusManager : MonoBehaviour
         {
             bomb.GetComponent<Animator>().SetBool("isLidOpen", false);
         }
-        if (collision.gameObject.name == "Portal blue")
-        {
-            bomb.GetComponent<Animator>().SetBool("isSentToTable", true);
-            bomb.GetComponent<Animator>().SetBool("isLidOpen", false);
-            portal.GetComponent<Animator>().SetBool("isSentToTable", true);
-            portal.GetComponent<Animator>().SetBool("isLidOpen", false);
-        }
     }
 }
