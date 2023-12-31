@@ -21,7 +21,7 @@ public class BonusManager : MonoBehaviour
 
     public void Update()
     {
-        if (bomb)
+        if (bomb != null && bomb.activeSelf)
         {
             if (bomb.GetComponent<Animator>().GetBool("isLidOpen"))
             {
@@ -32,16 +32,16 @@ public class BonusManager : MonoBehaviour
                 text.gameObject.SetActive(true);
             }
 
-            if (bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && bomb.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            if (bomb.transform.localScale.x < 0.1f)
             {
-                Destroy(bomb);
+                Destroy(bomb.gameObject);
             }
         }
-        if (portal)
+        if (portal != null && portal.activeSelf)
         {
-            if (portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("FadeIntoPortal") && portal.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+            if (bomb == null)
             {
-                Destroy(portal);
+                Destroy(portal.gameObject);
                 Destroy(text.gameObject);
                 roomManager.OpenDoors();
                 NetworkingBonus.SendBonusEvent(BonusType.BOMB);
@@ -66,7 +66,9 @@ public class BonusManager : MonoBehaviour
         if (collision.gameObject.name == "Portal blue")
         {
             bomb.GetComponent<Animator>().SetBool("isSentToTable", true);
+            bomb.GetComponent<Animator>().SetBool("isLidOpen", false);
             portal.GetComponent<Animator>().SetBool("isSentToTable", true);
+            portal.GetComponent<Animator>().SetBool("isLidOpen", false);
         }
     }
 }
