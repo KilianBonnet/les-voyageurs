@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Oculus.Interaction;
+using Oculus.Interaction.HandGrab;
 
 public class Enemy : MonoBehaviour
 {
@@ -22,11 +24,19 @@ public class Enemy : MonoBehaviour
     private bool blockMovement = false;
     public int nbHit = 0;
 
+    //Loot part
+    private GameObject loot;
+    private GameObject portal;
+    private Transform text;
+
     void Start()
     {
         player = GameObject.FindWithTag("Player").transform;
         rb = gameObject.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
+        loot = transform.Find("Emerald").gameObject;
+        portal = transform.Find("Portal blue").gameObject;
+        text = transform.Find("Canvas").Find("Text");
     }
 
     void Update()
@@ -62,6 +72,31 @@ public class Enemy : MonoBehaviour
                 break;
             }
         }  
+
+        if(loot != null && loot.activeSelf)
+        {
+            if (loot.transform.localScale.x < 0.1f)
+            {
+                Destroy(loot.gameObject);
+            }
+        }        
+
+        if (portal != null && portal.activeSelf)
+        {
+            if (loot == null)
+            {
+                Destroy(portal.gameObject);
+                Destroy(text.gameObject);
+                addScore();
+                StartCoroutine(DestroyAfterAnimation());
+            }
+        }
+    }
+
+    IEnumerator DestroyAfterAnimation()
+    {
+        yield return new WaitForSeconds(animator.GetCurrentAnimatorStateInfo(0).length);
+        Destroy(gameObject);
     }
 
     void LookAt()
@@ -102,21 +137,24 @@ public class Enemy : MonoBehaviour
 
     void OnDeath()
     {
-        EnemyKilledEvent.Invoke();
-
-        addScore();
+        EnemyKilledEvent.Invoke();        
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
             animator.Play("Dead_1");
         else
             animator.Play("Dead_2");
-        StartCoroutine(DestroyAfterAnimation());
+        LootHandler();
     }
 
-    IEnumerator DestroyAfterAnimation()
+    void LootHandler()
     {
-        yield return new WaitForSeconds(animator.GetCurrentAnimatorClipInfo(0).Length);
-        Destroy(gameObject);
+        loot.SetActive(true);
+        loot.GetComponent<Animator>().SetBool("isEnemyDead", true);
+        loot.GetComponent<Grabbable>().enabled = true;
+        loot.GetComponent<HandGrabInteractable>().enabled = true;
+        portal.SetActive(true);
+        portal.GetComponent<Animator>().SetBool("isEnemyDead", true);
+        text.gameObject.SetActive(true);
     }
 
     public int GetDamage()

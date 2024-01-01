@@ -16,9 +16,19 @@ public class BonusCollision : MonoBehaviour
         if (collision.gameObject.name == "Portal blue")
         {
             GetComponent<Animator>().SetBool("isSentToTable", true);
-            GetComponent<Animator>().SetBool("isLidOpen", false);
+            
             portal.GetComponent<Animator>().SetBool("isSentToTable", true);
-            portal.GetComponent<Animator>().SetBool("isLidOpen", false);
+            
+            if(gameObject.name == "Emerald")
+            {
+                GetComponent<Animator>().SetBool("isEnemyDead", false);
+                portal.GetComponent<Animator>().SetBool("isEnemyDead", false);
+            }
+            if(gameObject.name == "Bomb")
+            {
+                GetComponent<Animator>().SetBool("isLidOpen", false);
+                portal.GetComponent<Animator>().SetBool("isLidOpen", false);
+            }
         }
     }
 }
