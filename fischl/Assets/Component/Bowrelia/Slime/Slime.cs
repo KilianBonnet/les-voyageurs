@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
@@ -7,11 +8,12 @@ public class Slime : MonoBehaviour
 
     [SerializeField] private float speed = .5f;
     [SerializeField] private int score = 125;
+    public static event Action<Transform> OnDeath;
 
     private void Start() {
         scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
         objectiveAnchor = GameObject.Find("VRMap").transform;
-        transform.Rotate(0, 0, Random.Range(0, 4) * 90);
+        transform.Rotate(0, 0, UnityEngine.Random.Range(0, 4) * 90);
         speed *= .01f;
     }
 
@@ -38,6 +40,7 @@ public class Slime : MonoBehaviour
             }
         }
         else scoreManager.IncreaseScore(score);
+        OnDeath.Invoke(transform);
         
         Destroy(gameObject);
 
