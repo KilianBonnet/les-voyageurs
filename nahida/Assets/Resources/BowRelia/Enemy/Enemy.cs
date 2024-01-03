@@ -8,6 +8,8 @@ using Oculus.Interaction.HandGrab;
 public class Enemy : MonoBehaviour
 {
     public static event Action EnemyKilledEvent;
+    public static event Action<Transform> OnDeathEvent;
+
     private Transform player;
 
     //speed 5 for walking ennemy and 7 for running ones
@@ -144,6 +146,7 @@ public class Enemy : MonoBehaviour
         else
             animator.Play("Dead_2");
         LootHandler();
+        OnDeathEvent(transform);
     }
 
     void LootHandler()
