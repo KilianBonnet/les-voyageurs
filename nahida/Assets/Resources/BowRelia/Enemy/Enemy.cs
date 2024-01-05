@@ -43,6 +43,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
+
         if (hp <= 0 && !dead)
         {
             dead = true;
@@ -59,18 +64,7 @@ public class Enemy : MonoBehaviour
         {
             if (collider.CompareTag("Player"))
             {
-                float distance = Vector3.Distance(transform.position, player.position);
-                if (distance > minDistance)
-                    MoveToPlayer();
-                else
-                {
-                    blockMovement = true;
-                    rb.constraints = RigidbodyConstraints.FreezeAll;
-
-                    animator.SetBool("walking", false);
-
-                    AttackPlayer();
-                }
+                ManagerPlayerCollision();
                 break;
             }
         }
@@ -87,10 +81,7 @@ public class Enemy : MonoBehaviour
         {
             if (loot == null)
             {
-                Destroy(portal.gameObject);
-                Destroy(text.gameObject);
-                addScore();
-                StartCoroutine(DestroyAfterAnimation());
+                DestroyAll();
             }
         }
     }
@@ -145,15 +136,20 @@ public class Enemy : MonoBehaviour
             animator.Play("Dead_1");
         else
             animator.Play("Dead_2");
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         LootHandler();
     }
 
     void LootHandler()
     {
+        //manage loot
         loot.SetActive(true);
         loot.GetComponent<Animator>().SetBool("isEnemyDead", true);
         loot.GetComponent<Grabbable>().enabled = true;
         loot.GetComponent<HandGrabInteractable>().enabled = true;
+        //manage portal
         portal.SetActive(true);
         portal.GetComponent<Animator>().SetBool("isEnemyDead", true);
         text.gameObject.SetActive(true);
@@ -178,6 +174,30 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int playerDamage)
     {
         hp -= playerDamage;
+    }
+
+    private void DestroyAll()
+    {
+        Destroy(portal);
+        Destroy(text);
+        addScore();
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private void ManagerPlayerCollision()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > minDistance)
+            MoveToPlayer();
+        else
+        {
+            blockMovement = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+
+            animator.SetBool("walking", false);
+
+            AttackPlayer();
+        }
     }
 
 }
