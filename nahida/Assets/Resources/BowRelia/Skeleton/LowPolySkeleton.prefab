@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 2067577858221638469}
   - component: {fileID: 3679275569880744132}
   - component: {fileID: 3968441568344008034}
+  - component: {fileID: 699406620}
   m_Layer: 0
   m_Name: LowPolySkeleton
   m_TagString: Untagged
@@ -610,6 +611,19 @@ CapsuleCollider:
   m_Height: 1.25
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &699406620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968441568344008032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22afe82973edb194c9a5aef94453d13f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parent: {fileID: 699406617}
 --- !u!1 &3968441568344008033
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,9 +636,10 @@ GameObject:
   - component: {fileID: 4131633088609466836}
   - component: {fileID: 8501949065170539025}
   - component: {fileID: 3968441568344008035}
+  - component: {fileID: 980766109}
   m_Layer: 0
   m_Name: LowPolySkeleton_Sword
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -708,6 +723,19 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -7670444696428019547, guid: 5ef67247d1c334d41bd49c9719015c6e, type: 3}
+--- !u!114 &980766109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3968441568344008033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4a1130764e7a84f9f7d7b2111fef04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisEnemyDetails: {fileID: 699406617}
 --- !u!1 &3968441568344008036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1459,6 +1487,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6782667309670242428}
   - component: {fileID: 4972723599130171459}
+  - component: {fileID: 699406618}
+  - component: {fileID: 699406617}
   m_Layer: 0
   m_Name: LowPolySkeleton
   m_TagString: Untagged
@@ -1508,6 +1538,40 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!54 &699406618
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172442304542317006}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &699406617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8172442304542317006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: debbb242bba7f624dbcecf1c0b67e97f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  detectionRange: 5
+  minDistance: 1.8
+  damage: 2
+  hp: 10
+  nbHit: 0
 --- !u!1 &8569649574974592577
 GameObject:
   m_ObjectHideFlags: 0

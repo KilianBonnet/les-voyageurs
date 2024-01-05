@@ -14,6 +14,7 @@ using System.IO;
 using UnityEditor.Compilation;
 #endif
 
+
 public class LogCatWindow : EditorWindow
 {
     // How many log entries to store in memory. Keep it low for better performance.
