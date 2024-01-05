@@ -146,7 +146,6 @@ public class Enemy : MonoBehaviour
         else
             animator.Play("Dead_2");
         LootHandler();
-        OnDeathEvent.Invoke(transform);
     }
 
     void LootHandler()
