@@ -836,7 +836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 79.1, y: 320.1}
+  m_AnchoredPosition: {x: 30.11, y: 415.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &364877901 stripped
@@ -1162,7 +1162,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.2697
+  m_FillAmount: 0.1152
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1204,7 +1204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa61cbab3ef92c14093545605e0e4fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  address: ws://10.212.114.132:8080
+  address: ws://192.168.0.11:8080
   deviceType: Table
   retryInterval: 1
 --- !u!4 &445102132
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af122014119819a4d8de8ec96ff6576a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slider: {fileID: 1144500415}
+  slider: {fileID: 1761390040}
   scoreUi: {fileID: 834206754}
 --- !u!1 &633645516
 GameObject:
@@ -5699,7 +5699,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 10000
   m_WholeNumbers: 0
-  m_Value: 2697
+  m_Value: 1152
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
