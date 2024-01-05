@@ -11,7 +11,7 @@ public class Slime : MonoBehaviour
     public static event Action<Transform> OnDeath;
 
     private void Start() {
-        scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
+       // scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
         objectiveAnchor = GameObject.Find("VRMap").transform;
         transform.Rotate(0, 0, UnityEngine.Random.Range(0, 4) * 90);
         speed *= .01f;
@@ -24,6 +24,7 @@ public class Slime : MonoBehaviour
         Cursor cursor = other.gameObject.GetComponent<Cursor>();
         if(cursor == null || cursor.cursorType != CursorType.CURSOR) return;
 
+        OnDeath(transform);
         cursor.originalZone.IncreaseScore(score);
         Destroy(gameObject);
     }
@@ -40,7 +41,7 @@ public class Slime : MonoBehaviour
             }
         }
         else scoreManager.IncreaseScore(score);
-        OnDeath.Invoke(transform);
+        OnDeath(transform);
         
         Destroy(gameObject);
 
