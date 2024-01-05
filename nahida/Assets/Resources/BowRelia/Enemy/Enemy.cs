@@ -43,22 +43,22 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if(hp <= 0 && !dead)
+        if (hp <= 0 && !dead)
         {
             dead = true;
             OnDeath();
         }
 
-        if(nbHit > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Strike_1"))
+        if (nbHit > 0 && animator.GetCurrentAnimatorStateInfo(0).IsName("Strike_1"))
         {
             return;
         }
 
-        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position,detectionRange);
+        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, detectionRange);
         foreach (Collider collider in colliders)
         {
             if (collider.CompareTag("Player"))
-            {       
+            {
                 float distance = Vector3.Distance(transform.position, player.position);
                 if (distance > minDistance)
                     MoveToPlayer();
@@ -68,20 +68,20 @@ public class Enemy : MonoBehaviour
                     rb.constraints = RigidbodyConstraints.FreezeAll;
 
                     animator.SetBool("walking", false);
-                    
+
                     AttackPlayer();
                 }
                 break;
             }
-        }  
+        }
 
-        if(loot != null && loot.activeSelf)
+        if (loot != null && loot.activeSelf)
         {
             if (loot.transform.localScale.x < 0.1f)
             {
                 Destroy(loot.gameObject);
             }
-        }        
+        }
 
         if (portal != null && portal.activeSelf)
         {
@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
         Vector3 targetPosition = new Vector3(player.position.x, transform.position.y, player.position.z);
         transform.LookAt(targetPosition);
     }
-    
+
     void FreeBody()
     {
         rb.constraints = RigidbodyConstraints.None;
@@ -115,7 +115,7 @@ public class Enemy : MonoBehaviour
 
     void MoveToPlayer()
     {
-        if(blockMovement)
+        if (blockMovement)
             FreeBody();
         Vector3 pos = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
         rb.MovePosition(pos);
@@ -139,14 +139,14 @@ public class Enemy : MonoBehaviour
 
     void OnDeath()
     {
-        EnemyKilledEvent.Invoke();        
+        EnemyKilledEvent.Invoke();
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
             animator.Play("Dead_1");
         else
             animator.Play("Dead_2");
         LootHandler();
-        OnDeathEvent(transform);
+        OnDeathEvent.Invoke(transform);
     }
 
     void LootHandler()
@@ -162,7 +162,7 @@ public class Enemy : MonoBehaviour
 
     public int GetDamage()
     {
-        if(nbHit == 0)
+        if (nbHit == 0)
         {
             nbHit++;
             return damage;
@@ -180,5 +180,5 @@ public class Enemy : MonoBehaviour
     {
         hp -= playerDamage;
     }
-    
+
 }
