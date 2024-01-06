@@ -54,24 +54,27 @@ public class Enemy : MonoBehaviour
             return;
         }
 
-        Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, detectionRange);
-        foreach (Collider collider in colliders)
+        if (!dead)
         {
-            if (collider.CompareTag("Player"))
+            Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, detectionRange);
+            foreach (Collider collider in colliders)
             {
-                float distance = Vector3.Distance(transform.position, player.position);
-                if (distance > minDistance)
-                    MoveToPlayer();
-                else
+                if (collider.CompareTag("Player"))
                 {
-                    blockMovement = true;
-                    rb.constraints = RigidbodyConstraints.FreezeAll;
+                    float distance = Vector3.Distance(transform.position, player.position);
+                    if (distance > minDistance)
+                        MoveToPlayer();
+                    else
+                    {
+                        blockMovement = true;
+                        rb.constraints = RigidbodyConstraints.FreezeAll;
 
-                    animator.SetBool("walking", false);
+                        animator.SetBool("walking", false);
 
-                    AttackPlayer();
+                        AttackPlayer();
+                    }
+                    break;
                 }
-                break;
             }
         }
 

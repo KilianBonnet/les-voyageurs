@@ -12,7 +12,6 @@ public class MoveItemToPlayer : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(time);
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
         if (distanceToPlayer > distanceMax)
