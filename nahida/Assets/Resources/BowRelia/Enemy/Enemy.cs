@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour
     private GameObject loot;
     private GameObject portal;
     private Transform text;
+    private bool lootIsActive = false;
+    private bool portalIsActive = false;
 
     void Start()
     {
@@ -68,16 +70,13 @@ public class Enemy : MonoBehaviour
                 break;
             }
         }
-
-        if (loot != null && loot.activeSelf)
+        if (loot != null && loot.transform.localScale.x < 0.1f)
         {
-            if (loot.transform.localScale.x < 0.1f)
-            {
-                Destroy(loot.gameObject);
-            }
+            Destroy(loot.gameObject);
+            portal.GetComponent<Animator>().SetBool("isSentToTable", true);
         }
 
-        if (portal != null && portal.activeSelf)
+        if (portal != null && portal.transform.localScale.x < 0.1f)
         {
             if (loot == null)
             {
@@ -146,12 +145,14 @@ public class Enemy : MonoBehaviour
     {
         //manage loot
         loot.SetActive(true);
+        lootIsActive = true;
         loot.GetComponent<Animator>().SetBool("isEnemyDead", true);
         loot.GetComponent<Grabbable>().enabled = true;
         loot.GetComponent<HandGrabInteractable>().enabled = true;
         //manage portal
         portal.SetActive(true);
-        portal.GetComponent<Animator>().SetBool("isEnemyDead", true);
+        portalIsActive = true;
+        portal.GetComponent<Animator>().SetBool("canBeShown", true);
         text.gameObject.SetActive(true);
     }
 
@@ -179,7 +180,7 @@ public class Enemy : MonoBehaviour
     private void DestroyAll()
     {
         Destroy(portal);
-        Destroy(text);
+        Destroy(text.gameObject);
         addScore();
         StartCoroutine(DestroyAfterAnimation());
     }
