@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -188,67 +188,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afcce3943e1d60d43b722897399d88b9, type: 3}
---- !u!1001 &115678820
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_RootOrder
-      value: 16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.421
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 11.110386
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.20215194
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5708687
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0.77395046
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.18505177
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 31.148
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: -186.82
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545312, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 70.922
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545313, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_Name
-      value: Sword (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4194438455153545313, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 7e2c4a8b09073c94c9b8a9017698a5ba, type: 3}
 --- !u!1 &116551159
 GameObject:
   m_ObjectHideFlags: 0

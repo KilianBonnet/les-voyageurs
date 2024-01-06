@@ -28,7 +28,7 @@ public class BonusManager : MonoBehaviour
                 bomb.GetComponent<Grabbable>().enabled = true;
                 bomb.GetComponent<HandGrabInteractable>().enabled = true;
                 portal.SetActive(true);
-                portal.GetComponent<Animator>().SetBool("isLidOpen", true);
+                portal.GetComponent<Animator>().SetBool("canBeShown", true);
                 text.gameObject.SetActive(true);
             }
 
@@ -53,7 +53,6 @@ public class BonusManager : MonoBehaviour
         if (collision.gameObject.name == "Lid")
         {
             bomb.GetComponent<Animator>().SetBool("isLidOpen", true);
-            portal.GetComponent<Animator>().SetBool("isLidOpen", true);
         }
     }
 

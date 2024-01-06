@@ -30,6 +30,8 @@ public class Enemy : MonoBehaviour
     private GameObject loot;
     private GameObject portal;
     private Transform text;
+    private bool lootIsActive = false;
+    private bool portalIsActive = false;
 
     void Start()
     {
@@ -43,6 +45,11 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (dead)
+        {
+            return;
+        }
+
         if (hp <= 0 && !dead)
         {
             dead = true;
@@ -61,39 +68,23 @@ public class Enemy : MonoBehaviour
             {
                 if (collider.CompareTag("Player"))
                 {
-                    float distance = Vector3.Distance(transform.position, player.position);
-                    if (distance > minDistance)
-                        MoveToPlayer();
-                    else
-                    {
-                        blockMovement = true;
-                        rb.constraints = RigidbodyConstraints.FreezeAll;
-
-                        animator.SetBool("walking", false);
-
-                        AttackPlayer();
-                    }
+                    ManagerPlayerCollision();
                     break;
                 }
             }
         }
 
-        if (loot != null && loot.activeSelf)
+        if (loot != null && loot.transform.localScale.x < 0.1f)
         {
-            if (loot.transform.localScale.x < 0.1f)
-            {
-                Destroy(loot.gameObject);
-            }
+            Destroy(loot.gameObject);
+            portal.GetComponent<Animator>().SetBool("isSentToTable", true);
         }
 
-        if (portal != null && portal.activeSelf)
+        if (portal != null && portal.transform.localScale.x < 0.1f)
         {
             if (loot == null)
             {
-                Destroy(portal.gameObject);
-                Destroy(text.gameObject);
-                addScore();
-                StartCoroutine(DestroyAfterAnimation());
+                DestroyAll();
             }
         }
     }
@@ -148,18 +139,24 @@ public class Enemy : MonoBehaviour
             animator.Play("Dead_1");
         else
             animator.Play("Dead_2");
+        rb.constraints = RigidbodyConstraints.FreezeAll;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+
         LootHandler();
-        OnDeathEvent.Invoke(transform);
     }
 
     void LootHandler()
     {
+        //manage loot
         loot.SetActive(true);
+        lootIsActive = true;
         loot.GetComponent<Animator>().SetBool("isEnemyDead", true);
         loot.GetComponent<Grabbable>().enabled = true;
         loot.GetComponent<HandGrabInteractable>().enabled = true;
+        //manage portal
         portal.SetActive(true);
-        portal.GetComponent<Animator>().SetBool("isEnemyDead", true);
+        portalIsActive = true;
+        portal.GetComponent<Animator>().SetBool("canBeShown", true);
         text.gameObject.SetActive(true);
     }
 
@@ -182,6 +179,30 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(int playerDamage)
     {
         hp -= playerDamage;
+    }
+
+    private void DestroyAll()
+    {
+        Destroy(portal);
+        Destroy(text.gameObject);
+        addScore();
+        StartCoroutine(DestroyAfterAnimation());
+    }
+
+    private void ManagerPlayerCollision()
+    {
+        float distance = Vector3.Distance(transform.position, player.position);
+        if (distance > minDistance)
+            MoveToPlayer();
+        else
+        {
+            blockMovement = true;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+
+            animator.SetBool("walking", false);
+
+            AttackPlayer();
+        }
     }
 
 }

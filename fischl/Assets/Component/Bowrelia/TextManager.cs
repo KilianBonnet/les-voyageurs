@@ -14,7 +14,7 @@ public class TextManager : MonoBehaviour
     {
         if (floatingText)
         {
-            Instantiate(floatingText, slimeTransform);
+            Instantiate(floatingText, slimeTransform.position, Quaternion.identity);
         }
     }
  
