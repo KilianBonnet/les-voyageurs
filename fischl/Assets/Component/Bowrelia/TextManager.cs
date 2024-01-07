@@ -4,7 +4,6 @@ using UnityEngine;
 public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject floatingText;
-    [SerializeField] ParticleSystem deathParticles;
 
     [SerializeField] GameObject redZone;
     [SerializeField] GameObject blueZone;
@@ -36,19 +35,6 @@ public class TextManager : MonoBehaviour
             var rotation = Quaternion.Euler(rotationEuler); 
             Instantiate(floatingText, slimeTransform, rotation);
         }
-
-        if (deathParticles)
-        {
-            ParticleSystem newParticles = Instantiate(deathParticles, slimeTransform, Quaternion.identity);
-            newParticles.Play();
-            StartCoroutine(DestroyAfterDuration(newParticles.gameObject));
-        }
-    }
-
-    private IEnumerator DestroyAfterDuration(GameObject obj)
-    {
-        yield return new WaitForSeconds(1);
-        Destroy(obj);
     }
 }
 
