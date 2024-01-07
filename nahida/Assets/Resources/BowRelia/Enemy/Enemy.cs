@@ -123,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     void OnDeath()
     {
-        //EnemyKilledEvent.Invoke();
+        EnemyKilledEvent.Invoke();
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
             animator.Play("Dead_1");
@@ -175,7 +175,7 @@ public class Enemy : MonoBehaviour
     {
         Destroy(portal);
         Destroy(text.gameObject);
-        //addScore();
+        addScore();
         StartCoroutine(DestroyAfterAnimation());
     }
 
