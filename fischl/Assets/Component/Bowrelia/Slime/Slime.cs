@@ -9,6 +9,7 @@ public class Slime : MonoBehaviour
     [SerializeField] private float speed = .5f;
     [SerializeField] private int score = 125;
     public static event Action<Transform> OnDeath;
+    public static event Action<Vector3, String> OnDeathText;
 
     private void Start() {
         scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
@@ -24,6 +25,7 @@ public class Slime : MonoBehaviour
         Cursor cursor = other.gameObject.GetComponent<Cursor>();
         if(cursor == null || cursor.cursorType != CursorType.CURSOR) return;
 
+        OnDeathText(transform.position, cursor.originalZone.name);
         OnDeath(transform);
         cursor.originalZone.IncreaseScore(score);
         Destroy(gameObject);
@@ -37,6 +39,7 @@ public class Slime : MonoBehaviour
             if(cursor.cursorType == CursorType.CURSOR) return;
             if(cursor.cursorType == CursorType.BULLET) {
                 Destroy(other.gameObject);
+                OnDeathText(transform.position, cursor.originalZone.name);
                 cursor.originalZone.IncreaseScore(score);
             }
         }

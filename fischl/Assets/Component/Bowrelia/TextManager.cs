@@ -6,21 +6,40 @@ public class TextManager : MonoBehaviour
     [SerializeField] GameObject floatingText;
     [SerializeField] ParticleSystem deathParticles;
 
+    [SerializeField] GameObject redZone;
+    [SerializeField] GameObject blueZone;
+    [SerializeField] GameObject greenZone;
+
     private void OnEnable()
     {
-        Slime.OnDeath += HandleDeath;
+        Slime.OnDeathText += HandleDeathText;
     }
 
-    private void HandleDeath(Transform slimeTransform)
+    private void HandleDeathText(Vector3 slimeTransform, string zoneName)
     {
+        Vector3 rotationEuler = Vector3.zero;
         if (floatingText)
         {
-            Instantiate(floatingText, slimeTransform.position, Quaternion.identity);
+            switch (zoneName)
+            {
+                case "Red Zone":
+                    break;
+                case "Blue Zone":
+                    rotationEuler = new Vector3(0, 0, 90);
+                    break;
+                case "Green Zone":
+                    rotationEuler = new Vector3(0, 0, 270);
+                    break;
+                default:
+                    break;
+            }
+            var rotation = Quaternion.Euler(rotationEuler); 
+            Instantiate(floatingText, slimeTransform, rotation);
         }
 
         if (deathParticles)
         {
-            ParticleSystem newParticles = Instantiate(deathParticles, slimeTransform.position, Quaternion.identity);
+            ParticleSystem newParticles = Instantiate(deathParticles, slimeTransform, Quaternion.identity);
             newParticles.Play();
             StartCoroutine(DestroyAfterDuration(newParticles.gameObject));
         }

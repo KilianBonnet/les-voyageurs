@@ -1877,6 +1877,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   floatingText: {fileID: 7300769459358467810, guid: eb754fde3da81fc48bd9bd9e2c28cdcf, type: 3}
   deathParticles: {fileID: 2674349994569675209, guid: ba4e9c329b2fda54dba646dd00f6866d, type: 3}
+  redZone: {fileID: 937348759}
+  blueZone: {fileID: 1317970208}
+  greenZone: {fileID: 1816195713}
 --- !u!4 &794184328
 Transform:
   m_ObjectHideFlags: 0
