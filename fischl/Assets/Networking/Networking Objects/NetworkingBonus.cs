@@ -44,7 +44,7 @@ public class NetworkingBonus : MonoBehaviour
     }
 
     public static void SendBonusEvent(BonusType bonusType) {
-        int bonus = bonusToIntDic[bonusType];
+        int bonus = 0;
 
         WebSocketClient.Instance.SendMessage(
             SocketOP.BONUS_EVENT, 

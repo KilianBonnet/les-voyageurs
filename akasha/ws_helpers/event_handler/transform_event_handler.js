@@ -22,15 +22,14 @@ export function transformEventHandler(ws, socketMessage) {
             rotation
         }
     }
-
+    console.log(msg);
     const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
-    clients.find(c => c.device === sendToDevice).ws.send(JSON.stringify(msg))
+    clients.filter(c => c.device === sendToDevice).forEach(c => c.ws.send(JSON.stringify(msg)));
 }
 
 function checkParameters(ws, paramName, param){
-    if(param === undefined) {
-        sendError(ws, `Missing ${paramName} parameter.`);
-        return false;
+    if(!param) {
+        return true;
     }
 
     if(typeof(param) !== "object") {

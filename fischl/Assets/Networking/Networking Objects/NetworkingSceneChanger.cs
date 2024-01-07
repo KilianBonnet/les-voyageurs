@@ -14,7 +14,7 @@ public class NetworkingSceneChanger : MonoBehaviour
         SceneManager.LoadScene(d.scene);
     }
 
-    public void SendSceneChangeEvent(string sceneName) {
+    public static void SendSceneChangeEvent(string sceneName) {
         WebSocketClient.Instance.SendMessage(
             SocketOP.SCENE_CHANGE_EVENT, 
             new { scene = sceneName });

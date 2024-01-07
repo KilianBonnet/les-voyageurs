@@ -17,10 +17,10 @@ public class NetworkingRoom : MonoBehaviour
         RoomChangeEvent.Invoke(d.room);
     }
 
-    public void SendRoomEvent(int room) {
-        WebSocketClient.Instance.SendMessage(
+    static public void SendRoomEvent(int room) {
+        /*WebSocketClient.Instance.SendMessage(
             SocketOP.ROOM_EVENT, 
-            new { room });
+            new { room });*/
     }
 
 }
