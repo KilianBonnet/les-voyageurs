@@ -1,10 +1,20 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class NetworkingTransform : MonoBehaviour
 {
+    [System.Serializable]
+    public class PositionChangeEvent : UnityEvent<Vector3> { }
+    [System.Serializable]
+    public class RotationChangeEvent : UnityEvent<Vector3> { }
+
     [SerializeField] private int networkObjectId;
     [SerializeField] private bool syncPosition;
     [SerializeField] private bool syncRotation;
+    [SerializeField] private PositionChangeEvent onPositionUpdate;
+    [SerializeField] private RotationChangeEvent onRotationUpdate;
+    private float lastSent;
 
     private void Start()
     {
@@ -19,13 +29,16 @@ public class NetworkingTransform : MonoBehaviour
         TransformData d = socketMessage.d.ToObject<TransformData>();
         if (d.networkObjectId == networkObjectId)
         {
-            if (d.position != null) transform.position = d.position.ToVector3();
-            if (d.rotation != null) transform.rotation = Quaternion.Euler(d.rotation.ToVector3());
+            if (d.position != null) onPositionUpdate.Invoke(d.position.ToVector3());
+            if (d.rotation != null) onRotationUpdate.Invoke(d.rotation.ToVector3());
         }
     }
 
     private void Update()
     {
+        lastSent += Time.deltaTime;
+        if (lastSent < .5f) return;
+
         if (!syncPosition && !syncRotation) return;
 
         TransformData payload = new TransformData()
