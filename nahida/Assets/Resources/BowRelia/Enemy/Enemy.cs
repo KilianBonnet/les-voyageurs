@@ -74,10 +74,12 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (loot != null && loot.transform.localScale.x < 0.1f)
+        if (loot != null)
         {
-            Destroy(loot.gameObject);
-            portal.GetComponent<Animator>().SetBool("isSentToTable", true);
+            if (loot.GetComponent<Animator>().GetBool("isSentToTable") && loot.transform.localScale.x < 0.1f)
+            {
+                Destroy(loot.gameObject);
+            }
         }
 
         if (portal != null && portal.transform.localScale.x < 0.1f)

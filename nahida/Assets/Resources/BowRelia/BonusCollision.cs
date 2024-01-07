@@ -37,12 +37,11 @@ public class BonusCollision : MonoBehaviour
         if (gameObject.name == "Emerald")
         {
             GetComponent<Animator>().SetBool("isEnemyDead", false);
-            portal.GetComponent<Animator>().SetBool("canBeShown", false);
         }
         if (gameObject.name == "Bomb")
         {
             GetComponent<Animator>().SetBool("isLidOpen", false);
-            portal.GetComponent<Animator>().SetBool("canBeShown", false);
         }
+        portal.GetComponent<Animator>().SetBool("canBeShown", false);
     }
 }
