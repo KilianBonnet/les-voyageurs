@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -13,6 +14,7 @@ public class NetworkingTransform : MonoBehaviour
     [SerializeField] private bool syncRotation;
     [SerializeField] private PositionChangeEvent onPositionUpdate;
     [SerializeField] private RotationChangeEvent onRotationUpdate;
+    private float lastSent;
 
     private void Start()
     {
@@ -34,6 +36,9 @@ public class NetworkingTransform : MonoBehaviour
 
     private void Update()
     {
+        lastSent += Time.deltaTime;
+        if (lastSent < .5f) return;
+
         if (!syncPosition && !syncRotation) return;
 
         TransformData payload = new TransformData()

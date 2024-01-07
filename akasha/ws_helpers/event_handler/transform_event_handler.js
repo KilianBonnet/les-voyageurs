@@ -23,7 +23,7 @@ export function transformEventHandler(ws, socketMessage) {
             rotation
         }
     }
-    console.log(msg);
+    
     const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
     clients.filter(c => c.device === sendToDevice).forEach(c => c.ws.send(JSON.stringify(msg)));
 }
