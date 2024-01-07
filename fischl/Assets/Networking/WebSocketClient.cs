@@ -90,7 +90,6 @@ public class WebSocketClient : MonoBehaviour
                 d = data
             };
             ws.Send(JsonConvert.SerializeObject(payload, Formatting.Indented));
-            Debug.Log(JsonConvert.SerializeObject(payload, Formatting.Indented));
         }
         else
         {

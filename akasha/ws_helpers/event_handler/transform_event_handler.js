@@ -18,6 +18,7 @@ export function transformEventHandler(ws, socketMessage) {
     const msg = {
         "op": 15,
         "d": {
+            networkObjectId: socketMessage.d.networkObjectId,
             position,
             rotation
         }

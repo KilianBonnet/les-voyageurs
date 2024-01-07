@@ -19,8 +19,8 @@ public class NetworkingTransform : MonoBehaviour
         TransformData d = socketMessage.d.ToObject<TransformData>();
         if (d.networkObjectId == networkObjectId)
         {
-            if (d.position != null) transform.position = d.position.Value;
-            if (d.rotation != null) transform.rotation = Quaternion.Euler(d.rotation.Value);
+            if (d.position != null) transform.position = d.position.ToVector3();
+            if (d.rotation != null) transform.rotation = Quaternion.Euler(d.rotation.ToVector3());
         }
     }
 
@@ -28,10 +28,12 @@ public class NetworkingTransform : MonoBehaviour
     {
         if (!syncPosition && !syncRotation) return;
 
-        TransformData payload = new();
-        payload.networkObjectId = networkObjectId;
-        if (syncPosition) payload.position = transform.position;
-        if (syncRotation) payload.rotation = transform.rotation.eulerAngles;
+        TransformData payload = new TransformData()
+        {
+            networkObjectId = networkObjectId
+        };
+        if (syncPosition) payload.position = new SerializedVector3(transform.position);
+        if (syncRotation) payload.rotation = new SerializedVector3(transform.rotation.eulerAngles);
 
         WebSocketClient.Instance.SendMessage(
             SocketOP.TRANSFORM_EVENT,
