@@ -44,4 +44,8 @@ public class BonusCollision : MonoBehaviour
         }
         portal.GetComponent<Animator>().SetBool("canBeShown", false);
     }
+
+    private void SelfDestroy(){
+        Destroy(gameObject);
+    }
 }
