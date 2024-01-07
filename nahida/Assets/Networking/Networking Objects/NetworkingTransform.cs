@@ -38,6 +38,7 @@ public class NetworkingTransform : MonoBehaviour
     {
         lastSent += Time.deltaTime;
         if (lastSent < .5f) return;
+        lastSent = 0;
 
         if (!syncPosition && !syncRotation) return;
 
