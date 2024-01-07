@@ -73,21 +73,9 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
-        if (loot != null)
+        if (loot == null)
         {
-            if (loot.GetComponent<Animator>().GetBool("isSentToTable") && loot.transform.localScale.x < 0.1f)
-            {
-                Destroy(loot.gameObject);
-            }
-        }
-
-        if (portal != null && portal.transform.localScale.x < 0.1f)
-        {
-            if (loot == null)
-            {
-                DestroyAll();
-            }
+            DestroyAll();
         }
     }
 
