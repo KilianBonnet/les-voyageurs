@@ -45,11 +45,6 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (dead)
-        {
-            return;
-        }
-
         if (hp <= 0 && !dead)
         {
             dead = true;
