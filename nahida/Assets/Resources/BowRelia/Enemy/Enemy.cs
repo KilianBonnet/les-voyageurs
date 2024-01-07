@@ -73,21 +73,9 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
-
-        if (loot != null)
+        if (loot == null)
         {
-            if (loot.GetComponent<Animator>().GetBool("isSentToTable") && loot.transform.localScale.x < 0.1f)
-            {
-                Destroy(loot.gameObject);
-            }
-        }
-
-        if (portal != null && portal.transform.localScale.x < 0.1f)
-        {
-            if (loot == null)
-            {
-                DestroyAll();
-            }
+            DestroyAll();
         }
     }
 
@@ -135,7 +123,7 @@ public class Enemy : MonoBehaviour
 
     void OnDeath()
     {
-        EnemyKilledEvent.Invoke();
+        //EnemyKilledEvent.Invoke();
         int randomValue = Random.Range(0, 2);
         if (randomValue == 0)
             animator.Play("Dead_1");
@@ -187,7 +175,7 @@ public class Enemy : MonoBehaviour
     {
         Destroy(portal);
         Destroy(text.gameObject);
-        addScore();
+        //addScore();
         StartCoroutine(DestroyAfterAnimation());
     }
 
