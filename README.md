@@ -91,7 +91,7 @@ Event sent when the client want to Invoke a function through the network.
 ### Score Event
 Event sent when the client want to update the score.
 
-#### Example of Invoke Event
+#### Example of Score Event
 ```
 {
   "op": 12,
@@ -110,7 +110,7 @@ Event sent when the client want to update the score.
 ### Room Event
 Event sent when the VR_Client changed room.
 
-#### Example of Invoke Event
+#### Example of Room Event
 ```
 {
   "op": 13,
@@ -123,7 +123,7 @@ Event sent when the VR_Client changed room.
 ### Bonus Event
 Event sent when the VR_Client send a bonus to the Table.
 
-#### Example of Invoke Event
+#### Example of Bonus Event
 ```
 {
   "op": 14,
