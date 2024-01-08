@@ -33,5 +33,9 @@ public class RoomManager : MonoBehaviour
         isRoomClear = true;
         foreach (Door door in doors) door.OpenDoor();
     }
+
+    public void QuitGame(){
+        Application.Quit();
+    }
 }
 
