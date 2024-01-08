@@ -11,12 +11,15 @@ public class BonusManager : MonoBehaviour
     private GameObject bomb;
     private GameObject portal;
     private Transform text;
+    private ParticleSystem particleSystem;
 
     public void Start()
     {
         bomb = transform.parent.Find("Bomb").gameObject;
         portal = transform.parent.Find("Portal blue").gameObject;
         text = transform.parent.Find("Canvas").Find("Text");
+        particleSystem = transform.parent.Find("Bomb").GetComponentInChildren<ParticleSystem>();
+        Debug.Log(particleSystem);
     }
 
     public void Update()
@@ -53,6 +56,8 @@ public class BonusManager : MonoBehaviour
         if (collision.gameObject.name == "Lid")
         {
             bomb.GetComponent<Animator>().SetBool("isLidOpen", true);
+            particleSystem.Play();
+
         }
     }
 
