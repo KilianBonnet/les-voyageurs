@@ -19,7 +19,6 @@ public class BonusManager : MonoBehaviour
         portal = transform.parent.Find("Portal blue").gameObject;
         text = transform.parent.Find("Canvas").Find("Text");
         particleSystem = transform.parent.Find("Bomb").GetComponentInChildren<ParticleSystem>();
-        Debug.Log(particleSystem);
     }
 
     public void Update()
