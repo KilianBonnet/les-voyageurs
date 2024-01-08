@@ -12,6 +12,8 @@ public class EnemyMusicManager : MonoBehaviour
     private AudioClip hurt1;
     [SerializeField]
     private AudioClip hurt2;
+    [SerializeField]
+    private AudioClip death;
 
 
     void Start()
@@ -66,6 +68,19 @@ public class EnemyMusicManager : MonoBehaviour
             {
                 source.clip = walking;
                 source.PlayScheduled(1);
+            }
+
+        }
+    }
+
+    public void Death()
+    {
+        if (!source.isPlaying)
+        {
+            if (death)
+            {
+                source.clip = death;
+                source.Play();
             }
 
         }
