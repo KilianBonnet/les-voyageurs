@@ -5,21 +5,17 @@ public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject floatingText;
 
-    [SerializeField] GameObject redZone;
-    [SerializeField] GameObject blueZone;
-    [SerializeField] GameObject greenZone;
-
     private void OnEnable()
     {
-        Slime.OnDeathText += HandleDeathText;
+        Slime.OnDeath += HandleDeath;
     }
 
-    private void HandleDeathText(Vector3 slimeTransform, string zoneName)
+    private void HandleDeath(Transform slimeTransform, Cursor cursor)
     {
         Vector3 rotationEuler = Vector3.zero;
         if (floatingText)
         {
-            switch (zoneName)
+            switch (cursor.originalZone.name)
             {
                 case "Red Zone":
                     break;
@@ -32,8 +28,8 @@ public class TextManager : MonoBehaviour
                 default:
                     break;
             }
-            var rotation = Quaternion.Euler(rotationEuler); 
-            Instantiate(floatingText, slimeTransform, rotation);
+            var rotation = Quaternion.Euler(rotationEuler);
+            Instantiate(floatingText, slimeTransform.position, rotation);
         }
     }
 }
