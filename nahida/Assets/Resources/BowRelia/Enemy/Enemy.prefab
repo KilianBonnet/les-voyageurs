@@ -702,11 +702,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   source: {fileID: -2333420703305683197}
-  delayInSeconds: 1
   idle: {fileID: 8300000, guid: 811ab81ff7fd70e4ea74d17f0ae319e3, type: 3}
   walking: {fileID: 8300000, guid: 497267b0d798dc34684c3f09ddc3b295, type: 3}
   hurt1: {fileID: 8300000, guid: 87d835d8a8236df4a90a5a0817c5784b, type: 3}
   hurt2: {fileID: 8300000, guid: 292b7eeb043ccc6409dbeaaba470afa7, type: 3}
+  death: {fileID: 8300000, guid: c68f9a48d803f0c4bb13ce1ec784741b, type: 3}
 --- !u!1 &4993683481989175340
 GameObject:
   m_ObjectHideFlags: 0
