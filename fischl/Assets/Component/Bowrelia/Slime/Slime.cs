@@ -14,7 +14,6 @@ public class Slime : MonoBehaviour
     {
         scoreManager = GameObject.Find("Networking Score").GetComponent<ScoreManager>();
         objectiveAnchor = GameObject.Find("VRMap").transform;
-        transform.Rotate(0, 0, UnityEngine.Random.Range(0, 4) * 90);
         speed *= .01f;
     }
 
@@ -41,7 +40,7 @@ public class Slime : MonoBehaviour
             if (cursor.cursorType == CursorType.BULLET)
             {
                 Destroy(other.gameObject);
-                cursor.originalZone.IncreaseScore(score);
+                if (score > 0) cursor.originalZone.IncreaseScore(score);
             }
         }
         else scoreManager.IncreaseScore(score);
