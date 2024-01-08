@@ -10,7 +10,7 @@ public class ParticleManager : MonoBehaviour
         Slime.OnDeath += HandleDeathParticle;
     }
 
-    private void HandleDeathParticle(Transform slimeTransform)
+    private void HandleDeathParticle(Transform slimeTransform, Cursor c)
     {
         if (deathParticles)
         {
