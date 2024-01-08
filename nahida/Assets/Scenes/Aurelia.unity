@@ -2141,10 +2141,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GrabbableCrate
       objectReference: {fileID: 0}
-    - target: {fileID: 1606527580673047556, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1606527580673269793, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2189,24 +2185,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2416616692746688075, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
-      propertyPath: m_Enabled
+    - target: {fileID: 6509496426867272971, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+      propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2785842096765620152, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6031518746934919197, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6250726685742872325, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 2416616692746688075, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b13b726dcdc69054092e209b8c3356bc, type: 3}
 --- !u!1001 &1782959057
 PrefabInstance:
