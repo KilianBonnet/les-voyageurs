@@ -1333,7 +1333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa61cbab3ef92c14093545605e0e4fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  address: ws://192.168.11.185:8080
+  address: 'ws://10.212.121.137:8080 '
   deviceType: Table
   retryInterval: 1
 --- !u!4 &445102132
