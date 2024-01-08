@@ -12,6 +12,9 @@ public class BonusManager : MonoBehaviour
     private GameObject portal;
     private Transform text;
     private ParticleSystem particleSystem;
+    private AudioSource source;
+    [SerializeField] AudioClip clip;
+    private bool hasBeenPlayed = false;
 
     public void Start()
     {
@@ -19,6 +22,7 @@ public class BonusManager : MonoBehaviour
         portal = transform.parent.Find("Portal blue").gameObject;
         text = transform.parent.Find("Canvas").Find("Text");
         particleSystem = transform.parent.Find("Bomb").GetComponentInChildren<ParticleSystem>();
+        source = gameObject.GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -31,6 +35,13 @@ public class BonusManager : MonoBehaviour
                 bomb.GetComponent<HandGrabInteractable>().enabled = true;
                 portal.SetActive(true);
                 portal.GetComponent<Animator>().SetBool("canBeShown", true);
+                if (source && ! hasBeenPlayed)
+                {
+                    source.clip = clip;
+                    source.Play();
+                    hasBeenPlayed = true;
+                }
+                    
                 text.gameObject.SetActive(true);
             }
 
@@ -56,7 +67,6 @@ public class BonusManager : MonoBehaviour
         {
             bomb.GetComponent<Animator>().SetBool("isLidOpen", true);
             particleSystem.Play();
-
         }
     }
 
