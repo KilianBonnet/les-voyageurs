@@ -46,16 +46,16 @@ public class TutorialManager : MonoBehaviour
                 greenZone.isReady = true;
                 break;
         }
-        SetMessageToReadyPlayers($"Ready: {GetNbReadyPlayers()} /4");
+        SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayers() + "/4");
     }
 
-    private void SetMessageToReadyPlayers(String message)
+    private void SetMessageToReadyPlayers(string message)
     {
         zones.FindAll(zone => zone.isReady)
             .ForEach(zone => zone.message.text = message);
     }
 
-    private void SetMessageToPlayers(String message)
+    private void SetMessageToPlayers(string message)
     {
         zones.ForEach(zone => zone.message.text = message);
     }
