@@ -8179,8 +8179,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\nCONGRATULATIONS !\nYOU SUCCESSFULLY CLEANED THE DUNGEON !\nCLICK HERE
-    TO QUIT THE GAME\n\u2193"
+  m_text: "\nFELICITATIONS !\nVOUS AVEZ FINI LE DONJON !\nClique ici pour quitter
+    le jeu\n\u2193"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -9087,7 +9087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -6.71}
+  m_AnchoredPosition: {x: 0, y: -5.337641}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &975831351
@@ -9274,7 +9274,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 995223254}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -18.19, y: 5.7, z: -35.2}
+  m_LocalPosition: {x: -18.19, y: 6.032359, z: -35.2}
   m_LocalScale: {x: 1.1628, y: -9.94753, z: 36.504444}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -15292,7 +15292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: QUIT
+  m_text: Quitter
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
