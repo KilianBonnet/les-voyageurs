@@ -3,9 +3,11 @@ using UnityEngine;
 public class Door : MonoBehaviour
 {
     private Animator animator;
+    private AudioSource source;
 
     private void Start() {
         animator = GetComponentInChildren<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     public void OpenDoor()
@@ -19,4 +21,9 @@ public class Door : MonoBehaviour
         animator.SetBool("opening", false);
     }
 
+    public void OpenDoorSound()
+    {
+        if (source)   
+            source.Play();   
+    }
 }
