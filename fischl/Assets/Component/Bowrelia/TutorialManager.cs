@@ -61,7 +61,11 @@ public class TutorialManager : MonoBehaviour
     private void HandleReadyPlayer()
     {
         if (GetNbReadyPlayers() >= 4)
+        {
+            Slime.OnDeath -= SlimeDeathHandler;
             onTutorialComplete.Invoke();
+        }
+
         else
             SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayers() + "/4");
     }

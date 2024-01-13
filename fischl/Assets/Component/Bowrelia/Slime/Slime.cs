@@ -25,7 +25,7 @@ public class Slime : MonoBehaviour
         Cursor cursor = other.gameObject.GetComponent<Cursor>();
         if (cursor == null || cursor.cursorType != CursorType.CURSOR) return;
         OnDeath.Invoke(transform, cursor);
-        cursor.originalZone.IncreaseScore(score);
+        if (score > 0) cursor.originalZone.IncreaseScore(score);
         Destroy(gameObject);
     }
 
