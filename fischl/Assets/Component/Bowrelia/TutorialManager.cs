@@ -32,7 +32,8 @@ public class TutorialManager : MonoBehaviour
 
     private void Start()
     {
-        Slime.OnDeath += SlimeDeathHandler;
+        //Slime.OnDeath += SlimeDeathHandler;
+        TutorialSlime.OnTutorialDeath += SlimeDeathHandler;
 
         zones = new List<ZoneMessage>() {
             greenZone, blueZone, redZone
@@ -49,7 +50,7 @@ public class TutorialManager : MonoBehaviour
         HandleReadyPlayer();
     }
 
-    private void SlimeDeathHandler(Transform slimeTransform, Cursor cursor)
+    private void SlimeDeathHandler(Cursor cursor)
     {
         if (!firstTutorialDone)
         {
@@ -71,12 +72,15 @@ public class TutorialManager : MonoBehaviour
             switch (cursor.originalZone.name)
             {
                 case "Red Zone":
+                    GameObject.Find("Red").SetActive(false);
                     redZone.isReady2 = true;
                     break;
                 case "Blue Zone":
+                    GameObject.Find("Blue").SetActive(false);
                     blueZone.isReady2 = true;
                     break;
                 case "Green Zone":
+                    GameObject.Find("Green").SetActive(false);
                     greenZone.isReady2 = true;
                     break;
             }
@@ -94,7 +98,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (GetNbReadyPlayersTable() < 3)
             {
-                SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayersTable() + "/3");
+                SetMessageToReadyPlayers("OK: " + GetNbReadyPlayersTable() + "/3");
             }
             else
             {
@@ -105,12 +109,12 @@ public class TutorialManager : MonoBehaviour
         
         else if (GetNbReadyPlayers() >= 4 && secondTutorialDone)
         {
-            Slime.OnDeath -= SlimeDeathHandler;
+            TutorialSlime.OnTutorialDeath -= SlimeDeathHandler;
             tuto2.SetActive(false);
             onTutorialComplete.Invoke();
         }
         else
-            SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayers() + "/4");
+            SetMessageToReadyPlayers("OK: " + GetNbReadyPlayers() + "/4");
     }
 
     private void SetMessageToReadyPlayers(string message)
