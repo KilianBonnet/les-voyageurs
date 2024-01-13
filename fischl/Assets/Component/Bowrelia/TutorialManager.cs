@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 class ZoneMessage
 {
@@ -13,6 +14,8 @@ class ZoneMessage
 public class TutorialManager : MonoBehaviour
 {
     [SerializeField] private string initMessage = "Cut the slime to start!";
+    [SerializeField] private UnityEvent onTutorialComplete;
+
     private bool isVrReady;
     private ZoneMessage greenZone = new ZoneMessage();
     private ZoneMessage redZone = new ZoneMessage();
@@ -32,6 +35,12 @@ public class TutorialManager : MonoBehaviour
         SetMessageToPlayers(initMessage);
     }
 
+    public void OnVrReady()
+    {
+        isVrReady = true;
+        HandleReadyPlayer();
+    }
+
     private void SlimeDeathHandler(Transform slimeTransform, Cursor cursor)
     {
         switch (cursor.originalZone.name)
@@ -46,7 +55,15 @@ public class TutorialManager : MonoBehaviour
                 greenZone.isReady = true;
                 break;
         }
-        SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayers() + "/4");
+        HandleReadyPlayer();
+    }
+
+    private void HandleReadyPlayer()
+    {
+        if (GetNbReadyPlayers() >= 4)
+            onTutorialComplete.Invoke();
+        else
+            SetMessageToReadyPlayers("Ready: " + GetNbReadyPlayers() + "/4");
     }
 
     private void SetMessageToReadyPlayers(string message)
