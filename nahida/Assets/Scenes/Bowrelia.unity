@@ -19983,7 +19983,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1948034925}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.42668688, y: 1.7367147, z: 0.095939934}
@@ -21548,6 +21548,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1324507302, guid: a2b19f0e2d142e84db63fa3b95f68448, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7400024894881152997, guid: a2b19f0e2d142e84db63fa3b95f68448, type: 3}
       propertyPath: m_Name
       value: OVRPlayerController
