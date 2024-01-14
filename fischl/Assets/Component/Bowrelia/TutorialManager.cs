@@ -28,7 +28,11 @@ public class TutorialManager : MonoBehaviour
     private bool firstTutorialDone = false;
     private bool secondTutorialDone = false;
 
+    private GameObject tuto;
     [SerializeField] private GameObject tuto2;
+    [SerializeField] private GameObject tuto3Red;
+    [SerializeField] private GameObject tuto3Blue;
+    [SerializeField] private GameObject tuto3Green;
 
     private void Start()
     {
@@ -42,6 +46,8 @@ public class TutorialManager : MonoBehaviour
         redZone.message = GameObject.Find("Red Score").GetComponent<TextMeshProUGUI>();
         blueZone.message = GameObject.Find("Blue Score").GetComponent<TextMeshProUGUI>();
         SetMessageToPlayers(initMessage);
+
+        tuto = GameObject.Find("---- Tutorial Env ----");
     }
 
     public void OnVrReady()
@@ -74,14 +80,17 @@ public class TutorialManager : MonoBehaviour
                 case "Red Zone":
                     GameObject.Find("Red").SetActive(false);
                     redZone.isReady2 = true;
+                    tuto3Red.SetActive(true);
                     break;
                 case "Blue Zone":
                     GameObject.Find("Blue").SetActive(false);
                     blueZone.isReady2 = true;
+                    tuto3Blue.SetActive(true);
                     break;
                 case "Green Zone":
                     GameObject.Find("Green").SetActive(false);
                     greenZone.isReady2 = true;
+                    tuto3Green.SetActive(true);
                     break;
             }
         }
@@ -110,7 +119,7 @@ public class TutorialManager : MonoBehaviour
         else if (GetNbReadyPlayers() >= 4 && secondTutorialDone)
         {
             TutorialSlime.OnTutorialDeath -= SlimeDeathHandler;
-            tuto2.SetActive(false);
+            tuto.SetActive(false);
             onTutorialComplete.Invoke();
         }
         else
