@@ -1,26 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SwordInteractions : MonoBehaviour
 {
-    private bool hasBeenGrabbedOnce;
-    private Vector3 initialPosition;
 
     [SerializeField] int attackDamage = 5;
 
-    private void Start()
+    private void OnEnable()
     {
-        initialPosition = transform.position;
+        TutorialEnemy.TutorialComplete += TutorialComplete;
     }
 
-    private void Update()
+    private void TutorialComplete()
     {
-        if (!hasBeenGrabbedOnce && Vector3.Distance(initialPosition, transform.position) > .1)
-        {
-            hasBeenGrabbedOnce = true;
-            NetworkingInvoke.SendInvokeEvent(1);
-        }
+        NetworkingInvoke.SendInvokeEvent(1);
+        TutorialEnemy.TutorialComplete -= TutorialComplete;
+
     }
 
     public int GetAttackDamage()
