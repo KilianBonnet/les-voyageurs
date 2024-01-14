@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class TutorialEnemy : MonoBehaviour
 {
-    public static event Action TutorialComplete;
 
     private Transform player;
 
@@ -82,7 +81,7 @@ public class TutorialEnemy : MonoBehaviour
 
     void OnDeath()
     {
-        TutorialComplete.Invoke();
+        NetworkingInvoke.SendInvokeEvent(1);
         int randomValue = UnityEngine.Random.Range(0, 2);
         if (randomValue == 0)
             animator.Play("Dead_1");
