@@ -118,8 +118,8 @@ public class OuterWheel : MonoBehaviour
         isClicking = true;
     }
 
-    private void OnGoodSelection() {
-        NetworkingEnvPuzzle.PuzzleComplete();
+    public void OnGoodSelection() {
+        NetworkingInvoke.SendInvokeEvent(16);
         //NetworkingSceneChanger.SendSceneChangeEvent("Bowrelia");
         //SceneManager.LoadScene("Bowrelia");
         

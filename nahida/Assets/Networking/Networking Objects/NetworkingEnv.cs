@@ -11,7 +11,7 @@ public class NetworkingEnv : MonoBehaviour
 
     private void OnSocketMessage(SocketMessage socketMessage)
     {
-        Debug.Log("J'ai un message" + socketMessage.op);
+        Debug.Log("J'ai un message");
         if (socketMessage.op != SocketOP.SELECT_ENV_COMPLETE_EVENT)
             return;
         Debug.Log("Prout");
