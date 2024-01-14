@@ -27,5 +27,6 @@ export function invokeEvent(ws, socketMessage) {
     }
 
     const sendToDevice = client.device === "VR_Headset" ? "Table" : "VR_Headset";
-    clients.find(c => c.device === sendToDevice).ws.send(JSON.stringify(msg));
+    clients.filter(c => c.device === sendToDevice)
+        .forEach(c => c.ws.send(JSON.stringify(msg)));
 }

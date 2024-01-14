@@ -21,6 +21,7 @@ public class WebSocketClient : MonoBehaviour
 
     private void Start()
     {
+        DontDestroyOnLoad(this.gameObject);
         Instance = this;
         messageQueue = new Queue<SocketMessage>();
         ws = new WebSocket(address);
