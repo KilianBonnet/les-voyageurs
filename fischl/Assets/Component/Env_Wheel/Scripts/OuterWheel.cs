@@ -119,7 +119,9 @@ public class OuterWheel : MonoBehaviour
     }
 
     private void OnGoodSelection() {
-        SceneManager.LoadScene("Assemble!");
-        NetworkingInvoke.SendInvokeEvent(188);
+        NetworkingEnvPuzzle.PuzzleComplete();
+        //NetworkingSceneChanger.SendSceneChangeEvent("Bowrelia");
+        //SceneManager.LoadScene("Bowrelia");
+        
     }
 }

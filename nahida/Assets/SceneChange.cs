@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class SceneChange : MonoBehaviour
 {
@@ -6,7 +7,8 @@ public class SceneChange : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            NetworkingSceneChanger.SendSceneChangeEvent("1");
+            NetworkingSceneChanger.SendSceneChangeEvent("Bowrelia");
+            SceneManager.LoadScene("Bowrelia");
         }
     }
 }

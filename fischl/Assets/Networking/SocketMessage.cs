@@ -15,6 +15,7 @@ public class SocketOP
     public const int ROOM_EVENT = 13;
     public const int BONUS_EVENT = 14;
     public const int TRANSFORM_EVENT = 15;
+    public const int SELECT_ENV_COMPLETE_EVENT = 16;
 }
 
 public class SocketMessage
