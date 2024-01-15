@@ -1,13 +1,14 @@
-using System.Collections;
 using UnityEngine;
 
 public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject floatingText;
+    [SerializeField] GameObject negativefloatingText;
 
     private void OnEnable()
     {
         Slime.OnDeath += HandleDeath;
+        VrMap.EnemyEntered += HandleMapEntered;
     }
 
     private void HandleDeath(Transform slimeTransform, Cursor cursor)
@@ -31,6 +32,14 @@ public class TextManager : MonoBehaviour
             var rotation = Quaternion.Euler(rotationEuler);
             Instantiate(floatingText, slimeTransform.position, rotation);
         }
+    }
+
+    private void HandleMapEntered(Transform slimeTransform)
+    {
+            floatingText.GetComponent<TextMesh>().text = "-125 pts";
+            var rotation = Quaternion.Euler(Vector3.zero);
+            Instantiate(floatingText, slimeTransform.position, rotation);
+        
     }
 }
 

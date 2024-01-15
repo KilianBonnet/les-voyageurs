@@ -1,10 +1,12 @@
 using System.Collections;
 using UnityEngine;
+using System;
 
 public class VrMap : MonoBehaviour
 {
     [SerializeField] private ScoreManager scoreManager;
     private GameObject touched;
+    public static event Action<Transform> EnemyEntered;
 
     private void Start() {
         touched = GameObject.Find("Touched");
@@ -14,6 +16,7 @@ public class VrMap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.transform.CompareTag("Enemy")) {
+            EnemyEntered.Invoke(other.transform);
             Destroy(other.gameObject);
             scoreManager.IncreaseScore(-200);
             StartCoroutine(ShowAndHideObject(touched, 3f));
