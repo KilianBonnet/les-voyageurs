@@ -62,7 +62,8 @@ public class OuterWheel : MonoBehaviour
                     res = selectedElements + " / 3";
                 }
                 else {
-                    if(GameObject.Find("Area 0").GetComponent<SpriteRenderer>().sprite.name == "Desert_S") {
+                    if(CheckAllSelected()) {
+                        Debug.Log("All");
                         OnGoodSelection();
                         return;
                     }
@@ -123,5 +124,12 @@ public class OuterWheel : MonoBehaviour
         //NetworkingSceneChanger.SendSceneChangeEvent("Bowrelia");
         //SceneManager.LoadScene("Bowrelia");
         
+    }
+
+    private bool CheckAllSelected()
+    {
+        return (GameObject.Find("Area 0").GetComponent<SpriteRenderer>().sprite.name == "Desert_S")
+            && (GameObject.Find("Area 6").GetComponent<SpriteRenderer>().sprite.name == "Hydra_S")
+            && (GameObject.Find("Area 4").GetComponent<SpriteRenderer>().sprite.name == "House_S");
     }
 }

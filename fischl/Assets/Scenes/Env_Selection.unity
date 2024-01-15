@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &282553800
 RectTransform:
   m_ObjectHideFlags: 0
@@ -357,7 +357,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &484585720
 RectTransform:
   m_ObjectHideFlags: 0
@@ -647,7 +647,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa61cbab3ef92c14093545605e0e4fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  address: ws://192.168.56.1:8080
+  address: ws://192.168.11.185:8080
   deviceType: Table
   retryInterval: 1
 --- !u!4 &1421388879
