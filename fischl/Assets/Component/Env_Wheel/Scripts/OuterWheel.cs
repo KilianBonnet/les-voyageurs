@@ -18,6 +18,9 @@ public class OuterWheel : MonoBehaviour
     [SerializeField] private TextMeshProUGUI topText;
     [SerializeField] private TextMeshProUGUI bottomText;
 
+    [SerializeField] private SpriteRenderer correctMark;
+    [SerializeField] private SpriteRenderer incorrectMark;
+
     private SelectionRenderer clickedCell;
     private bool isClicking;
     private float clickDuration;
@@ -30,8 +33,10 @@ public class OuterWheel : MonoBehaviour
 
         if(needReset) {
             needReset = false;
-            topText.text = "0 / 3";
-            bottomText.text = "0 / 3";
+            //topText.text = "0 / 3";
+            //bottomText.text = "0 / 3";
+            incorrectMark.gameObject.SetActive(false);
+
         }
 
         if(isClicking)
@@ -63,20 +68,23 @@ public class OuterWheel : MonoBehaviour
                 }
                 else {
                     if(CheckAllSelected()) {
-                        Debug.Log("All");
+                        /*res = "3 / 3";
+                        topText.text = res;
+                        bottomText.text = res;*/
+                        correctMark.gameObject.SetActive(true);
                         OnGoodSelection();
                         return;
                     }
-
                     selectedElements = 0;
-                    res = "Incorrect";
+                    //res = "Incorrect";
                     errorAudio.Play();
+                    incorrectMark.gameObject.SetActive(true);
                     needReset = true;
                     SelectionRenderer.ResetEvent.Invoke();
                 }
 
-                topText.text = res;
-                bottomText.text = res;
+                /*topText.text = res;
+                bottomText.text = res;*/
             }
                 
             isClicking = false;
