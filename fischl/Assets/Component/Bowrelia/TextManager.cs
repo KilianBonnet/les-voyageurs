@@ -3,7 +3,6 @@ using UnityEngine;
 public class TextManager : MonoBehaviour
 {
     [SerializeField] GameObject floatingText;
-    [SerializeField] GameObject negativefloatingText;
 
     private void OnEnable()
     {
@@ -13,6 +12,8 @@ public class TextManager : MonoBehaviour
 
     private void HandleDeath(Transform slimeTransform, Cursor cursor)
     {
+        floatingText.GetComponent<TextMesh>().text = "+125 pts";
+
         Vector3 rotationEuler = Vector3.zero;
         if (floatingText)
         {

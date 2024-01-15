@@ -215,4 +215,9 @@ public class InputController : MonoBehaviour
                 break;              
         }
     }
+
+    public void Endgame()
+    {
+        gameObject.SetActive(false);
+    }
 }
