@@ -39,6 +39,10 @@ public class MusicManager : MonoBehaviour
                 source.clip = clips[1];
                 source.Play();
                 break;
+            case 9:
+                source.clip = clips[2];
+                source.Play();
+                break;
             case 11:
                 source.clip = clips[1];
                 source.Play();

@@ -2213,6 +2213,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGameUI: {fileID: 430935819}
+  source: {fileID: 1467617174}
+  clip: {fileID: 8300000, guid: 54cbb712ea809e649a7dafb8a7244015, type: 3}
 --- !u!1 &633645516
 GameObject:
   m_ObjectHideFlags: 0
