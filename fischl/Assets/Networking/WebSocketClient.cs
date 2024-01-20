@@ -17,7 +17,7 @@ public class WebSocketClient : MonoBehaviour
     private bool canRetry = true;
 
     private Queue<SocketMessage> messageQueue;
-    private bool isReady;
+    public bool isReady { get; private set; }
 
     private void Start()
     {
