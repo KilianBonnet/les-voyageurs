@@ -135,5 +135,4 @@ Event sent when the VR_Client send a bonus to the Table.
 | bonus | Description |
 | --------- | ----------- |
 | 0 | The bomb. |
-
-Todo : Other bonus will come later.
+| 1 | The emerald. |

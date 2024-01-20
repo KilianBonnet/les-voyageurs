@@ -23,12 +23,19 @@ public class BonusEventHandler : MonoBehaviour
 
     public void OnBonusEvent(BonusType bonus) {
         bonusAudio.Play();
-        wheelAnimator.SetTrigger("Notification");
+        if(bonus != BonusType.EMERALD) {
+            wheelAnimator.SetTrigger("Notification");
 
-        foreach (BonusHandlerStruct item in bonusHandlerList)
-        {
-            item.bonusContainer.IncreaseCount(1);
-            notification.PlayNotification($"Obtained\n{item.bonusName}!", item.bonusName);
+            foreach (BonusHandlerStruct item in bonusHandlerList)
+            {
+                item.bonusContainer.IncreaseCount(1);
+                notification.PlayNotification($"Obtained\n{item.bonusName}!", item.bonusName);
+            }
         }
+        else {
+            notification.PlayNotification("Obtained\nemerald!", "emerald");
+        } 
+
+        
     }
 }

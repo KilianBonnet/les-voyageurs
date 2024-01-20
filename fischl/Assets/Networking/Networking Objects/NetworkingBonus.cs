@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public enum BonusType {
-    BOMB
+    BOMB,
+    EMERALD
 }
 
 public class NetworkingBonus : MonoBehaviour
@@ -24,6 +25,7 @@ public class NetworkingBonus : MonoBehaviour
         bonusToIntDic = new Dictionary<BonusType, int>();
 
         AddToDic(0, BonusType.BOMB);
+        AddToDic(1, BonusType.EMERALD);
     }
     
     private void AddToDic(int intValue, BonusType bonusType) {
@@ -44,7 +46,7 @@ public class NetworkingBonus : MonoBehaviour
     }
 
     public static void SendBonusEvent(BonusType bonusType) {
-        int bonus = 0;
+        int bonus = bonusType == BonusType.BOMB ? 0 : 1;
 
         WebSocketClient.Instance.SendMessage(
             SocketOP.BONUS_EVENT, 

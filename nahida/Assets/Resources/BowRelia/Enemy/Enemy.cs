@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
 
     void addScore()
     {
+        NetworkingBonus.SendBonusEvent(BonusType.EMERALD);
         NetworkingScore.SendScoreEvent(200);
     }
 

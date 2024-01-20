@@ -17,4 +17,10 @@ public class Notification : MonoBehaviour
         foreach (Transform child in transform) 
             child.gameObject.SetActive(child.name == "Canvas" || child.name == childName);
     }
+
+    public void ResetNotification() {
+        messageUi.text = "";
+        foreach (Transform child in transform) 
+            child.gameObject.SetActive(false);
+    }
 }
