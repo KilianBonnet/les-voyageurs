@@ -12,9 +12,9 @@ public class CanvasHandler : MonoBehaviour
 
     private void Start()
     {
-        if(!disconnectedError)
+        if (!disconnectedError)
             disconnectedError = GameObject.Find("Disconnected Error");
-        client = GameObject.Find("Websocket Client").GetComponent<WebSocketClient>();
+        client = FindObjectOfType<WebSocketClient>();
 
         progress = GameObject.Find("Progress");
         bonus = GameObject.Find("Bonus Notification");
@@ -23,7 +23,7 @@ public class CanvasHandler : MonoBehaviour
 
     private void Update()
     {
-        if(client.isReady)
+        if (client.isReady)
             disconnectedError.SetActive(false);
         else
             disconnectedError.SetActive(true);
@@ -36,11 +36,11 @@ public class CanvasHandler : MonoBehaviour
 
     private void HideGameUI()
     {
-        if(progress)
+        if (progress)
             progress.SetActive(false);
-        if(bonus)
+        if (bonus)
             bonus.SetActive(false);
-        if(map)
+        if (map)
             map.SetActive(false);
     }
 }
