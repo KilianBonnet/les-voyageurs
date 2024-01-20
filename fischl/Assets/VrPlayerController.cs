@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class VrPlayerController : MonoBehaviour
 {
+    [SerializeField] Transform rotationArrow;
+
     public void OnRotationChange(Vector3 r)
     {
         r.z = -r.y;
         r.y = 0;
-        transform.rotation = Quaternion.Euler(r);
+        rotationArrow.rotation = Quaternion.Euler(r);
     }
 }
