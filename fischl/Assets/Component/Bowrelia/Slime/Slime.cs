@@ -8,6 +8,7 @@ public class Slime : MonoBehaviour
 
     [SerializeField] private float speed = .5f;
     [SerializeField] private int score = 125;
+    [SerializeField] private int health = 1;
     public static event Action<Transform, Cursor> OnDeath;
 
     private void Start()
@@ -24,9 +25,15 @@ public class Slime : MonoBehaviour
 
         Cursor cursor = other.gameObject.GetComponent<Cursor>();
         if (cursor == null || cursor.cursorType != CursorType.CURSOR) return;
-        OnDeath.Invoke(transform, cursor);
-        if (score > 0) cursor.originalZone.IncreaseScore(score);
-        Destroy(gameObject);
+
+        health -= 1;
+        if(health <= 0)
+        {
+            OnDeath.Invoke(transform, cursor);
+            if (score > 0) cursor.originalZone.IncreaseScore(score);
+            Destroy(gameObject);
+        }
+            
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -39,8 +46,12 @@ public class Slime : MonoBehaviour
             if (cursor.cursorType == CursorType.CURSOR) return;
             if (cursor.cursorType == CursorType.BULLET)
             {
-                Destroy(other.gameObject);
-                if (score > 0) cursor.originalZone.IncreaseScore(score);
+                health -= 1;
+                if (health <= 0)
+                {
+                    Destroy(other.gameObject);
+                    if (score > 0) cursor.originalZone.IncreaseScore(score);
+                }
             }
         }
         else scoreManager.IncreaseScore(score);
