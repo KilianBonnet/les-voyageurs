@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.1152
+  m_FillAmount: 0.073
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -2802,6 +2802,7 @@ Transform:
   m_Children:
   - {fileID: 98256631}
   - {fileID: 1570118199}
+  - {fileID: 1167338188}
   m_Father: {fileID: 66423162}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9043,9 +9044,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 10000
+  m_MaxValue: 20000
   m_WholeNumbers: 0
-  m_Value: 1152
+  m_Value: 1460
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
