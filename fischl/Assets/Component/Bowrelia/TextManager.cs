@@ -35,9 +35,9 @@ public class TextManager : MonoBehaviour
         }
     }
 
-    private void HandleMapEntered(Transform slimeTransform)
+    private void HandleMapEntered(Transform slimeTransform, int score)
     {
-            floatingText.GetComponent<TextMesh>().text = "-125 pts";
+            floatingText.GetComponent<TextMesh>().text = "-" + $"{score} pts";
             var rotation = Quaternion.Euler(Vector3.zero);
             Instantiate(floatingText, slimeTransform.position, rotation);
         

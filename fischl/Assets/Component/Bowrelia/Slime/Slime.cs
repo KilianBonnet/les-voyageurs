@@ -8,7 +8,7 @@ public class Slime : MonoBehaviour
     private ScoreManager scoreManager;
 
     [SerializeField] private float speed = .5f;
-    [SerializeField] private int score = 125;
+    [SerializeField] public int score = 125;
     [SerializeField] private int health = 1;
     private bool isBlinking = false;
 

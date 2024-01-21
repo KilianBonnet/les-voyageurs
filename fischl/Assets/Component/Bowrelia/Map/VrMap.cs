@@ -6,7 +6,7 @@ public class VrMap : MonoBehaviour
 {
     [SerializeField] private ScoreManager scoreManager;
     private GameObject touched;
-    public static event Action<Transform> EnemyEntered;
+    public static event Action<Transform, int> EnemyEntered;
 
     private void Start() {
         touched = GameObject.Find("Touched");
@@ -16,9 +16,10 @@ public class VrMap : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
 
         if(other.transform.CompareTag("Enemy")) {
-            EnemyEntered.Invoke(other.transform);
+            int score = other.transform.gameObject.GetComponent<Slime>().score;
+            EnemyEntered.Invoke(other.transform,score);
             Destroy(other.gameObject);
-            scoreManager.IncreaseScore(-200);
+            scoreManager.IncreaseScore(-score);
             StartCoroutine(ShowAndHideObject(touched, 3f));
         }
     }
