@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Oculus.Interaction;
 using Oculus.Interaction.HandGrab;
-using TMPro;
 
 public class BonusManager : MonoBehaviour
 {
@@ -11,7 +8,7 @@ public class BonusManager : MonoBehaviour
     private GameObject bomb;
     private GameObject portal;
     private Transform text;
-    private ParticleSystem particleSystem;
+    [SerializeField] private GameObject particleObject;
     private AudioSource source;
     [SerializeField] AudioClip clip;
     private bool hasBeenPlayed = false;
@@ -21,7 +18,6 @@ public class BonusManager : MonoBehaviour
         bomb = transform.parent.Find("Bomb").gameObject;
         portal = transform.parent.Find("Portal blue").gameObject;
         text = transform.parent.Find("Canvas").Find("Text");
-        particleSystem = transform.parent.Find("Bomb").GetComponentInChildren<ParticleSystem>();
         source = gameObject.GetComponent<AudioSource>();
     }
 
@@ -65,8 +61,9 @@ public class BonusManager : MonoBehaviour
     {
         if (collision.gameObject.name == "Lid")
         {
+            if (particleObject)
+                particleObject.SetActive(true);
             bomb.GetComponent<Animator>().SetBool("isLidOpen", true);
-            particleSystem.Play();
         }
     }
 
