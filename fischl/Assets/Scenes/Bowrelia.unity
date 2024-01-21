@@ -2018,9 +2018,9 @@ MonoBehaviour:
   onTutorialComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 983658324}
-        m_TargetAssemblyTypeName: EnemySpawner, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 11500000, guid: d5064be6d1af18e4d94ab23c1e0bddd8, type: 3}
+        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2269,7 +2269,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 983658324}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.MonoBehaviour, UnityEngine
         m_MethodName: CancelInvoke
         m_Mode: 1
@@ -2671,6 +2671,53 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   elementPrefab: {fileID: 2536593106110258470, guid: 6efd634c6f34d104da1e99e2ac249642, type: 3}
   countUi: {fileID: 906384323}
+--- !u!1 &665335355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 665335356}
+  - component: {fileID: 665335357}
+  m_Layer: 0
+  m_Name: Web Socket Client
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &665335356
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665335355}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1166434594}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &665335357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665335355}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa61cbab3ef92c14093545605e0e4fa0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  address: ws://192.168.1.76:8080
+  deviceType: VR_Headset
+  retryInterval: 1
 --- !u!1 &693996163
 GameObject:
   m_ObjectHideFlags: 0
@@ -4483,8 +4530,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 983658323}
-  - component: {fileID: 983658324}
   - component: {fileID: 983658325}
+  - component: {fileID: 983658326}
   m_Layer: 0
   m_Name: EnemySpawner
   m_TagString: Untagged
@@ -4507,19 +4554,6 @@ Transform:
   m_Father: {fileID: 433337494}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &983658324
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983658322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 666ac44be63f3b6408e1e850acc0a773, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 4518773532532186301, guid: b6418deaf60ec294bb77eafef2dad90b, type: 3}
 --- !u!82 &983658325
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4616,6 +4650,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &983658326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983658322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5064be6d1af18e4d94ab23c1e0bddd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 4518773532532186301, guid: b6418deaf60ec294bb77eafef2dad90b, type: 3}
+  - {fileID: 4518773532532186301, guid: 5411331d99169f143878880d18485541, type: 3}
 --- !u!1 &998501231
 GameObject:
   m_ObjectHideFlags: 0
@@ -5565,6 +5614,7 @@ Transform:
   - {fileID: 8949973782274870918}
   - {fileID: 1114365178}
   - {fileID: 1717540545}
+  - {fileID: 665335356}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

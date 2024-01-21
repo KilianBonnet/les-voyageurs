@@ -1,13 +1,23 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject enemyPrefab;
+    [SerializeField] private List<GameObject> enemyPrefabs;
+    private bool spawnAdditionalEnemies = false;
+
 
     public void StartGame()
     {
         InvokeRepeating("SpawnEnemy", 1f, 3f);
+        Invoke("EnableAdditionalSpawn", 10f); // Enable additional spawns after 60 seconds
+    }
+
+    private void EnableAdditionalSpawn()
+    {
+        spawnAdditionalEnemies = true;
+        Debug.Log("Stronger enemy are here");
     }
 
     private Vector2 GeneratePosition()
@@ -21,8 +31,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject enemy = Instantiate(enemyPrefab);
+        int randomIndex = spawnAdditionalEnemies ? Random.Range(0, enemyPrefabs.Count) : 0;
+        GameObject enemy = Instantiate(enemyPrefabs[randomIndex]);
         enemy.transform.position = GeneratePosition();
-        enemy.transform.Rotate(0, 0, UnityEngine.Random.Range(0, 4) * 90);
+        enemy.transform.Rotate(0, 0, Random.Range(0, 4) * 90);
     }
 }
