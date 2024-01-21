@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
@@ -9,6 +10,8 @@ public class Slime : MonoBehaviour
     [SerializeField] private float speed = .5f;
     [SerializeField] private int score = 125;
     [SerializeField] private int health = 1;
+    private bool isBlinking = false;
+
     public static event Action<Transform, Cursor> OnDeath;
 
     private void Start()
@@ -27,13 +30,16 @@ public class Slime : MonoBehaviour
         if (cursor == null || cursor.cursorType != CursorType.CURSOR) return;
 
         health -= 1;
-        if(health <= 0)
+        if (health > 0)
         {
-            OnDeath.Invoke(transform, cursor);
+            StartCoroutine(BlinkSlime());
+        }
+        else
+        {
+            OnDeath?.Invoke(transform, cursor);
             if (score > 0) cursor.originalZone.IncreaseScore(score);
             Destroy(gameObject);
         }
-            
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -52,10 +58,14 @@ public class Slime : MonoBehaviour
                     Destroy(other.gameObject);
                     if (score > 0) cursor.originalZone.IncreaseScore(score);
                 }
+                else
+                {
+                    StartCoroutine(BlinkSlime());
+                }
             }
         }
         else scoreManager.IncreaseScore(score);
-        OnDeath.Invoke(transform, cursor);
+        OnDeath?.Invoke(transform, cursor);
         Destroy(gameObject);
     }
 
@@ -63,5 +73,25 @@ public class Slime : MonoBehaviour
     {
         Vector2 direction = objectiveAnchor.position - transform.position;
         transform.Translate(direction.normalized * speed, Space.World);
+    }
+
+    private IEnumerator BlinkSlime()
+    {
+        if (isBlinking) yield break; // Already blinking, exit coroutine
+
+        isBlinking = true;
+
+        SpriteRenderer slimeRenderer = GetComponent<SpriteRenderer>();
+        Color originalColor = slimeRenderer.color;
+
+        for (int i = 0; i < 4; i++)
+        {
+            slimeRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+            yield return new WaitForSeconds(0.125f);
+            slimeRenderer.color = originalColor;
+            yield return new WaitForSeconds(0.125f);
+        }
+
+        isBlinking = false;
     }
 }
