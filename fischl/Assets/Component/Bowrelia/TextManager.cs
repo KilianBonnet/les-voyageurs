@@ -10,9 +10,9 @@ public class TextManager : MonoBehaviour
         VrMap.EnemyEntered += HandleMapEntered;
     }
 
-    private void HandleDeath(Transform slimeTransform, Cursor cursor)
+    private void HandleDeath(Transform slimeTransform, Cursor cursor, int score)
     {
-        floatingText.GetComponent<TextMesh>().text = "+125 pts";
+        floatingText.GetComponent<TextMesh>().text = "+"+ $"{score} pts";
 
         Vector3 rotationEuler = Vector3.zero;
         if (floatingText)

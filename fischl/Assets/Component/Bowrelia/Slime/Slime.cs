@@ -12,7 +12,7 @@ public class Slime : MonoBehaviour
     [SerializeField] private int health = 1;
     private bool isBlinking = false;
 
-    public static event Action<Transform, Cursor> OnDeath;
+    public static event Action<Transform, Cursor, int> OnDeath;
 
     private void Start()
     {
@@ -36,7 +36,7 @@ public class Slime : MonoBehaviour
         }
         else
         {
-            OnDeath?.Invoke(transform, cursor);
+            OnDeath?.Invoke(transform, cursor, score);
             if (score > 0) cursor.originalZone.IncreaseScore(score);
             Destroy(gameObject);
         }
@@ -65,7 +65,7 @@ public class Slime : MonoBehaviour
             }
         }
         else scoreManager.IncreaseScore(score);
-        OnDeath?.Invoke(transform, cursor);
+        OnDeath?.Invoke(transform, cursor, score);
         Destroy(gameObject);
     }
 
