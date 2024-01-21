@@ -11,7 +11,7 @@ public class EnemySpawner : MonoBehaviour
     public void StartGame()
     {
         InvokeRepeating("SpawnEnemy", 1f, 3f);
-        Invoke("EnableAdditionalSpawn", 10f); // Enable additional spawns after 60 seconds
+        Invoke("EnableAdditionalSpawn", 60f); // Enable additional spawns after 60 seconds
     }
 
     private void EnableAdditionalSpawn()
