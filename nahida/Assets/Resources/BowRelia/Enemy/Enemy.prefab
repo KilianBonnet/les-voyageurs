@@ -1846,8 +1846,16 @@ PrefabInstance:
       value: Canvas
       objectReference: {fileID: 0}
     - target: {fileID: 6667819059770497353, guid: bd5dd3cced76900439defa3905ea2319, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6667819059770497353, guid: bd5dd3cced76900439defa3905ea2319, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8475609306039674873, guid: bd5dd3cced76900439defa3905ea2319, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 8475609306039674873, guid: bd5dd3cced76900439defa3905ea2319, type: 3}
       propertyPath: m_IsActive
@@ -1867,6 +1875,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1812498012401418373}
     m_Modifications:
+    - target: {fileID: 1188596963771878223, guid: 45e0f06c750176947862c10346226439, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3288734912414284343, guid: 45e0f06c750176947862c10346226439, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5516487406859467972, guid: 45e0f06c750176947862c10346226439, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -1928,8 +1944,20 @@ PrefabInstance:
       value: Portal blue
       objectReference: {fileID: 0}
     - target: {fileID: 5607819269926399345, guid: 45e0f06c750176947862c10346226439, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607819269926399345, guid: 45e0f06c750176947862c10346226439, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5995944143312657410, guid: 45e0f06c750176947862c10346226439, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8817328400084507686, guid: 45e0f06c750176947862c10346226439, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45e0f06c750176947862c10346226439, type: 3}
@@ -1991,6 +2019,10 @@ PrefabInstance:
     - target: {fileID: 1153693903604504, guid: 2c9868bb7821e484083e774038674eb1, type: 3}
       propertyPath: m_Name
       value: Emerald
+      objectReference: {fileID: 0}
+    - target: {fileID: 1153693903604504, guid: 2c9868bb7821e484083e774038674eb1, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1153693903604504, guid: 2c9868bb7821e484083e774038674eb1, type: 3}
       propertyPath: m_IsActive
@@ -2092,7 +2124,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6457346744221930695}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 4
   m_Convex: 1
@@ -2109,8 +2141,8 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 0}
   m_Animations:
-  - {fileID: 7400000, guid: f998f8cced04ec940b590781bbf3b3d6, type: 2}
-  - {fileID: 7400000, guid: faee59e1a3d74c34692aad981eaecacc, type: 2}
+  - {fileID: 7400000, guid: 7acb52c54648590409a3dfcca03b3a3e, type: 2}
+  - {fileID: 7400000, guid: edb1125f17380434fb09191085e7e736, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0

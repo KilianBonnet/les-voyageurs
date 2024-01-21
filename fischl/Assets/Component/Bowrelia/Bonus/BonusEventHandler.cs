@@ -2,7 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public struct BonusHandlerStruct {
+public struct BonusHandlerStruct
+{
     public string bonusName;
     public ElementContainer bonusContainer;
 }
@@ -15,15 +16,18 @@ public class BonusEventHandler : MonoBehaviour
     private Notification notification;
     private AudioSource bonusAudio;
 
-    private void Start() {
+    private void Start()
+    {
         notification = FindObjectOfType<Notification>();
         NetworkingBonus.BonusEvent += OnBonusEvent;
         bonusAudio = GetComponent<AudioSource>();
     }
 
-    public void OnBonusEvent(BonusType bonus) {
+    public void OnBonusEvent(BonusType bonus)
+    {
         bonusAudio.Play();
-        if(bonus != BonusType.EMERALD) {
+        if (bonus != BonusType.EMERALD)
+        {
             wheelAnimator.SetTrigger("Notification");
 
             foreach (BonusHandlerStruct item in bonusHandlerList)
@@ -32,10 +36,11 @@ public class BonusEventHandler : MonoBehaviour
                 notification.PlayNotification($"Obtained\n{item.bonusName}!", item.bonusName);
             }
         }
-        else {
-            notification.PlayNotification("Obtained\nemerald!", "emerald");
-        } 
+        else
+        {
+            notification.PlayNotification("Obtained\nemerald! (+250 pts)", "emerald");
+        }
 
-        
+
     }
 }

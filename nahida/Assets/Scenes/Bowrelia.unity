@@ -5954,10 +5954,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 838339924}
     m_Modifications:
-    - target: {fileID: 401246535229785156, guid: d73c5e954bf94ed4b87469447275bcb7, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1812498012401418373, guid: d73c5e954bf94ed4b87469447275bcb7, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -6005,10 +6001,6 @@ PrefabInstance:
     - target: {fileID: 3922017711795454263, guid: d73c5e954bf94ed4b87469447275bcb7, type: 3}
       propertyPath: m_Name
       value: Enemy 1-2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6363003559590627575, guid: d73c5e954bf94ed4b87469447275bcb7, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d73c5e954bf94ed4b87469447275bcb7, type: 3}
