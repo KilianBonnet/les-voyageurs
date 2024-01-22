@@ -1351,7 +1351,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 31, y: 418}
+  m_AnchoredPosition: {x: 31, y: 471}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &364877901 stripped
@@ -1643,7 +1643,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
-  m_FillAmount: 0.073
+  m_FillAmount: 0.0292
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -1947,7 +1947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571249494
 Transform:
   m_ObjectHideFlags: 0
@@ -2318,6 +2318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endGameUI: {fileID: 430935819}
+  greenScore: {fileID: 1322428324}
+  redScore: {fileID: 2060919821}
+  blueScore: {fileID: 870165487}
   greenTrophy: {fileID: 753075908}
   redTrophy: {fileID: 693996163}
   blueTrophy: {fileID: 1356878140}
@@ -4618,6 +4621,7 @@ MonoBehaviour:
   enemyPrefabs:
   - {fileID: 4518773532532186301, guid: b6418deaf60ec294bb77eafef2dad90b, type: 3}
   - {fileID: 4518773532532186301, guid: 5411331d99169f143878880d18485541, type: 3}
+  - {fileID: 4518773532532186301, guid: b6418deaf60ec294bb77eafef2dad90b, type: 3}
 --- !u!1 &998501231
 GameObject:
   m_ObjectHideFlags: 0
@@ -8843,7 +8847,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1742787154
 Transform:
   m_ObjectHideFlags: 0
@@ -8889,7 +8893,7 @@ Transform:
   m_GameObject: {fileID: 1751694314}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -17.744452, y: 0.13, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 466882468}
@@ -9046,7 +9050,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 20000
+  m_MaxValue: 50000
   m_WholeNumbers: 0
   m_Value: 1460
   m_OnValueChanged:
@@ -9630,7 +9634,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1859241867
 Transform:
   m_ObjectHideFlags: 0

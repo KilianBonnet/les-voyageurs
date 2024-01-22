@@ -5,9 +5,9 @@ public class EndGameManager : MonoBehaviour
 {
     [SerializeField] private GameObject endGameUI;
 
-    private TextMeshPro greenScore;
-    private TextMeshPro redScore;
-    private TextMeshPro blueScore;
+    [SerializeField] private TextMeshProUGUI greenScore;
+    [SerializeField] private TextMeshProUGUI redScore;
+    [SerializeField] private TextMeshProUGUI blueScore;
 
     [SerializeField] private GameObject greenTrophy;
     [SerializeField] private GameObject redTrophy;
@@ -20,9 +20,12 @@ public class EndGameManager : MonoBehaviour
     {
         if (!source)
             source = GameObject.Find("Main Camera").GetComponent<AudioSource>();
-        greenScore = GameObject.Find("Green Score").GetComponent<TextMeshPro>();
-        redScore = GameObject.Find("Red Score").GetComponent<TextMeshPro>();
-        blueScore = GameObject.Find("Blue Score").GetComponent<TextMeshPro>();
+        if(!greenScore)
+            greenScore = GameObject.Find("Green Score").GetComponent<TextMeshProUGUI>();
+        if(!redScore)
+            redScore = GameObject.Find("Red Score").GetComponent<TextMeshProUGUI>();
+        if(!blueScore)
+            blueScore = GameObject.Find("Blue Score").GetComponent<TextMeshProUGUI>();
     }
 
 
@@ -43,9 +46,9 @@ public class EndGameManager : MonoBehaviour
         int blueValue = int.Parse(blueScore.text);
         if (greenValue >= redValue && greenValue >= blueValue)
             greenTrophy.SetActive(true);
-        if (redValue >= greenValue && redValue >= blueValue)
+        else if (redValue >= greenValue && redValue >= blueValue)
             redTrophy.SetActive(true);
-        if (blueValue >= greenValue && blueValue >= redValue)
+        else
             blueTrophy.SetActive(true);
     }
 }

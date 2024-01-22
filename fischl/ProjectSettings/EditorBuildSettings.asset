@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Pipe-Line.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/Scenes/Env_Selection.unity
+    guid: 02cd277a5e147794297d45f019ad48af
   - enabled: 1
     path: Assets/Scenes/Bowrelia.unity
     guid: 92ee0e2ed762c5743b8d294443870d14

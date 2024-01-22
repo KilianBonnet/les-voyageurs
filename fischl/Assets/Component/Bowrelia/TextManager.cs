@@ -12,23 +12,26 @@ public class TextManager : MonoBehaviour
 
     private void HandleDeath(Transform slimeTransform, Cursor cursor, int score)
     {
-        floatingText.GetComponent<TextMesh>().text = "+"+ $"{score} pts";
+        floatingText.GetComponent<TextMesh>().text = "+" + $"{score} pts";
 
         Vector3 rotationEuler = Vector3.zero;
-        if (floatingText)
+        if (cursor)
         {
-            switch (cursor.originalZone.name)
+            if (floatingText)
             {
-                case "Red Zone":
-                    break;
-                case "Blue Zone":
-                    rotationEuler = new Vector3(0, 0, 90);
-                    break;
-                case "Green Zone":
-                    rotationEuler = new Vector3(0, 0, 270);
-                    break;
-                default:
-                    break;
+                switch (cursor.originalZone.name)
+                {
+                    case "Red Zone":
+                        break;
+                    case "Blue Zone":
+                        rotationEuler = new Vector3(0, 0, 90);
+                        break;
+                    case "Green Zone":
+                        rotationEuler = new Vector3(0, 0, 270);
+                        break;
+                    default:
+                        break;
+                }
             }
             var rotation = Quaternion.Euler(rotationEuler);
             Instantiate(floatingText, slimeTransform.position, rotation);
@@ -37,10 +40,10 @@ public class TextManager : MonoBehaviour
 
     private void HandleMapEntered(Transform slimeTransform, int score)
     {
-            floatingText.GetComponent<TextMesh>().text = "-" + $"{score} pts";
-            var rotation = Quaternion.Euler(Vector3.zero);
-            Instantiate(floatingText, slimeTransform.position, rotation);
-        
+        floatingText.GetComponent<TextMesh>().text = "-" + $"{score} pts";
+        var rotation = Quaternion.Euler(Vector3.zero);
+        Instantiate(floatingText, slimeTransform.position, rotation);
+
     }
 }
 
